@@ -1,0 +1,84 @@
+body {
+  font-family: Circular,Helvetica,Arial,sans-serif;
+  background: #fff;
+      font-size: 16px;
+}
+.session-form-container{
+  max-width: 450px;
+  margin: auto;
+  input {
+    display: block;
+    width: 100%;
+    padding: 6px 12px;
+    margin-top: 15px;
+
+    color: #222326;
+    line-height: 1.5;
+  }
+  .username-input, .username-password, .name-input{
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .session-submit-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 6px 25px;
+
+    span {
+      content: "";
+      width: 50%;
+    }
+    input[type="submit"]:hover {
+      background-color: #1ed760;
+      cursor: pointer;
+    }
+    input[type="submit"] {
+      width: 50%;
+      line-height: 1;
+      margin-top: 15px;
+      border: 1px solid transparent;
+      border-radius: 500px;
+      color: white;
+      background-color: #1db954;
+      padding: 11px 32px 9px;
+      vertical-align: middle;
+      text-align: center;
+      font-weight: 700;
+    }
+  }
+  .session-redirect-container {
+    margin-top: 50px;
+    text-align: center;
+  }
+}
+.session-logo-container {
+  border-bottom: 1px solid #d9dadc;
+  .logo {
+    padding: 25px 0 20px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .spotify-logo {
+    width: 200px;
+    height: 20px;
+    padding: 25px 0 15px;
+    display: block;
+    background: url("https://newsroom.spotify.com/media/mediakit/2018-03-19_22-28-42/Spotify_Logo_CMYK_Black.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+
+  }
+}
+
+a {
+  .sessionlink-text {
+    color: #1db954;
+  }
+  .sessionlink-text:hover {
+    color: #1ed760;
+  }
+  text-decoration: none;
+}
