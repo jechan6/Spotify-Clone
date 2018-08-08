@@ -1,5 +1,5 @@
 body {
-  font-family: Circular,Helvetica,Arial,sans-serif;
+
   background: #fff;
       font-size: 16px;
 }
@@ -57,16 +57,18 @@ body {
     margin-right: auto;
   }
   .spotify-logo {
-    width: 200px;
-    height: 20px;
-    padding: 25px 0 15px;
+    width: 300px;
+    height: 40px;
+
+    padding: 20px 0 15px;
     display: block;
-    background: url("https://newsroom.spotify.com/media/mediakit/2018-03-19_22-28-42/Spotify_Logo_CMYK_Black.png");
-    background-size: contain;
+    background-image: image_url('musicon-black.png');
+    background-size: 100%;
+
     background-repeat: no-repeat;
     margin: 0 auto;
-
   }
+
 }
 .error-item {
   color: #eb1e32;

@@ -1,15 +1,80 @@
 .browse-container {
-  background: url("https://images.pexels.com/photos/1114897/pexels-photo-1114897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  // background: url("https://images.pexels.com/photos/1114897/pexels-photo-1114897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-color: grey;
   height: 100vh;
   background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: image_url("splash-background.jpeg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  font-family: 'Montserrat', 'sans-serif';
+  .splash-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+
+    .left-browse{
+      width: 400px;
+      .logo{
+        width: 400px;
+        height: 50px;
+
+        padding: 10px 0 15px;
+        display: block;
+
+        // font-size: 40px;
+        // font-weight: 700;
+        margin-left: 60px;
+        background-image: image_url('musicon.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        color: white;
+      }
+    }
+    .browse-middlebar {
+      height: 400px;
+      background-color: white;
+      width: 1px;
+    }
+    .right-browse {
+      width: 600px;
+      padding: 45px;
+      .fa-check{
+        color: #07d159;
+        padding-right: 10px;
+      }
+      h1 {
+        color: #07d159;
+        font-size: 55px;
+        font-weight: 700;
+
+      }
+      p{
+        margin-top: 30px;
+        margin-bottom: 30px;
+        font-size: 24px;
+        font-weight: 200;
+        color: white;
+      }
+      li {
+        color: white;
+        font-size: 1.2em;
+        font-weight: 400;
+        padding-top: .6em;
+      }
+    }
+  }
 
   .session-links {
-    font-family: Helvetica,Arial,sans-serif;
-    a{
+    margin-top: 40px;
+    a {
       padding: 20px;
       background: #1db954;
-
-      width: 200px;
+      max-width: 300px;
       display: block;
       font-size: 16px;
       margin-top: 10px;
@@ -26,4 +91,26 @@
 
 
   }
+  .separator {
+    color: white;
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    margin: 15px 10px;
+      .separator-line{
+        width: 20px;
+        background-color: rgba(255,255,255,0.7);
+        height: 1px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .separator-text {
+        color: rgba(255,255,255,0.7);
+        margin: 12px 10px;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+
+  }
+
 }
