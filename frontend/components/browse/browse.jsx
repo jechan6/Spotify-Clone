@@ -17,11 +17,11 @@ class Browse extends React.Component {
     );
 
     const otherGreeting = () => (
-      <div>
+      <div className="browse-container">
         <h1>Spotify Clone App</h1>
-        <div>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/login">Log In</Link>
+        <div className="session-links">
+          <Link className="link-signup" to="/signup">Sign Up</Link>
+          <Link className="link-login" to="/login">Log In</Link>
         </div>
       </div>
     );

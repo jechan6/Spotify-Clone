@@ -39,7 +39,7 @@ class SessionForm extends React.Component {
     return(
       <ul>
         {this.props.errors.session.map((error, i) => (
-          <li key={`error-${i}`}>
+          <li className="error-item" key={`error-${i}`}>
             {error}
           </li>
         ))}
@@ -70,17 +70,17 @@ class SessionForm extends React.Component {
         <div className="session-form-container">
           <span className="sessionErrors">{this.renderErrors()}</span>
           <form className="session-form" onSubmit={this.handleSubmit}>
-            <input className="username-input" type="text"
+
+            <input id="input-username" className="username-input" type="text"
               onChange={this.handleInput('username')}
               placeholder="Username" />
-
-            <input className="username-password" type="password"
+            <input className="input-password" type="password"
               onChange={this.handleInput('password')}
               placeholder="Password" />
 
             {nameInput}
             <div className="session-submit-container">
-              <span></span>
+
               <input className="session-submit"
                 type="submit" value={this.props.formType}/>
             </div>
@@ -91,7 +91,7 @@ class SessionForm extends React.Component {
             <p>Don't have an account?
               <Link to={linkTo}
                 onClick={this.props.clearErrors}>
-                <span className="sessionlink-text">{linkText}</span>
+                <span className="sessionlink-text">  {linkText}</span>
               </Link>
             </p>
           </div>

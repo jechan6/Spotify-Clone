@@ -1,0 +1,29 @@
+.browse-container {
+  background: url("https://images.pexels.com/photos/1114897/pexels-photo-1114897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  height: 100vh;
+  background-size: cover;
+
+  .session-links {
+    font-family: Helvetica,Arial,sans-serif;
+    a{
+      padding: 20px;
+      background: #1db954;
+
+      width: 200px;
+      display: block;
+      font-size: 16px;
+      margin-top: 10px;
+      border-radius: 500px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 3px;
+      color: white;
+    }
+    .link-login {
+        background: #fff;
+        color: black;
+    }
+
+
+  }
+}

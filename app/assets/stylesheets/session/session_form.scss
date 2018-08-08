@@ -11,37 +11,33 @@ body {
     width: 100%;
     padding: 6px 12px;
     margin-top: 15px;
-
     color: #222326;
     line-height: 1.5;
+    box-sizing: border-box;
   }
-  .username-input, .username-password, .name-input{
+  .username-input,.input-password, .name-input{
     font-size: 16px;
     font-weight: 700;
   }
+  input:focus{
+    box-shadow: none;
+    border: 1px solid #919496;
+  }
   .session-submit-container {
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    padding: 6px 25px;
 
-    span {
-      content: "";
-      width: 50%;
-    }
     input[type="submit"]:hover {
       background-color: #1ed760;
       cursor: pointer;
     }
     input[type="submit"] {
-      width: 50%;
+      width: 100%;
       line-height: 1;
       margin-top: 15px;
       border: 1px solid transparent;
       border-radius: 500px;
       color: white;
       background-color: #1db954;
-      padding: 11px 32px 9px;
+      padding: 11px 40px 15px;
       vertical-align: middle;
       text-align: center;
       font-weight: 700;
@@ -72,7 +68,10 @@ body {
 
   }
 }
-
+.error-item {
+  color: #eb1e32;
+  margin-top: 15px;
+}
 a {
   .sessionlink-text {
     color: #1db954;
