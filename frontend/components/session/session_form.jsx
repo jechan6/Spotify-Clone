@@ -7,6 +7,7 @@ class SessionForm extends React.Component {
     this.resetState();
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   handleInput(type) {
@@ -46,6 +47,14 @@ class SessionForm extends React.Component {
       </ul>
     );
   }
+  handleDemoLogin(e) {
+    e.preventDefault();
+
+    this.setState({username: 'jeff', password: '123456'});
+    this.props.demoLogin({username: 'jeff', password: '123456'}).then( () => {
+      this.resetState();
+    });
+  }
   render() {
     let linkTo = "/signup";
     let nameInput;
@@ -69,6 +78,9 @@ class SessionForm extends React.Component {
 
         <div className="session-form-container">
           <span className="sessionErrors">{this.renderErrors()}</span>
+          <button className="demo-loginbtn form-btn"
+            onClick={this.handleDemoLogin}>DEMO LOG IN
+          </button>
           <div className="sessionform-bar">
             <div className="sessionform-line"></div>
             <div className="sessionform-or-text">OR</div>
@@ -86,7 +98,7 @@ class SessionForm extends React.Component {
             {nameInput}
             <div className="session-submit-container">
 
-              <input className="session-submit"
+              <input className="session-submit form-btn"
                 type="submit" value={this.props.formType}/>
             </div>
 

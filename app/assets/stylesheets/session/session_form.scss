@@ -31,16 +31,9 @@ body {
       background-color: #1ed760;
       cursor: pointer;
     }
-    input[type="submit"] {
-
-      line-height: 1;
-      margin-top: 15px;
-      border: 1px solid transparent;
-      border-radius: 500px;
-      color: white;
+    input[type="submit"]{
       background-color: #1db954;
-      padding: 11px 40px 15px;
-      vertical-align: middle;
+      color: white;
       text-align: center;
       font-weight: 700;
     }
@@ -49,6 +42,30 @@ body {
     margin-top: 50px;
     text-align: center;
   }
+  .demo-loginbtn {
+    width: 82%;
+    margin-left: 15px;
+    cursor: pointer;
+    font-weight: 700;
+    background-color: #3b5998;
+    color: white;
+  }
+
+}
+.form-btn {
+  border-radius: 500px;
+  border: 1px solid transparent;
+  line-height: 1;
+  margin-top: 15px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 11px 39px 9px;
+  outline: 0;
+  text-decoration: none;
+}
+button {
+  outline: 0;
+  text-decoration: none;
 }
 .session-logo-container {
   border-bottom: 1px solid #d9dadc;
@@ -75,7 +92,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin: 30px 0;
+  margin: 25px 0;
   margin-right: 50px;
   position: relative;
   text-align: center;
