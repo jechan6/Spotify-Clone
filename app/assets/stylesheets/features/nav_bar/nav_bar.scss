@@ -1,0 +1,12 @@
+.nav-container {
+  width: 220px;
+  position: fixed;
+  height: 100vh;
+  background-color: rgba(0,0,0,.6);
+  .nav-bar-ul {
+
+    ul.item {
+      display: block;
+    }
+  }
+}

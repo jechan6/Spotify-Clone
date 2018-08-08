@@ -1,14 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import NavSidebar from './nav_sidebar';
 class Featured extends React.Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    this.props.logout();
   }
 
   render() {
@@ -16,9 +11,7 @@ class Featured extends React.Component {
 
     return(
       <div>
-        <h1>Welcome to Featured!</h1>
-        <h1>Hello {currentUser.name}</h1>
-        <button onClick={this.handleSubmit}>Log Out</button>
+        <NavSidebar logout={logout} currentUser={currentUser}/>
       </div>
     );
   }
