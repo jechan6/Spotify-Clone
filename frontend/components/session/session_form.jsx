@@ -32,7 +32,8 @@ class SessionForm extends React.Component {
       this.state = {
         name: "",
         username: "",
-        password: ""
+        password: "",
+        birthday: Date.now
       };
     }
   }
@@ -58,6 +59,7 @@ class SessionForm extends React.Component {
   render() {
     let linkTo = "/signup";
     let nameInput;
+    let dateInput;
     let linkText = "Sign Up";
     if(this.props.formType === "SIGN UP") {
       linkTo = "/login";
@@ -66,6 +68,9 @@ class SessionForm extends React.Component {
         onChange={this.handleInput('name')}
         className="name-input"
         placeholder="What should we call you?"/>;
+      dateInput = <input className="input-date"
+        onChange={this.handleInput('birthday')}
+        type="date"></input>
     }
     return(
       <section>
@@ -96,6 +101,7 @@ class SessionForm extends React.Component {
               placeholder="Password" />
 
             {nameInput}
+            {dateInput}
             <div className="session-submit-container">
 
               <input className="session-submit form-btn"

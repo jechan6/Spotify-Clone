@@ -39,8 +39,12 @@ class Browse extends React.Component {
             </h1>
             <p>Listen to millions of songs for free</p>
             <ul>
-              <li><i class="fa fa-check" aria-hidden="true"></i>Search & discover music you'll love </li>
-              <li><i class="fa fa-check" aria-hidden="true"></i>Create playlists of your favorite music </li>
+              <li><i className="fa fa-check" aria-hidden="true">
+                </i>Search & discover music you'll love
+              </li>
+              <li><i className="fa fa-check" aria-hidden="true">
+                </i>Create playlists of your favorite music
+              </li>
             </ul>
           </div>
         </div>

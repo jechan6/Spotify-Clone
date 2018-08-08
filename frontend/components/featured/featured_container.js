@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {logout} from '../../actions/session_action';
 import Featured from './featured';
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   currentUser: state.entities.users[state.session.id]
 });
 
