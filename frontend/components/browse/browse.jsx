@@ -25,7 +25,6 @@ class Browse extends React.Component {
 
             <span className="logo"></span>
 
-
             <div className="session-links">
               <Link className="link-signup" to="/signup">Sign Up</Link>
               <div className="separator">

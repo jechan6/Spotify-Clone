@@ -69,6 +69,11 @@ class SessionForm extends React.Component {
 
         <div className="session-form-container">
           <span className="sessionErrors">{this.renderErrors()}</span>
+          <div className="sessionform-bar">
+            <div className="sessionform-line"></div>
+            <div className="sessionform-or-text">OR</div>
+            <div className="sessionform-line"></div>
+          </div>
           <form className="session-form" onSubmit={this.handleSubmit}>
 
             <input id="input-username" className="username-input" type="text"
