@@ -9,10 +9,7 @@ class Browse extends React.Component {
     const welcomeGreeting = () => (
       <div>
         <h1>Spotify Clone App</h1>
-        <div>
-          <h1>Hello {currentUser.name}</h1>
-          <button onClick={logout}>Log Out</button>
-        </div>
+
       </div>
     );
 
