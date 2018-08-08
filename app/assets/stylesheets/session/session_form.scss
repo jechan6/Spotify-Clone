@@ -115,9 +115,23 @@ button {
     letter-spacing: 1px;
   }
 }
-.error-item {
-  color: #eb1e32;
+.session-errors {
+  min-height: 80px;
   margin-top: 15px;
+
+
+  font-family: 'Montserrat', 'sans-serif';
+  .error-item {
+    transition: 900ms all ease-in-out;
+    opacity: 0;
+
+    color: #eb1e32;
+    margin-top: 5px;
+    margin-left: 17px;
+  }
+  .error-item.show {
+    opacity: 1;
+  }
 }
 a {
   .sessionlink-text {

@@ -8,6 +8,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.handleDemoLogin = this.handleDemoLogin.bind(this);
+    this.showErrors = this.showErrors.bind(this);
   }
 
   handleInput(type) {
@@ -26,22 +27,33 @@ class SessionForm extends React.Component {
     if(this.props.formType === "Log In") {
       this.state = {
         username: "",
-        password: ""
+        password: "",
+        show: false
       };
     } else {
       this.state = {
         name: "",
         username: "",
         password: "",
+        show: false,
         birthday: Date.now
       };
     }
   }
+  showErrors() {
+
+    setTimeout(() => {
+      this.setState({
+        show: true,
+      });
+    }, 200);
+  }
   renderErrors() {
+
     return(
-      <ul>
+      <ul className="session-errors">
         {this.props.errors.session.map((error, i) => (
-          <li className="error-item" key={`error-${i}`}>
+          <li className={this.state.show ? 'show error-item' : 'error-item'}  key={`error-${i}`}>
             {error}
           </li>
         ))}
@@ -70,7 +82,7 @@ class SessionForm extends React.Component {
         placeholder="What should we call you?"/>;
       dateInput = <input className="input-date"
         onChange={this.handleInput('birthday')}
-        type="date"></input>
+        type="date"></input>;
     }
     return(
       <section>
@@ -82,7 +94,10 @@ class SessionForm extends React.Component {
 
 
         <div className="session-form-container">
-          <span className="sessionErrors">{this.renderErrors()}</span>
+          <div className="sessionErrors" >
+            {this.renderErrors()}
+
+          </div>
           <button className="demo-loginbtn form-btn"
             onClick={this.handleDemoLogin}>DEMO LOG IN
           </button>
@@ -104,7 +119,7 @@ class SessionForm extends React.Component {
             {dateInput}
             <div className="session-submit-container">
 
-              <input className="session-submit form-btn"
+              <input onClick={this.showErrors} className="session-submit form-btn"
                 type="submit" value={this.props.formType}/>
             </div>
 
