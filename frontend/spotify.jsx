@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import {login, logout,signup} from './actions/session_action';
 import configureStore from './store/store';
 import Root from './components/root';
-import {fetchSong} from './actions/song_action';
+import {fetchSongs} from './actions/song_action';
 document.addEventListener('DOMContentLoaded', () =>{
   let store;
 
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () =>{
   } else {
     store = configureStore();
   }
-  window.fetchSong = fetchSong;
+  window.fetchSongs = fetchSongs;
   window.dispatch = store.dispatch;
   window.getState = store.getState;
   const root = document.getElementById('root');
