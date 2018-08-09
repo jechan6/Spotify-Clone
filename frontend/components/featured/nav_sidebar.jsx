@@ -44,6 +44,7 @@ class NavSidebar extends React.Component {
 
             <button onClick={this.handleSubmit}>Log Out</button>
             <div className="profile-container">
+              <img className="profile-pic" src={currentUser.photoUrl} />
               <h3>{currentUser.name}</h3>
             </div>
 

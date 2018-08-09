@@ -2,7 +2,7 @@
   width: 220px;
   position: fixed;
   height: 100vh;
-  background-color: rgba(0,0,0,.9);
+  background-color: rgba(0,0,0,.5);
   z-index: 100;
   font-family: 'Montserrat', 'sans-serif';
   font-weight: 700;
@@ -64,22 +64,30 @@
     }
   }
   .profile-container {
-
+    display: flex;
+    flex-direction: row;
     color: white;
     position: absolute;
     bottom: 0;
     left: 20px;
-    min-height: 50px;
+    min-height: 60px;
     width: 80%;
     text-align: center;
     border-top: 1px solid #404040;
-    h3{
 
+    h3{
       font-size: 14px;
       font-weight: 400;
       letter-spacing: .015em;
       line-height: 20px;
       margin-top: 15px;
+    }
+    .profile-pic {
+      width: 17%;
+      height: 17%;
+      padding: 10px;
+      border-radius: 100px;
+      border: 1px solid transparent;
     }
   }
 }
