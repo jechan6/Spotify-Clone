@@ -16,7 +16,6 @@ class NavSidebar extends React.Component {
       <div className="nav-container">
         <div className="nav-topsection">
           <nav className="nav-bar">
-
             <div className="navbar-logo">
               <a className="logo" href="/browse/featured"></a>
             </div>
@@ -42,12 +41,14 @@ class NavSidebar extends React.Component {
               </li>
             </ul>
             </nav>
+
+            <button onClick={this.handleSubmit}>Log Out</button>
             <div className="profile-container">
               <h3>{currentUser.name}</h3>
             </div>
 
         </div>
-        <button onClick={this.handleSubmit}>Log Out</button>
+
       </div>
 
     );
