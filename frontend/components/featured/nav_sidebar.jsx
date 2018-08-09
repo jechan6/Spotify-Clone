@@ -14,13 +14,39 @@ class NavSidebar extends React.Component {
 
     return(
       <div className="nav-container">
-        <nav className="nav-bar">
-          <ul className="nav-bar-ul">
-            <li className="ul-item"><Link to="/search">Search</Link></li>
-            <li className="ul-item"><Link to="/browse/featured">Home</Link></li>
-            <li className="ul-item"><Link to="/collection/playlists">Your Library</Link></li>
-          </ul>
-        </nav>
+        <div className="nav-topsection">
+          <nav className="nav-bar">
+
+            <div className="navbar-logo">
+              <a className="logo" href="/browse/featured"></a>
+            </div>
+            <ul className="nav-bar-ul">
+              <li className="ul-item"><Link
+                to="/search" className="navitem-text">
+                <i className="fa fa-search" aria-hidden="true"></i>
+                Search</Link>
+              </li>
+              <li className="ul-item">
+                <Link to="/browse/featured" className="navitem-text">
+                  <i className="fa fa-home" aria-hidden="true"></i>
+                  Home</Link>
+              </li>
+              <li className="ul-item">
+                <div className="slash-icon">
+                  <div className="icon-doubleslash">||</div>
+                  <div className="icon-slash">\</div>
+                  <Link to="/collection/playlists"
+                    className="navitem-text slash-link">
+                    Your Library </Link>
+                </div>
+              </li>
+            </ul>
+            </nav>
+            <div className="profile-container">
+              <h3>{currentUser.name}</h3>
+            </div>
+
+        </div>
         <button onClick={this.handleSubmit}>Log Out</button>
       </div>
 

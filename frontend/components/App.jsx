@@ -12,7 +12,7 @@ const App = () => (
       <Route path="/collection" component={NavSidebar}/>
       <Route path="/search" component={NavSidebar}/>
     </Switch>
-    <Route exact path="/" component={BrowseContainer}/>
+    <AuthRoute exact path="/" component={BrowseContainer}/>
     <ProtectedRoute path="/browse/featured" component={FeaturedComponent}/>
     <AuthRoute path="/login" component={LoginFormContainer} />
     <AuthRoute path="/signup" component={SignupFormContainer} />

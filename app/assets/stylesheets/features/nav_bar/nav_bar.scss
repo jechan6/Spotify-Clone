@@ -2,11 +2,78 @@
   width: 220px;
   position: fixed;
   height: 100vh;
-  background-color: rgba(0,0,0,.6);
-  .nav-bar-ul {
+  background-color: rgba(0,0,0,.9);
+  z-index: 100;
+  font-family: 'Montserrat', 'sans-serif';
+  font-weight: 600;
+  .navbar-logo {
+    background-image: image_url('logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 20px;
+    margin: 15px 20px;
+  }
+  .nav-topsection{
+    height: 100%;
+  }
+  .nav-bar {
+    min-height: 400px;
 
-    ul.item {
-      display: block;
+  }
+  .nav-bar-ul {
+    margin-left: 10px;
+    .ul-item {
+        padding: 15px;
+      a{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+      }
+      .fa {
+        margin-right: 10px;
+      }
+      .slash-icon {
+        display: flex;
+        flex-direction: row;
+        margin-left: 2px;
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .slash-icon:hover{
+        color: white;
+        transition: 500ms all ease-in-out;
+        cursor: pointer;
+        .slash-link {
+          color: white;
+          transition: 500ms all ease-in-out;
+        }
+      }
+      .icon-slash {
+        margin-right: 10px;
+        margin-top: 1.2px;
+        margin-left: 1px;
+      }
+    }
+    a:hover {
+      color: white;
+      transition: 500ms all ease-in-out;
+
+    }
+    a {
+      color: rgba(255,255,255,.6);
+    }
+  }
+  .profile-container {
+
+    color: white;
+    position: absolute;
+    bottom: 0;
+    min-height: 50px;
+    width: 100%;
+    text-align: center;
+    
+    h3{
+      margin-top: 15px;
     }
   }
 }
