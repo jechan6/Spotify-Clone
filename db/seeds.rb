@@ -7,9 +7,12 @@ require 'open-uri'
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+User.destroy_all;
+Song.destroy_all;
+Artist.destroy_all;
+Album.destroy_all;
 u = User.create!({name: 'Jeffrey Chan', username: 'jeff', password:'123456', birthday: Date.new(2018)})
-photo = File.open('assets/images/golden.jpg')
+photo = File.open('app/assets/images/golden.jpg')
 u.photo.attach(io: photo, filename: 'golden.jpg')
 
 a = Artist.create({name: 'Chance The Rapper'})

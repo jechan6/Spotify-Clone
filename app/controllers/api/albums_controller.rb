@@ -1,8 +1,6 @@
 class Api::AlbumsController < ApplicationController
-  
+
   def create
-    debugger
-    @album = Album.new(album_params)
     @album.photo.attach(params[:album][:photo])
     if @album.save
       render :show
@@ -17,6 +15,6 @@ class Api::AlbumsController < ApplicationController
   end
   private
   def album_params
-    params.require(:album).permit(:title,:artist_id,:year)
+    params.require(:album).permit(:title,:artist_id,:year, :photo)
   end
 end
