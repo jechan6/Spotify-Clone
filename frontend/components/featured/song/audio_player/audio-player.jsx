@@ -15,7 +15,6 @@ class AudioPlayer extends React.Component {
     this.audio.addEventListener("timeupdate", () => {
       let ratio = this.audio.currentTime / this.audio.duration;
       let position = this.timeline.offsetWidth * ratio + this.timeline.offsetLeft;
-
       this.handlePosition(position);
     });
   }
@@ -30,6 +29,7 @@ class AudioPlayer extends React.Component {
       this.audio.play();
       this.setState({play: true});
     }
+
   }
   handlePosition(position) {
 
@@ -38,7 +38,6 @@ class AudioPlayer extends React.Component {
 
     if(handleLeft >= 0 && handleLeft <= this.timeline.offsetWidth) {
       this.handle.style.width = handleLeft + "px";
-
       this.handleCircle.style.marginLeft = handleLeft + "px";
     }
 
@@ -48,13 +47,15 @@ class AudioPlayer extends React.Component {
     }
 
     if(handleLeft > this.timeline.offsetWidth) {
-      this.handleCircle.style.marginLeft = timelineWidth + "px";
-      this.handle.style.width = timelineWidth + "px";
+      this.handleCircle.style.marginLeft = this.timeline.offsetWidth+ "px";
+      this.handle.style.width = this.timeline.offsetWidth + "px";
     }
   }
   mouseMove(e) {
     this.handlePosition(e.pageX);
-    this.audio.currentTime = ((e.pageX - this.timeline.offsetLeft) / this.timeline.offsetWidth) * this.audio.duration;
+    this.audio.currentTime =
+      ((e.pageX - this.timeline.offsetLeft)
+      / this.timeline.offsetWidth) * this.audio.duration;
   }
 
   mouseDown(e){
@@ -63,17 +64,19 @@ class AudioPlayer extends React.Component {
   }
 
   mouseUp(e) {
+
     window.removeEventListener('mousemove', this.mouseMove);
     window.removeEventListener('mouseup', this.mouseUp);
   }
 
   render() {
+
     return(
       <div className="song-playing-bar">
         <audio src={this.props.audio} ref={audio => {this.audio = audio} }/>
         <div className="audio-controls">
             <button className="song-option-buttons">
-              <i class="fa fa-random fa-light" aria-hidden="true"></i>
+              <i className="fa fa-random fa-light" aria-hidden="true"></i>
             </button>
             <button className="song-option-buttons">
               <i className="fa fa-step-backward" aria-hidden="true"></i>
@@ -87,7 +90,7 @@ class AudioPlayer extends React.Component {
               <i className="fa fa-step-forward" aria-hidden="true"></i>
             </button>
             <button className="song-option-buttons">
-              <i class="fa fas fa-redo"></i>
+              <i className="fa fas fa-redo"></i>
             </button>
         </div>
         <div className="song-timer">
@@ -102,6 +105,7 @@ class AudioPlayer extends React.Component {
               ref={(handle) => { this.handle = handle }}>
             </div>
             <div className="handle-circle"
+              onMouseDown={this.mouseDown}
               ref={(handleCircle) => {this.handleCircle = handleCircle}}>
             </div>
           </div>
