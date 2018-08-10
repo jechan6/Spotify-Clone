@@ -1,32 +1,124 @@
-.audio-controls {
-  position: absolute;
-  width: 100%;
-  height: 50px;
+.audio-controls-container{
+  background-color: #181818;
+  z-index: 101;
+  height: 90px;
+  position: fixed;
   bottom: 0;
-  margin-bottom: 30px;
+  width: 100%;
+  .song-timer {
+    font-size: 12px;
+    color: white;
+  }
+  .song-playing-bar {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #282828;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+  }
+  .audio-controls {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+    width: 200px;
 
+    line-height: 20px;
+  }
+  .fa {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+  }
+  .fa:hover {
+    color: rgba(255,255,255,1);
+  }
+  .fa-random{
+
+  }
+  .song-option-buttons{
+    text-align: center;
+    width: 32px;
+    vertical-align: middle;
+    height: 32px;
+    margin: 9px 9px;
+    position: relative;
+    bottom: 5px;
+    border: 0;
+    border-radius: 50px;
+    background-color: transparent;
+  }
+
+  .play-button {
+    width: 32px;
+    height: 32px;
+    border: 0;
+    text-align: center;
+    border-radius: 50px;
+    margin: 0 9px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    .fa-play {
+      font-size: 14px;
+      margin: 9px 9px;
+    }
+    .fa-pause {
+      font-size: 14px;
+      margin: 9px 7px;
+    }
+  }
+  .play-button:hover{
+    transition: none 33ms cubic-bezier(.3,0,0,1);
+    transform: scale(1.06);
+    border: 1px solid rgba(255,255,255,1);
+  }
+  .play-button:active{
+    transform: scale(.98);
+    border: 1px solid rgba(255,255,255,0.6);
+  }
 }
 
-.play-button {
-  // color: white;
-  text-align: center;
-  margin-left: 400px;
+.progress-timeline{
+  height: 10px;
 }
-
 .progress-bar {
-  width: 400px;
+  width: 722px;
   background-color: #404040;
   border-radius: 15px;
   height: 5px;
   margin: 0 auto;
-
-
 }
 
 .handle {
   width: 0;
 	height: 5px;
 	border-radius: 15px;
-	margin-top: 1px;
+
 	background: rgba(255, 255, 255,0.6);
+}
+
+.handle-circle{
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.5);
+  border-radius: 50%;
+  background-color: white;
+  position: relative;
+  left: -2px;
+  margin-top: -8px;
+  transform: scale(0);
+}
+.progress-timeline:hover {
+  .handle {
+    background: #07d159;
+  }
+  .handle-circle{
+    transition-property: transform;
+    transition-duration: .1s;
+    transform: scale(1);
+  }
 }

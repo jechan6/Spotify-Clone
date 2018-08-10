@@ -36,15 +36,19 @@ class AudioPlayer extends React.Component {
     let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
     let handleLeft = position - this.timeline.offsetLeft;
 
-    if(handleLeft >= 0 && handleLeft <= this.timeline.offsetLeft) {
+    if(handleLeft >= 0 && handleLeft <= this.timeline.offsetWidth) {
       this.handle.style.width = handleLeft + "px";
+
+      this.handleCircle.style.marginLeft = handleLeft + "px";
     }
+
     if(handleLeft < 0) {
       this.handle.style.width = "0px";
+      this.handleCircle.style.marginLeft = "0px";
     }
-  
-    if(handleLeft > this.timeline.offsetLeft) {
 
+    if(handleLeft > this.timeline.offsetWidth) {
+      this.handleCircle.style.marginLeft = timelineWidth + "px";
       this.handle.style.width = timelineWidth + "px";
     }
   }
@@ -65,20 +69,45 @@ class AudioPlayer extends React.Component {
 
   render() {
     return(
-      <div className="audio-controls">
+      <div className="song-playing-bar">
         <audio src={this.props.audio} ref={audio => {this.audio = audio} }/>
-        <div onClick={this.handlePlay}>
-          <i className={!this.state.play ?
-            "fa fa-play play-button" :
-            "fa fa-pause-circle play-button"}></i>
+        <div className="audio-controls">
+            <button className="song-option-buttons">
+              <i class="fa fa-random fa-light" aria-hidden="true"></i>
+            </button>
+            <button className="song-option-buttons">
+              <i className="fa fa-step-backward" aria-hidden="true"></i>
+            </button>
+            <a className="play-button">
+              <i onClick={this.handlePlay} className={!this.state.play ?
+                "fa fa-play" :
+                "fa fa-pause"}></i>
+            </a>
+            <button className="song-option-buttons">
+              <i className="fa fa-step-forward" aria-hidden="true"></i>
+            </button>
+            <button className="song-option-buttons">
+              <i class="fa fas fa-redo"></i>
+            </button>
+        </div>
+        <div className="song-timer">
+          {this.props.audio.currentTime}
         </div>
         <div className="progress-bar"
           onClick={this.mouseMove}
           ref={(timeline) => { this.timeline = timeline }}>
-          <div className="handle"
-            onMouseDown={this.mouseDown}
-            ref={(handle) => { this.handle = handle }}>
+          <div className="progress-timeline">
+            <div className="handle"
+              onMouseDown={this.mouseDown}
+              ref={(handle) => { this.handle = handle }}>
+            </div>
+            <div className="handle-circle"
+              ref={(handleCircle) => {this.handleCircle = handleCircle}}>
+            </div>
           </div>
+        </div>
+        <div className="song-timer">
+          {this.props.audio.duration}
         </div>
       </div>
     );
