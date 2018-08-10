@@ -7,7 +7,7 @@ const receiveSong = song => ({
   song
 });
 
-const receiveAllSong = songs => ({
+const receiveSongs = songs => ({
   type: RECEIVE_SONGS,
   songs
 });
@@ -20,6 +20,6 @@ export const fetchSong = (id) => dispatch => (
 
 export const fetchSongs = () => dispatch => (
   SongApiUtil.fetchSongs().then(
-    (songs) => dispatch(receiveSong(songs))
+    (songs) => dispatch(receiveSongs(songs))
   )
 );
