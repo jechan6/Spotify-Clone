@@ -167,44 +167,45 @@ class AudioPlayer extends React.Component {
   render() {
     return(
       <div className="song-playing-bar">
-        
-        <audio src={this.state.audio} ref={audio => {this.audio = audio} } autoPlay/>
-        <div className="audio-controls">
+        <div className="middle-container">
+          <audio src={this.state.audio} ref={audio => {this.audio = audio} } autoPlay/>
+          <div className="audio-controls">
             <button onClick={this.handleRandom} className="song-option-buttons">
               <i className="fa fa-random fa-light" aria-hidden="true"
                 ref={randButton => {this.randButton = randButton}}>
-              <div className="rand-dot"></div></i>
-            </button>
-            <button onClick={this.prevSong} className="song-option-buttons"
-               ref={backButton => {this.backButton = backButton} } >
-              <i className="fa fa-step-backward" aria-hidden="true"></i>
-            </button>
-            <a onClick={this.handlePlay} className="play-button">
-              <i  className={!this.state.play ?
-                "fa fa-play" :
-                "fa fa-pause"}></i>
-            </a>
-            <button onClick={this.nextSong} className="song-option-buttons">
-              <i className="fa fa-step-forward" aria-hidden="true"></i>
-            </button>
-            <button className="song-option-buttons">
-              <i className="fa fas fa-redo"></i>
-            </button>
-        </div>
+                <div className="rand-dot"></div></i>
+              </button>
+              <button onClick={this.prevSong} className="song-option-buttons"
+                ref={backButton => {this.backButton = backButton} } >
+                <i className="fa fa-step-backward" aria-hidden="true"></i>
+              </button>
+              <a onClick={this.handlePlay} className="play-button">
+                <i  className={!this.state.play ?
+                    "fa fa-play" :
+                    "fa fa-pause"}></i>
+                </a>
+                <button onClick={this.nextSong} className="song-option-buttons">
+                  <i className="fa fa-step-forward" aria-hidden="true"></i>
+                </button>
+                <button className="song-option-buttons">
+                  <i className="fa fas fa-redo"></i>
+                </button>
+              </div>
 
-        <div className="progress-bar"
-          onClick={this.mouseMove}
-          ref={(timeline) => { this.timeline = timeline }}>
-          <div className="progress-timeline">
-            <div className="handle"
-              onMouseDown={this.mouseDown}
-              ref={(handle) => { this.handle = handle }}>
-            </div>
-            <div className="handle-circle"
-              onMouseDown={this.mouseDown}
-              ref={(handleCircle) => {this.handleCircle = handleCircle}}>
-            </div>
-          </div>
+              <div className="progress-bar"
+                onClick={this.mouseMove}
+                ref={(timeline) => { this.timeline = timeline }}>
+                <div className="progress-timeline">
+                  <div className="handle"
+                    onMouseDown={this.mouseDown}
+                    ref={(handle) => { this.handle = handle }}>
+                  </div>
+                  <div className="handle-circle"
+                    onMouseDown={this.mouseDown}
+                    ref={(handleCircle) => {this.handleCircle = handleCircle}}>
+                  </div>
+                </div>
+              </div>
         </div>
 
       </div>
