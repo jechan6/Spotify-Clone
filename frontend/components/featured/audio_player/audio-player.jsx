@@ -8,6 +8,7 @@ class AudioPlayer extends React.Component {
       nextSong: "",
       audio: "",
       random: false,
+      repeat: false,
       playedSongs: []};
     this.handlePlay = this.handlePlay.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
@@ -18,9 +19,11 @@ class AudioPlayer extends React.Component {
     this.nextSong = this.nextSong.bind(this);
     this.prevSong = this.prevSong.bind(this);
     this.handleRandom = this.handleRandom.bind(this);
+    this.handleRepeat = this.handleRepeat.bind(this);
   }
   componentDidMount() {
     this.audio.addEventListener("timeupdate", () => {
+
       if(this.audio.currentTime === this.audio.duration) {
         this.nextSong();
       }
@@ -42,6 +45,7 @@ class AudioPlayer extends React.Component {
     this.setState({play: true, audio, nextSong});
 
   }
+
   handlePlay(e) {
     e.preventDefault();
     if(this.state.play) {
@@ -68,9 +72,20 @@ class AudioPlayer extends React.Component {
   }
   nextSong() {
     //find currentsong playing
+
     let curSong =  this.props.songs.filter(
       (el, idx) => el.trackUrl === this.state.audio
     );
+
+    if(this.state.repeat && this.audio.currentTime >= this.audio.duration){
+      this.audio.currentTime = 0;
+      this.setState({play: true, audio: curSong.trackUrl});
+      this.audio.play();
+      return;
+    } else if(this.state.repeat && this.audio.currentTime < this.audio.duration) {
+      this.setState({repeat: !this.state.repeat});
+      this.repeatButton.classList.remove('rand-selected');
+    }
     let songList = this.props.songs;
     let playedSongs = this.state.playedSongs;
     let nextIndex;
@@ -147,6 +162,15 @@ class AudioPlayer extends React.Component {
     }
     this.setState({random: !this.state.random});
   }
+  handleRepeat(e) {
+    e.preventDefault();
+    if(!this.state.repeat === true) {
+      this.repeatButton.classList.add("rand-selected");
+    }  else {
+      this.repeatButton.classList.remove("rand-selected");
+    }
+    this.setState({repeat: !this.state.repeat});
+  }
   mouseMove(e) {
     this.handlePosition(e.pageX);
     this.audio.currentTime =
@@ -187,9 +211,12 @@ class AudioPlayer extends React.Component {
                 <button onClick={this.nextSong} className="song-option-buttons">
                   <i className="fa fa-step-forward" aria-hidden="true"></i>
                 </button>
-                <button className="song-option-buttons">
-                  <i className="fa fas fa-redo"></i>
+                <button onClick={this.handleRepeat} className="song-option-buttons">
+                  <i className="fa fas fa-redo"
+                    ref={repeatButton => {this.repeatButton = repeatButton}}>
+                    <div className="rand-dot"></div></i>
                 </button>
+
               </div>
 
               <div className="progress-bar"
