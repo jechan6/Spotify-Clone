@@ -37,8 +37,9 @@
   .fa:hover {
     color: rgba(255,255,255,1);
   }
-  .fa-random{
-
+  .song-option-buttons *:active{
+    color: rgba(255,255,255,0.7);
+    transform: scale(.95);
   }
   .song-option-buttons{
     text-align: center;
@@ -52,14 +53,30 @@
     border-radius: 50px;
     background-color: transparent;
   }
-
+  .rand-selected {
+    color: #07d159;
+    .rand-dot{
+      position: absolute;
+      left: 40%;
+      display: block;
+      width: 4px;
+      height: 4px;
+      margin-top: 3px;
+      border-radius: 50%;
+      background-color: #1db954;
+    }
+  }
+  .rand-selected:hover{
+    transform: scale(1.04);
+    color: #1ed760;
+  }
   .play-button {
     width: 32px;
     height: 32px;
     border: 0;
     text-align: center;
     border-radius: 50px;
-    margin: 0 9px;
+    margin: 0 10px;
     background: transparent;
     border: 1px solid rgba(255,255,255,0.6);
     .fa-play {
@@ -76,10 +93,8 @@
     transform: scale(1.06);
     border: 1px solid rgba(255,255,255,1);
   }
-  .play-button:active{
-    transform: scale(.98);
-    border: 1px solid rgba(255,255,255,0.6);
-  }
+
+
 }
 
 .progress-timeline{

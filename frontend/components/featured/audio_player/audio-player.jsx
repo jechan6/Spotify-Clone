@@ -7,6 +7,7 @@ class AudioPlayer extends React.Component {
       play: false,
       nextSong: "",
       audio: "",
+      random: false,
       playedSongs: []};
     this.handlePlay = this.handlePlay.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
@@ -16,14 +17,18 @@ class AudioPlayer extends React.Component {
     this.addPlayedSongs = this.addPlayedSongs.bind(this);
     this.nextSong = this.nextSong.bind(this);
     this.prevSong = this.prevSong.bind(this);
+    this.handleRandom = this.handleRandom.bind(this);
   }
   componentDidMount() {
     this.audio.addEventListener("timeupdate", () => {
       if(this.audio.currentTime === this.audio.duration) {
         this.nextSong();
       }
-      let ratio = this.audio.currentTime / this.audio.duration;
-      let position = this.timeline.offsetWidth * ratio + this.timeline.offsetLeft;
+
+      let ratio =
+        this.audio.currentTime / this.audio.duration;
+      let position =
+        this.timeline.offsetWidth * ratio + this.timeline.offsetLeft;
       this.handlePosition(position);
     });
   }
@@ -37,7 +42,8 @@ class AudioPlayer extends React.Component {
     this.setState({play: true, audio, nextSong});
 
   }
-  handlePlay() {
+  handlePlay(e) {
+    e.preventDefault();
     if(this.state.play) {
       this.audio.pause();
       this.setState({play: false});
@@ -53,44 +59,59 @@ class AudioPlayer extends React.Component {
 
   }
   emptyHistory() {
-    if(this.state.playedSongs.length === this.props.songs) {
+    if(this.state.playedSongs.length >= this.props.songs.length) {
       this.setState({playedSongs: []});
     }
+  }
+  getRandomNumber(n) {
+    return Math.floor(Math.random() * n);
   }
   nextSong() {
     //find currentsong playing
     let curSong =  this.props.songs.filter(
-      (el, idx) => el.trackUrl === this.state.nextSong
+      (el, idx) => el.trackUrl === this.state.audio
     );
-    this.emptyHistory();
+    let songList = this.props.songs;
+    let playedSongs = this.state.playedSongs;
+    let nextIndex;
+    let nextSong;
     this.addPlayedSongs(curSong[0]);
+    this.emptyHistory();
     //find nextSong, if next song is already played, find another one
-    let nextIndex = (this.props.songs.indexOf(curSong[0]) + 1) % this.props.songs.length;
-    while(this.state.playedSongs.includes(this.props.songs[nextIndex])) {
-      nextIndex = (nextIndex + 1) % this.props.songs.length;
+    if(this.state.random) {
+      let difference = songList.filter(
+        el => !playedSongs.includes(el));
+      nextSong = difference[this.getRandomNumber(difference.length)].trackUrl;
+    } else {
+      nextIndex =
+        (songList.indexOf(curSong[0]) + 1) % songList.length;
+      nextSong = songList[nextIndex].trackUrl;
     }
 
-    let nextSong = this.props.songs[nextIndex].trackUrl;
-    const {songs} = this.props.songs;
-
-    this.setState({play: true, audio: this.state.nextSong, nextSong});
+    this.setState({play: true, audio: nextSong});
   }
   prevSong() {
-    if(this.state.playedSongs.length === 0)  return;
-    let curSong =  this.props.songs.filter(
+    let playedSongs = this.state.playedSongs;
+
+    if(playedSongs.length === 0){
+      this.backButton.setAttribute("disabled", "");
+      return;
+    }
+    let songList = this.props.songs;
+    let curSong =  songList.filter(
       (el, idx) => el.trackUrl === this.state.audio
     );
 
-    let length = this.state.playedSongs.length;
-    if(this.state.playedSongs[length-1] === curSong[0]) {
+    let length = playedSongs.length;
+    if(playedSongs[length-1] === curSong[0]) {
       length = length - 2;
-      if(this.state.playedSongs < length) return;
+      if(playedSongs < length) return;
     } else {
       length -= 1;
     }
 
-    let song = this.state.playedSongs[length];
-    let newArr = this.state.playedSongs;
+    let song = playedSongs[length];
+    let newArr = playedSongs;
     newArr.splice(length);
     let nextSong = this.state.audio;
 
@@ -117,6 +138,15 @@ class AudioPlayer extends React.Component {
       this.handle.style.width = this.timeline.offsetWidth + "px";
     }
   }
+  handleRandom(e) {
+    e.preventDefault();
+    if(!this.state.random === true) {
+      this.randButton.classList.add("rand-selected");
+    }  else {
+      this.randButton.classList.remove("rand-selected");
+    }
+    this.setState({random: !this.state.random});
+  }
   mouseMove(e) {
     this.handlePosition(e.pageX);
     this.audio.currentTime =
@@ -130,25 +160,27 @@ class AudioPlayer extends React.Component {
   }
 
   mouseUp(e) {
-
     window.removeEventListener('mousemove', this.mouseMove);
     window.removeEventListener('mouseup', this.mouseUp);
   }
 
   render() {
-
     return(
       <div className="song-playing-bar">
+        
         <audio src={this.state.audio} ref={audio => {this.audio = audio} } autoPlay/>
         <div className="audio-controls">
-            <button className="song-option-buttons">
-              <i className="fa fa-random fa-light" aria-hidden="true"></i>
+            <button onClick={this.handleRandom} className="song-option-buttons">
+              <i className="fa fa-random fa-light" aria-hidden="true"
+                ref={randButton => {this.randButton = randButton}}>
+              <div className="rand-dot"></div></i>
             </button>
-            <button onClick={this.prevSong} className="song-option-buttons">
+            <button onClick={this.prevSong} className="song-option-buttons"
+               ref={backButton => {this.backButton = backButton} } >
               <i className="fa fa-step-backward" aria-hidden="true"></i>
             </button>
-            <a className="play-button">
-              <i onClick={this.handlePlay} className={!this.state.play ?
+            <a onClick={this.handlePlay} className="play-button">
+              <i  className={!this.state.play ?
                 "fa fa-play" :
                 "fa fa-pause"}></i>
             </a>
