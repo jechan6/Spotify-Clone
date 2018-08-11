@@ -1,0 +1,12 @@
+.song-list {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  .song-item {
+    padding: 10px;
+  }
+}
+.song-play-button {
+  margin-left: 500px;
+}

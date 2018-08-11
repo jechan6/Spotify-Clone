@@ -1,5 +1,8 @@
 class Api::AlbumsController < ApplicationController
+  def index
+    @albums = Album.all
 
+  end
   def create
     @album.photo.attach(params[:album][:photo])
     if @album.save

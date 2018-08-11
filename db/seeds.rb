@@ -24,9 +24,7 @@ album.photo.attach(io: photo, filename: 'Chance_The_Rapper.jpg')
 # song = Song.create!({title: 'All Night (feat Knox Fortune)', artist_id: 1, album_id: 2})
 # file = open('https://s3-us-west-1.amazonaws.com/musicon-dev/chance-coloring+book/All+Night+(feat+Knox+Fortune).mp3')
 # song.track.attach(io: file, filename: 'All Night (feat Knox Fortune).mp3')
-song = Song.create!({title: 'All We Got', artist_id: a.id, album_id: album.id})
-file = open('https://s3.console.aws.amazon.com/s3/object/musicon-dev/chance-coloring%2520book/All%2520We%2520Got%2520.mp3?region=us-east-1&tab=overview')
-song.track.attach(io: file, filename: 'All We Got.mp3')
+
 
 song = Song.create!({title: 'Angels (feat. Saba)', artist_id: a.id, album_id: album.id})
 file = open('https://s3-us-west-1.amazonaws.com/musicon-dev/chance-coloring+book/Angels+(feat.+Saba).mp3')
