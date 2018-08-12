@@ -1,0 +1,18 @@
+.song-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 20px;
+  .song-play-button {
+    background: transparent;
+    outline: 0;
+    border: 0;
+    width: 0;
+    
+    color: white;
+  }
+}
+.song-content{
+
+  height: 100%;
+}

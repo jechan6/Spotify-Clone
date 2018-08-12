@@ -3,10 +3,8 @@ const SongIndexItem = ({song}) => {
 
   return(
     <div>
-      <div className="song-list">
-        <li className="song-item">
-          {song.title}
-        </li>
+      <div className="song-item">
+        {song.title}
       </div>
 
     </div>

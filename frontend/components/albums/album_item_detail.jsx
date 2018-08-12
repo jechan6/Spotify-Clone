@@ -1,4 +1,5 @@
 import React from 'react';
+import SongIndexContainer from '../song/song_index_container';
 class AlbumItemDetail extends React.Component {
   constructor(props) {
     super(props);
@@ -22,7 +23,7 @@ class AlbumItemDetail extends React.Component {
             <h1 className="album-info">{album.year} • {album.songIds.length} SONGS </h1>
           </div>
           <div className="song-list">
-            
+            <SongIndexContainer songs={songs}/>
           </div>
         </div>
       </div>

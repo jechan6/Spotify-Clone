@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import NavSidebar from './nav_sidebar';
 import FeaturedNav from './featured_nav';
-import SongIndexContainer from './song/song_index_container';
+// import SongIndexContainer from './song/song_index_container';
 import NewReleaseContainer from '../new_releases/new_release_container';
 import AudioPlayerContainer from './audio_player/audio_player_container';
 import AlbumItemDetailContainer from '../albums/album_item_detail_container';
