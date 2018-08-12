@@ -13,8 +13,6 @@ class NewReleases extends React.Component {
 
     return(
       <div className="newrelease-container">
-        
-        <div className="newrelease-header"><h1>New albums</h1></div>
         <div className="albums-container">
           <AlbumsContainer/>
         </div>
