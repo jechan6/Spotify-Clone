@@ -11,7 +11,7 @@ const FeaturedNav = () => (
         to="/browse/featured">GENRES & MOODS</Link></li>
 
       <li><Link className="feature-link-item"
-        to="/browse/featured">NEW RELEASES</Link></li>
+        to="/browse/newreleases">NEW RELEASES</Link></li>
     </ul>
   </div>
 

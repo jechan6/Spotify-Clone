@@ -16,8 +16,9 @@ class Api::AlbumsController < ApplicationController
     @album = Album.find(params[:id])
     render :show
   end
+
   private
   def album_params
-    params.require(:album).permit(:title,:artist_id,:year, :photo)
+    params.require(:album).permit(:title, :artist_id, :year, :photo)
   end
 end
