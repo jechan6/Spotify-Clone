@@ -20,6 +20,7 @@ class AlbumsIndex extends React.Component {
     this.setState({detail: !this.state.detail, album})
   }
   render() {
+    // (this.state.detail || this.props.albumShow) ? renderDetail() :
     if(!this.props.albums) {
       return null;
     }
@@ -42,7 +43,8 @@ class AlbumsIndex extends React.Component {
         </div>
       </div>
     )
-    return this.state.detail ? renderDetail() : renderItems();
+    return renderItems();
+
   }
 }
 export default AlbumsIndex;

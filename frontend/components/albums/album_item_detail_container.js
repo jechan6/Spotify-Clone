@@ -4,10 +4,14 @@ import {fetchSongs} from '../../actions/song_action';
 import AlbumItemDetail from './album_item_detail';
 import {selectSongsFromAlbum} from '../../reducers/selectors';
 const mapStateToProps = (state, ownProps) => {
-  const album = state.entities.albums[ownProps.album.id];
+  const album = state.entities.albums[ownProps.albumId];
+  let songs = null;
+  if(album) {
+    songs = selectSongsFromAlbum(state, album)
+  }
   return {
     album,
-    songs: selectSongsFromAlbum(state, album)
+    songs
   };
 };
 

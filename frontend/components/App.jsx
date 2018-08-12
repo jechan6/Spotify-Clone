@@ -18,6 +18,7 @@ const App = () => (
     </Switch>
     <ProtectedRoute path="/browse/featured" component={FeaturedComponent}/>
     <ProtectedRoute path="/browse/newreleases" component={FeaturedComponent}/>
+    <ProtectedRoute path="/album/:albumId" component={FeaturedComponent}/>
 
   </div>
 );
