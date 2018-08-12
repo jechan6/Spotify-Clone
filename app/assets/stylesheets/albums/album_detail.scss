@@ -2,21 +2,25 @@
   height: 100vh;
   display: flex;
   align-items: center;
-
+  justify-content: center;
+  background-image: linear-gradient(rgb(104, 49, 82), rgb(10, 5, 8) 85%);
 }
 .album-content {
   max-width: 1480px;
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
+  height: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-column-gap: 5%;
+  padding-top: 5em;
   margin: 0 auto;
   .album-cover {
     text-align: center;
     img{
-      width: 350px;
-      height: 350px;
+      width: 400px;
+      height: 400px;
     }
     .album-title {
       font-size: 28px;

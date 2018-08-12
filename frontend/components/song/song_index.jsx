@@ -6,7 +6,8 @@ class SongIndex extends React.Component {
     super(props);
     this.state = {
       play: false
-    }
+    };
+    this.handleClick = this.handleClick.bind(this);
   }
   // componentDidMount() {
   //   this.props.fetchSongs();
@@ -24,20 +25,11 @@ class SongIndex extends React.Component {
     return(
       <div className="song-content">
           {songs.map( (song) => (
-
               <div key={song.id} className="song-wrapper">
-                <button
-                  onClick={() => this.handleClick(song)}
-                  className="song-play-button">
-                  <i className={
-                      !this.state.play ?
-                      "fa fa-play" :
-                      "fa fa-pause"}>
-                  </i>
-                </button>
-                <SongIndexItem song={song} />
+                <div className="song-list">
+                  <SongIndexItem handleClick={this.handleClick} song={song} />
+                </div>
               </div>
-
           ))}
       </div>
     );

@@ -49,9 +49,6 @@ song = Song.create!({title: 'Summer Friends (feat Jeremih Francis, The Lights)',
 file = open('https://s3-us-west-1.amazonaws.com/musicon-dev/chance-coloring+book/Summer+Friends+(feat+Jeremih+Francis%2C+The+Lights).mp3')
 song.track.attach(io: file, filename: 'Summer Friends (feat Jeremih Francis, The Lights).mp3')
 
-song = Song.create!({title: 'Smoke Break (feat Future)', artist_id: a.id, album_id: album.id})
-file = open('https://s3.console.aws.amazon.com/s3/object/musicon-dev/chance-coloring%2520book/Smoke%2520Break%2520(feat%2520Future).mp3?region=us-east-1&tab=overview')
-song.track.attach(io: file, filename: 'Smoke Break (feat Future).mp3')
 
 
 #ACID RAP ALBUM

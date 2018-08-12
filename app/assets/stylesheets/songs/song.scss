@@ -1,18 +1,38 @@
+.song-content{
+}
+.song-wrapper:hover {
+  background: rgba(0,0,0,.3);
+  transition: .2s all linear;
+  height: 4.56em;
+}
 .song-wrapper{
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
   padding: 20px;
+  height: 4.56em;
   .song-play-button {
+
     background: transparent;
     outline: 0;
     border: 0;
-    width: 0;
-    
+    font-size: 14px;
+    padding-right: 15px;
     color: white;
   }
-}
-.song-content{
-
-  height: 100%;
+  .song-list {
+    .song-info {
+      display: flex;
+      justify-content: space-between;
+      .ellipsis-option {
+        color: white;
+        font-size: 25px;
+        letter-spacing: 1px;
+      }
+    }
+    .song-title {
+      display: inline;
+      color: white;
+      font-size: 20px;
+      letter-spacing: .1em;
+      line-height: 22px;
+    }
+  }
 }
