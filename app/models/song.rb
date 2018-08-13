@@ -3,4 +3,6 @@ class Song < ApplicationRecord
   has_one_attached :track
   belongs_to :artist
   belongs_to :album
+  has_many :playlist_song
+  has_many :playlists, through: :playlist_song, source: :playlist
 end

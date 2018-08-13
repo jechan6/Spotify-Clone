@@ -1,0 +1,107 @@
+.playlistform-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,.9);
+  .playlistform-content {
+    width: 100%;
+    background: #282828;
+    height: 150px;
+    .center-form {
+      max-width: 1480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .playlist-input {
+      width: 100%;
+      padding: 32px 0;
+    }
+
+  }
+  .form-box {
+    width: 100%;
+    padding: 0 2em;
+    margin: 0 auto;
+    background: #282828;
+    .playlistform-input {
+      background: #282828;
+      outline: 0;
+      border: 0;
+      color: white;
+      width: 100%;
+      background-color: transparent;
+      font-size: 48px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      line-height: 56px;
+    }
+    .input-label{
+      font-size: 18px;
+      line-height: 20px;
+      letter-spacing: .015em;
+      font-weight: 400;
+      margin-bottom: 5px;
+      color: white;
+      float: left;
+    }
+  }
+}
+
+.playlist-header {
+  font-size: 48px;
+  line-height: 56px;
+  color: white;
+  font-weight: 600;
+  letter-spacing: -.005em;
+  padding: 20px;
+}
+
+.form-close {
+  color: white;
+  font-size: 32px;
+  padding: 20px;
+  border: 0;
+  background: transparent;
+
+}
+
+.form-controls{
+  display: flex;
+  justify-content: space-between;
+  padding: 28px 0;
+  .cancel-form{
+    padding:11px 44px;
+    background: hsla(0,0%,9%,.7);
+    box-shadow: inset 0 0 0 2px #b3b3b3;
+    color: white;
+    border-radius: 50px;
+    font-size: 16px;
+    letter-spacing: .16em;
+    border: 0;
+  }
+  .create-form {
+    background-color: #1db954;
+    padding: 11px 44px;
+    font-size: 16px;
+    text-align: center;
+    margin-left: 15px;
+    letter-spacing: .16em;
+    border: 0;
+    border-radius: 50px;
+    color: white;
+  }
+  .cancel-form:hover {
+    transform: scale(1.06);
+    transition: none 40ms cubic-bezier(.3,0,0,1);
+    box-shadow: inset 0 0 0 2px #fff, 0 0 0 1px transparent
+  }
+
+  .create-form:hover {
+    transform: scale(1.06);
+    transition: 40ms all cubic-bezier(.3,0,.7,1)
+  }
+}

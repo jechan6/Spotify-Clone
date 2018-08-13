@@ -1,0 +1,37 @@
+
+.collection-container {
+  background-image: linear-gradient(rgb(18, 18, 18), rgb(8, 8, 8) 85%);
+  height: 100vh;
+
+}
+.playlist-container {
+  text-align: center;
+  background-image: linear-gradient(rgb(18, 18, 18), rgb(8, 8, 8) 85%);
+  height: 100%;
+  .playlist-index-container {
+    max-width: 1480px;
+    display: grid;
+    position: relative;
+    left: 15%;
+    top: 5%;
+    grid-template-columns: repeat(6, 250px);
+    grid-column-gap: 2%;
+    .playlist-item {
+      img {
+        height: 250px;
+        width: 250px;
+      }
+      .playlist-title {
+        display: block;
+        font-size: 20px;
+        font-weight: 500;
+        color: white;
+        padding: 10px;
+      }
+      .playlist-author {
+        color: rgba(255,255,255,0.6);
+        letter-spacing: .015em;
+      }
+    }
+  }
+}

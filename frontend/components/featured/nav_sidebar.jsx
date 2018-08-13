@@ -12,7 +12,7 @@ class NavSidebar extends React.Component {
   }
   render() {
     const {currentUser} = this.props;
-
+    if(!currentUser) return null;
     return(
       <div className="nav-container">
         <div className="nav-topsection">

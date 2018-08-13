@@ -3,4 +3,5 @@ class Album < ApplicationRecord
   has_one_attached :photo
   belongs_to :artist
   has_many :songs
+  
 end
