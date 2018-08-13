@@ -12,13 +12,16 @@ class PlaylistIndexItem extends React.Component {
 
     return (
       <div className="playlist-item" >
-          <img src={playlist.photoUrl}></img>
-          <Link className="playlist-title"
-            to={`/playlist/${playlist.id}`}>
-            {playlist.title}
-          </Link>
+          <div className="playlist-pic-wrapper">
+            <img src={playlist.photoUrl}></img>
+          </div>
+          <div className="playlist-name">
+            <Link className="playlist-title"
+              to={`/playlist/${playlist.id}`}>
+              {playlist.title}
+            </Link>
+          </div>
           <a className="playlist-author">{playlist.author}</a>
-          
       </div>
     );
   }

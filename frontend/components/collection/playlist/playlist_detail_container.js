@@ -24,7 +24,7 @@ const mapDispatchToProps = dispatch => ({
   deletePlaylist: id => dispatch(deletePlaylist(id)),
   otherForm: (
     <button
-    className="delete-playlist-button"
+    className="menu-item"
     onClick={() => dispatch(openModal('playlist_delete'))}>
       Delete
     </button>

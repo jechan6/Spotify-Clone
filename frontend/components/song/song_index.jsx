@@ -8,10 +8,12 @@ class SongIndex extends React.Component {
       play: false
     };
     this.handleClick = this.handleClick.bind(this);
+
   }
   // componentDidMount() {
   //   this.props.fetchSongs();
   // }
+
   handleClick(song) {
     let index = (this.props.songs.indexOf(song)+1) % this.props.songs.length;
     let nextSong = this.props.songs[index];
@@ -27,7 +29,10 @@ class SongIndex extends React.Component {
           {songs.map( (song) => (
               <div key={song.id} className="song-wrapper">
                 <div className="song-list">
-                  <SongIndexItem handleClick={this.handleClick} song={song} />
+                  <SongIndexItem
+                    handleClick={this.handleClick}
+                    otherForm={this.props.otherForm}
+                    song={song} />
                 </div>
               </div>
           ))}

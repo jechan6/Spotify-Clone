@@ -7,13 +7,12 @@ class playlistDelete extends React.Component {
   }
   handleDelete(e) {
     e.preventDefault();
-
     let str = this.props.location.pathname;
     let index = str.lastIndexOf("/")+1;
     let playlistId = str.slice(index,str.length);
     this.props.deletePlaylist(playlistId);
+    this.props.history.push('/collection/playlists');
     this.props.closeModal();
-    this.props.history.push('collection/playlists');
   }
   render() {
 

@@ -7,30 +7,3 @@
   display: flex;
   justify-content: center;
 }
-.modal-container {
-  background: #282828;
-
-  width: 160px;
-  padding: 5px 0;
-  margin-left: 55%;
-
-  border: 1px solid rgba(0,0,0,.15);
-  border-radius: .25rem;
-  z-index: 50;
-
-  .delete-playlist-button {
-    background: #282828;
-    width: 100%;
-    font-size: 20px;
-    color: rgba(255,255,255,0.6);
-    outline: 0;
-    padding: 5px 20px;
-    line-height: 32px;
-    border: 0;
-  }
-  .delete-playlist-button:hover {
-    color: #fff;
-    background-color: #333;
-    border-color: #333;
-  }
-}

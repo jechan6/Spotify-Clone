@@ -24,6 +24,8 @@ class PlaylistForm extends React.Component {
     this.props.createPlaylist(this.state).then(
       res => {
         let playlistId = Object.keys(res.payload.playlist)[0];
+        this.props.closeModal();
+        this.props.history.push("/playlist/" + playlistId);
       }
     );
 
