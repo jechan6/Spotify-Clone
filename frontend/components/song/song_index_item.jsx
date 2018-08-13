@@ -3,7 +3,7 @@ import React from 'react';
 const SongIndexItem = ({song, handleClick}) => {
 
   let audio = <audio src={song.trackUrl}/>;
-  console.log(audio);
+
   return(
     <div>
       {audio}

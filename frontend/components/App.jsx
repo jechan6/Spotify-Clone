@@ -22,7 +22,9 @@ const App = () => (
     <ProtectedRoute path="/browse/featured" component={FeaturedComponent}/>
     <ProtectedRoute path="/browse/newreleases" component={FeaturedComponent}/>
     <ProtectedRoute path="/album/:albumId" component={FeaturedComponent}/>
-    <ProtectedRoute path="/collection/playlists" component={CollectionContainer}/>
+    <ProtectedRoute path="/playlist/:playlistId" component={CollectionContainer}/>
+    <ProtectedRoute path="/collection/playlists"
+      component={CollectionContainer}/>
   </div>
 );
 

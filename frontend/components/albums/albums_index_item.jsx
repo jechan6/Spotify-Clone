@@ -6,8 +6,6 @@ class AlbumsIndexItem extends React.Component {
 
   }
 
-
-
   render() {
     const {album} = this.props;
 

@@ -12,15 +12,16 @@ class AlbumItemDetail extends React.Component {
 
     const {album} = this.props;
     const {songs} = this.props;
+
     if(!album && !songs) return null;
     return(
-      <div className="album-details">
-        <div className="album-content">
-          <div className="album-cover">
+      <div className="show-details">
+        <div className="header-content">
+          <div className="cover-picture">
             <img src={album.photoUrl}></img>
-            <h1 className="album-title">{album.title}</h1>
-            <h1 className="album-artist">{album.artist}</h1>
-            <h1 className="album-info">{album.year} • {album.songIds.length} SONGS </h1>
+            <h1 className="content-title">{album.title}</h1>
+            <h1 className="content-author">{album.artist}</h1>
+            <h1 className="content-info">{album.year} • {album.songIds.length} SONGS </h1>
           </div>
           <div className="song-list">
             <SongIndexContainer songs={songs}/>

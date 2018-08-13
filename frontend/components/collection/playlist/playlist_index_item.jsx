@@ -8,14 +8,17 @@ class PlaylistIndexItem extends React.Component {
   render() {
     const {playlist} = this.props;
 
-
       // <Link to={`/playlists/${playlist.id}`} className="album-title">{album.title}</Link>
 
     return (
       <div className="playlist-item" >
           <img src={playlist.photoUrl}></img>
-          <a className="playlist-title">{playlist.title}</a>
+          <Link className="playlist-title"
+            to={`/playlist/${playlist.id}`}>
+            {playlist.title}
+          </Link>
           <a className="playlist-author">{playlist.author}</a>
+          
       </div>
     );
   }

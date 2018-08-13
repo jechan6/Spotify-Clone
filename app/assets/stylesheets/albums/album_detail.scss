@@ -1,11 +1,11 @@
-.album-details {
+.show-details {
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-image: linear-gradient(rgb(104, 49, 82), rgb(10, 5, 8) 85%);
 }
-.album-content {
+.header-content {
   max-width: 1480px;
   width: 100%;
   height: 100%;
@@ -16,27 +16,27 @@
   grid-column-gap: 5%;
   padding-top: 5em;
   margin: 0 auto;
-  .album-cover {
+  .cover-picture {
     text-align: center;
     img{
       width: 400px;
       height: 400px;
     }
-    .album-title {
+    .content-title {
       font-size: 28px;
       color: white;
       letter-spacing: -.005em;
       font-weight: 600;
       padding: 15px;
     }
-    .album-artist{
+    .content-author{
       font-size: 20px;
       color: rgba(255,255,255,0.6);
       letter-spacing: -.005em;
       margin-bottom: 15px;
 
     }
-    .album-info {
+    .content-info {
       font-size: 18px;
       line-height: 15px;
 

@@ -8,13 +8,11 @@ class PlaylistIndex extends React.Component {
   componentDidMount() {
     this.props.fetchPlaylists();
   }
-  
-  render() {
 
+  render() {
     return(
       <div className="playlist-container">
         <div className="playlist-index-container">
-
           {this.props.playlists.map((playlist) => (
             <PlaylistIndexItem
               playlist={playlist}

@@ -1,0 +1,34 @@
+import {connect} from 'react-redux';
+import {fetchPlaylist, deletePlaylist} from '../../../actions/playlist_actions';
+import {fetchSongs} from '../../../actions/song_action';
+import {selectSongsFromPayload} from "../../../reducers/selectors";
+import {openModal} from "../../../actions/modal_actions";
+import PlaylistDetail from "./playlist_detail";
+import React from 'react';
+const mapStateToProps = (state,ownProps) => {
+  const playlist = state.entities.playlist[ownProps.playlistId];
+
+  let songs = null;
+  if(playlist) {
+    songs = selectSongsFromPayload(state, playlist);
+  }
+  return {
+    playlist,
+    songs
+  };
+};
+
+const mapDispatchToProps = dispatch => ({
+  fetchPlaylist: id => dispatch(fetchPlaylist(id)),
+  fetchSongs: () => dispatch(fetchSongs()),
+  deletePlaylist: id => dispatch(deletePlaylist(id)),
+  otherForm: (
+    <button
+    className="delete-playlist-button"
+    onClick={() => dispatch(openModal('playlist_delete'))}>
+      Delete
+    </button>
+  )
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(PlaylistDetail);

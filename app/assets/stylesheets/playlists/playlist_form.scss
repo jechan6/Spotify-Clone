@@ -52,7 +52,7 @@
 }
 
 .playlist-header {
-  font-size: 48px;
+  font-size: 58px;
   line-height: 56px;
   color: white;
   font-weight: 600;
@@ -62,13 +62,38 @@
 
 .form-close {
   color: white;
-  font-size: 32px;
+  font-size: 4em;
   padding: 20px;
   border: 0;
+  margin: 0;
   background: transparent;
-
 }
-
+.form-close:hover{
+  transform: scale(1.06);
+  transition: none 40ms cubic-bezier(.3,0,0,1);
+}
+.delete-options {
+  width: 500px;
+  margin: 0 auto;
+}
+.delete-warning {
+  text-align: center;
+  padding: 20px;
+}
+.delete-playlist-button {
+  
+}
+.delete-form {
+  margin-bottom: 10%;
+  .close-delete-form {
+    text-align: center;
+    .form-close {
+      font-size: 4em;
+      padding: 10px;
+      margin: 0;
+    }
+  }
+}
 .form-controls{
   display: flex;
   justify-content: space-between;
@@ -83,7 +108,7 @@
     letter-spacing: .16em;
     border: 0;
   }
-  .create-form {
+  .form-submit {
     background-color: #1db954;
     padding: 11px 44px;
     font-size: 16px;
@@ -100,7 +125,7 @@
     box-shadow: inset 0 0 0 2px #fff, 0 0 0 1px transparent
   }
 
-  .create-form:hover {
+  .form-submit:hover {
     transform: scale(1.06);
     transition: 40ms all cubic-bezier(.3,0,.7,1)
   }

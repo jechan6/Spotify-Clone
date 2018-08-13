@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 class PlaylistForm extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,7 @@ class PlaylistForm extends React.Component {
   }
 
   handleInput(type) {
-  
+
     return(e) => {
       this.setState({[type]: e.target.value,
         author_id: this.props.currentUser.id});
@@ -21,7 +21,12 @@ class PlaylistForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createPlaylist(this.state);
+    this.props.createPlaylist(this.state).then(
+      res => {
+        let playlistId = Object.keys(res.payload.playlist)[0];
+      }
+    );
+
   }
 
   render() {
@@ -55,8 +60,10 @@ class PlaylistForm extends React.Component {
 
           <button onClick={this.props.closeModal}
               className="cancel-form">CANCEL</button>
+
           <button onClick={this.handleSubmit}
-            className="create-form">CREATE</button>
+            className="form-submit">CREATE</button>
+
         </div>
       </div>
     );

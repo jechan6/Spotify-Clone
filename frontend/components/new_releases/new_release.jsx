@@ -12,7 +12,7 @@ class NewReleases extends React.Component {
   render() {
 
     return(
-      <div className="newrelease-container">
+      <div className="show-container">
         <div className="albums-container">
           <AlbumsContainer/>
         </div>
