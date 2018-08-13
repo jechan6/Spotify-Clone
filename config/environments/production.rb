@@ -27,10 +27,10 @@ Rails.application.configure do
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
   config.active_storage.service = :amazon_prod
-  config.active_storage.service = :amazon
+
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
-
+  config.require_master_key = true
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
