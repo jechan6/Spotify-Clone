@@ -11,7 +11,7 @@ class PlaylistIndexItem extends React.Component {
       // <Link to={`/playlists/${playlist.id}`} className="album-title">{album.title}</Link>
 
     return (
-      <div className="playlist-item" >
+      <div onClick={this.props.addSong} className="playlist-item" >
           <div className="playlist-pic-wrapper">
             <img src={playlist.photoUrl}></img>
           </div>
