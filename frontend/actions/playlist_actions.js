@@ -1,6 +1,7 @@
 export const RECEIVE_PLAYLIST = 'RECEIVE_PLAYLIST';
 export const RECEIVE_PLAYLISTS = 'RECEIVE_PLAYLISTS';
 export const REMOVE_PLAYLIST = 'REMOVE_PLAYLIST';
+export const REMOVE_SONG = 'REMOVE_SONG';
 import * as PlaylistApi from '../util/playlist_util';
 const receivePlaylist = payload => ({
   type: RECEIVE_PLAYLIST,
@@ -17,6 +18,13 @@ const removePlaylist = (playlistId) => ({
   playlistId
 });
 
+const removeSong = (playlistSong) => {
+
+  return ({
+    type: REMOVE_SONG,
+    playlistSong
+  });
+};
 
 export const createPlaylist = playlist => dispatch => (
   PlaylistApi.createPlaylist(playlist)
@@ -33,6 +41,10 @@ export const fetchPlaylists = () => dispatch => (
     .then( (playlists) => dispatch(recievePlaylists(playlists)))
 );
 
+export const deleteSong = (playlistSong) => dispatch => (
+  PlaylistApi.deleteSong(playlistSong)
+    .then((playlistsong) => dispatch(removeSong(playlistsong)))
+);
 export const deletePlaylist = (id) => dispatch => (
   PlaylistApi.deletePlaylist(id)
     .then( (playlist) => dispatch(removePlaylist(playlist.id)))

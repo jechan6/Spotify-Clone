@@ -10,14 +10,11 @@ class PlaylistDetail extends React.Component{
     this.toggleOptions = this.toggleOptions.bind(this);
   }
   componentDidMount() {
-
     this.props.fetchPlaylist(this.props.playlistId);
     this.props.fetchSongs();
-
   }
-  
-  toggleOptions(e) {
 
+  toggleOptions(e) {
     this.setState({showOptions: !this.state.showOptions})
   }
   render() {
@@ -25,22 +22,29 @@ class PlaylistDetail extends React.Component{
     let songsList;
     let options;
     if(this.state.showOptions){
-      options = <div onClick={this.toggleOptions}
-        className="modal-container">{this.props.otherForm}</div>
+      options =
+        <div onClick={this.toggleOptions} className="modal-container">
+        {this.props.otherForm}
+        </div>
     }
-
     if(songs && songs.length >= 1) {
-      songsList = <SongIndexContainer songs={songs}/>
+      songsList = <SongIndexContainer  songs={songs} playlistId={playlist.id} addButton={true}/>
     }
     if(!playlist && !songs) return null;
     return(
       <div className="show-details">
         <div className="header-content">
           <div className="cover-picture">
-            <img src={playlist.photoUrl}></img>
-            <h1 className="content-title">{playlist.title}</h1>
-            <h1 className="content-author">{playlist.author}</h1>
-            <h1 className="content-info">{playlist.songIds.length} SONGS </h1>
+            <div className="playlist-cover">
+              <div className="image-cover">
+                <img src={playlist.photoUrl}></img>
+              </div>
+            </div>
+            <div className="content-info">
+              <h1 className="content-title">{playlist.title}</h1>
+              <h1 className="content-author">{playlist.author}</h1>
+              <h1 className="content-info">{playlist.songIds.length} SONGS </h1>
+            </div>
             <div className="options">
               <div onClick={this.toggleOptions} className="playlist-options">•••
                 {options}</div>

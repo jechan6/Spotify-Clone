@@ -27,6 +27,13 @@ export const deletePlaylist = id => (
   })
 );
 
+export const deleteSong = (playlistSong) => (
+  $.ajax({
+    method: 'delete',
+    url: `/api/playlist_songs/deletesong`,
+    data: {playlist_song: playlistSong}
+  })
+);
 export const updatePlaylist = (id,songId) => (
   $.ajax({
     method: 'PATCH',

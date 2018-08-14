@@ -3,30 +3,33 @@
 }
 .song-playlist-header {
   text-align: center;
-  display: flex;
-  justify-content: center;
-  .playlist-header {
-    font-size: 72px;
-  }
+
 }
 .playlist-form {
-    margin-bottom: 30%;
+    margin-bottom: 10%;
 }
 .song-playlist-container {
   background-color: none;
   text-align: center;
-
-  margin-top: 5%;
+  margin-top: 30px;
   .playlist-index-container {
     width: 100%;
     display: grid;
     margin: 0 auto;
-    margin-left: 6%;
-    grid-template-columns: repeat(6, 250px);
-    grid-column-gap: 5%;
+    margin-left: 10%;
+
+    grid-template-columns: repeat(6, 150px);
+    grid-column-gap: 80px;
+    grid-row-gap: 80px;
+  }
+  .playlist-content{
+    margin: 0 auto;
+    max-width: 1300px;
+    height: 100vh;
 
   }
   .playlist-item {
+
     pointer-events: none;
     flex-direction: column;
     justify-content: center;
@@ -39,13 +42,13 @@
         width: 100%;
         height: 100%;
         background-color: #282828;
-        padding: 50px;
+        padding: 10px;
     }
     .playlist-author {
       display: none;
     }
     .playlist-name {
-      width: 250px;
+      width: 220px;
       padding: 10px;
       text-align: center;
     }
@@ -54,9 +57,9 @@
       color: white;
     }
     img{
-      width: 200px;
-      height: 200px;
-      margin: 0 auto;
+      width: 100px;
+      height: 100px;
+
     }
   }
 }

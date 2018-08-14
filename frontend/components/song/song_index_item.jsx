@@ -6,18 +6,37 @@ class SongIndexItem extends React.Component {
       showOptions: false
     };
     this.toggleOptions = this.toggleOptions.bind(this);
+    this.handleDeleteSong = this.handleDeleteSong.bind(this);
   }
   toggleOptions(e) {
     e.preventDefault();
     this.setState({showOptions: !this.state.showOptions});
   }
+
+  handleDeleteSong(e) {
+    e.preventDefault();
+    const playlistSong =
+      {playlist_id: this.props.playlistId, song_id: this.props.song.id};
+    this.props.deleteSong(playlistSong);
+  }
+
   render() {
     const {song, handleClick} = this.props;
     let audio = <audio src={song.trackUrl}/>;
     let options;
+    let removeFromPlaylist;
+    if(this.props.addButton) {
+      removeFromPlaylist = <button
+        onClick={this.handleDeleteSong}
+        className="menu-item">Remove From Playlist</button>
+    }
+
     if(this.state.showOptions){
       options = <div onClick={this.toggleOptions}
-        className="modal-container">{this.props.otherForm}</div>
+        className="modal-container" value={song.id}>
+        {this.props.otherForm}
+        {removeFromPlaylist}
+      </div>
     }
 
     return(

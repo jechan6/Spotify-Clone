@@ -4,7 +4,12 @@ import { connect } from 'react-redux';
 import PlaylistFormContainer from '../collection/playlist/playlist_form_container';
 import PlaylistDeleteContainer from '../collection/playlist/playlist_delete_container';
 import SongPlaylistformContainer from '../song/song_playlistform_container';
-function Modal({modal, closeModal}) {
+function Modal(props) {
+  let {modal,closeModal} = props;
+  if(!modal) return null;
+  let songId = modal["songId"];
+  modal = modal["modal"];
+
   if (!modal) {
     return null;
   }
@@ -17,7 +22,8 @@ function Modal({modal, closeModal}) {
       component = <PlaylistDeleteContainer />;
       break;
     case 'song_playlistform':
-      component = <SongPlaylistformContainer />
+
+      component = <SongPlaylistformContainer songId={songId} />
       break;
     default:
       return null;

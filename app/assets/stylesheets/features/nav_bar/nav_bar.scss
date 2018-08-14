@@ -1,97 +1,104 @@
-.nav-container {
-  width: 220px;
-  position: fixed;
-  height: 100vh;
-  background-color: rgba(0,0,0,.5);
-  padding: 24px;
-  font-family: 'Montserrat', 'sans-serif';
-  font-weight: 700;
-  .navbar-logo {
-    background-image: image_url('logo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    padding: 20px;
-    margin: 15px 20px;
-  }
-  .nav-topsection{
-    height: 100%;
-  }
-  .nav-bar {
-    min-height: 400px;
-
-  }
-  .nav-bar-ul {
-    margin-left: 10px;
-    display: flex;
+.nav-wrapper {
+  width: 100%;
+  position: relative;
+  .nav-container {
+    width: 190px;
+    position: fixed;
     flex-direction: column;
+    height: 100vh;
+    background-color: rgba(0,0,0,.5);
+    padding: 20px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-weight: 700;
+    .nav-topsection{
+      display: flex;
+      flex-flow: column nowrap;
+      height: 100%;
+      padding-bottom: 95px;
+    }
+    .navbar-logo {
+      background-image: image_url('logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      padding: 20px;
+      margin: 15px 20px;
+    }
+    .nav-topsection{
+      height: 100%;
+    }
+    .nav-bar {
+      flex: 4;
+    }
+    .nav-bar-ul {
+      margin-left: 10px;
+      display: flex;
+      flex-direction: column;
 
+      .ul-item {
+          text-align: left;
+          font-size: 16px;
+          padding: 20px 0;
+          white-space: nowrap;
 
-    .ul-item {
-        font-size: 20px;
-        padding: 20px 0;
-      .fa {
-        margin-right: 15px;
-        font-size: 25px;
-      }
-      .fa-home{
-        margin-right: 11px;
-      }
-      .slash-icon {
-        display: flex;
-        flex-direction: row;
-        margin-left: 2px;
-
-        color: rgba(255, 255, 255, 0.6);
-      }
-      .slash-icon:hover{
-        color: white;
-        transition: 500ms all ease-in-out;
-        cursor: pointer;
-        .slash-link {
+        .fa {
+          margin-right: 15px;
+          font-size: 25px;
+        }
+        .fa-home{
+          margin-right: 10px;
+        }
+        .slash-icon {
+          display: flex;
+          flex-direction: row;
+          margin-left: 4px;
+          color: rgba(255, 255, 255, 0.6);
+        }
+        .slash-icon:hover{
           color: white;
           transition: 500ms all ease-in-out;
+          cursor: pointer;
+          .slash-link {
+            color: white;
+            transition: 500ms all ease-in-out;
+          }
+        }
+        .icon-slash {
+          margin-right: 10px;
+          margin-top: 1.2px;
+          margin-left: 1.7px;
+          margin-right: 15px;
         }
       }
-      .icon-slash {
-        margin-right: 10px;
-        margin-top: 1.2px;
-        margin-left: 1.7px;
-        margin-right: 15px;
+      a:hover {
+        color: white;
+        transition: 500ms all ease-in-out;
+      }
+      a {
+
+        color: rgba(255,255,255,.6);
       }
     }
-    a:hover {
+    .profile-container {
+      display: flex;
       color: white;
-      transition: 500ms all ease-in-out;
+      flex: 1;
+      border-top: 1px solid #404040;
+      padding: 8px 4px;
 
-    }
-    a {
-      color: rgba(255,255,255,.6);
-    }
-  }
-  .profile-container {
-    display: flex;
-    color: white;
-    position: absolute;
-    bottom: 11%;
-    left: 20px;
-    min-height: 60px;
-    width: 80%;
-    border-top: 1px solid #404040;
-    padding: 13px 0 20px 0;
-
-    h3{
-      font-size: 16px;
-      font-weight: 500;
-      letter-spacing: .015em;
-      line-height: 20px;
-      margin-top: 15px;
-    }
-    .profile-pic {
-      width: 17%;
-      height: 17%;
-      padding: 10px;
-      border-radius: 100px;
-      border: 1px solid transparent;
+      h3{
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: .015em;
+        line-height: 20px;
+        margin-top: 15px;
+      }
+      .profile-pic {
+        width: 17%;
+        height: 17%;
+        padding: 10px;
+        border-radius: 100px;
+        border: 1px solid transparent;
+      }
     }
   }
 }

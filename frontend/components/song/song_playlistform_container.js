@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import React from 'react';
 import {updatePlaylist, fetchPlaylists} from '../../actions/playlist_actions';
 import SongPlaylistform from './song_playlistform';
-
+import {withRouter} from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
 const mapStateToProps = state => {
 
@@ -21,4 +21,4 @@ const mapDispatchToProps = dispatch => {
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(SongPlaylistform);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SongPlaylistform));
