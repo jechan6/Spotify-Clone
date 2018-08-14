@@ -4,6 +4,7 @@ import {updatePlaylist, fetchPlaylists} from '../../actions/playlist_actions';
 import SongPlaylistform from './song_playlistform';
 import {withRouter} from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
+import {openModal} from "../../actions/modal_actions";
 const mapStateToProps = state => {
 
   return {
@@ -16,7 +17,8 @@ const mapDispatchToProps = dispatch => {
   return {
     updatePlaylist: (id, songId) => dispatch(updatePlaylist(id,songId)),
     fetchPlaylists: () => dispatch(fetchPlaylists()),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    openModal: () => dispatch(openModal("playlist_form"))
   };
 };
 

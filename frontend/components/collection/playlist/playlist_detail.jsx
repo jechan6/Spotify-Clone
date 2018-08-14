@@ -15,7 +15,7 @@ class PlaylistDetail extends React.Component{
   }
 
   toggleOptions(e) {
-    this.setState({showOptions: !this.state.showOptions})
+    this.setState({showOptions: !this.state.showOptions});
   }
   render() {
     const{playlist, songs, deletePlaylist} = this.props;
@@ -28,7 +28,7 @@ class PlaylistDetail extends React.Component{
         </div>
     }
     if(songs && songs.length >= 1) {
-      songsList = <SongIndexContainer  songs={songs} playlistId={playlist.id} addButton={true}/>
+      songsList = <SongIndexContainer  songs={songs} playlistId={playlist.id} addButton={true}/>;
     }
     if(!playlist && !songs) return null;
     return(

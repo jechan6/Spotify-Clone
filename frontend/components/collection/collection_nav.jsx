@@ -11,9 +11,12 @@ const CollectionNav = (props) => (
 
       <li><Link className="feature-link-item"
         to="/collection/playlists">ALBUMS</Link></li>
-      <li> <div className="playlist-create">
-          {props.otherForm}
-        </div>
+      <li>
+          <button
+          className="modal-button"
+          onClick={props.openModal}>
+            NEW PLAYLIST
+          </button>
       </li>
     </ul>
 

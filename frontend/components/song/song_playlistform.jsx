@@ -21,10 +21,10 @@ class SongPlaylistform extends React.Component {
           <div className="playlist-form-close" onClick={e => e.stopPropagation()}>
             <button className="form-close"
               onClick={this.props.closeModal}>X</button>
-            <h1>HELLO</h1>
           </div>
           <div className="song-playlist-header">
             <h1 className="playlist-header">Add to playlist</h1>
+            <button onClick={this.props.openModal} className="newplaylist">NEW PLAYLIST</button>
           </div>
           <div className="song-playlist-container">
             <div className="playlist-index-container">
