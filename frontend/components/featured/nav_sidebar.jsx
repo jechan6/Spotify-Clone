@@ -43,13 +43,13 @@ class NavSidebar extends React.Component {
                 </li>
               </ul>
             </nav>
-
-            <button onClick={this.handleSubmit}>Log Out</button>
-            <div className="profile-container">
-              <img className="profile-pic" src={currentUser.photoUrl} />
-              <h3>{currentUser.name}</h3>
+            <div className="navbar-bottom-container">
+              <button className="profile-info" onClick={this.handleSubmit}>Log Out</button>
+              <div className="profile-container">
+                <img className="profile-pic" src={currentUser.photoUrl} />
+                <h3>{currentUser.name}</h3>
+              </div>
             </div>
-
           </div>
 
         </div>

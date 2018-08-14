@@ -42,11 +42,13 @@ class Featured extends React.Component {
         {featuredNav}
         {newrelease}
         {detail}
+
         <div className="audio-controls-container">
           <AudioInfoContainer />
           <AudioPlayerContainer />
           <AudioSoundContainer />
         </div>
+
       </div>
     );
   }

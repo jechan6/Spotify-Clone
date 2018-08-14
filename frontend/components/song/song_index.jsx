@@ -10,21 +10,18 @@ class SongIndex extends React.Component {
     this.handleClick = this.handleClick.bind(this);
 
   }
-  // componentDidMount() {
-  //   this.props.fetchSongs();
-  // }
 
   handleClick(song) {
     let index = (this.props.songs.indexOf(song)+1) % this.props.songs.length;
     let nextSong = this.props.songs[index];
     this.props.receiveCurrentSong(song);
     this.props.receiveNextSong(nextSong);
-
+    this.props.setPhotoUrl(this.props.photoUrl);
   }
   render() {
     const {songs} = this.props;
     if(songs[0] === undefined) return null;
-  
+
     return(
       <div className="song-content">
           {songs.map( (song) => (

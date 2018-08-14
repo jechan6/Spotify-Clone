@@ -30,6 +30,7 @@ class Api::PlaylistsController < ApplicationController
   def update
     @playlist = Playlist.find(params[:id])
     song = Song.find(params[:songId])
+    debugger
     @playlist.songs << song
     @playlist.save
     render :show

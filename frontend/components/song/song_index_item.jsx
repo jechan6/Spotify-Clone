@@ -54,8 +54,6 @@ class SongIndexItem extends React.Component {
 
     }
 
-
-
     return(
       <div >
         {audio}

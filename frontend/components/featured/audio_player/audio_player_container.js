@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import AudioPlayer from './audio-player';
-
+import {setTitle, setArtist} from "../../../actions/audio_action";
 const mapStateToProps = state => ({
   audio: state.ui.currentSong,
   volume: state.audio.volume,
@@ -8,4 +8,8 @@ const mapStateToProps = state => ({
   songs: Object.values(state.entities.songs)
 });
 
-export default connect(mapStateToProps,null)(AudioPlayer);
+const mapDispatchToProps = dispatch => ({
+  setTitle: title => dispatch(setTitle(title)),
+  setArtist: artist => dispatch(setArtist(artist))
+});
+export default connect(mapStateToProps,mapDispatchToProps)(AudioPlayer);

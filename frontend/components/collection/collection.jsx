@@ -39,9 +39,11 @@ class Collection extends React.Component {
         {collectionNav}
         {playlists}
         {detail}
-        <div className="audio-controls-container">
-          <AudioPlayerContainer />
-          <AudioSoundContainer />
+        <div className="playingbar-wrapper">
+          <div className="audio-controls-container">
+            <AudioPlayerContainer />
+            <AudioSoundContainer />
+          </div>
         </div>
       </div>
     );

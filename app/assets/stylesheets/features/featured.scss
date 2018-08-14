@@ -1,13 +1,12 @@
 .featured-container {
-  background-image: linear-gradient(rgb(142, 11, 24), rgb(14, 1, 2) 85%);
+  background-image: linear-gradient(rgb(51, 62, 53), rgb(7, 8, 7) 85%);
   width: 100%;
   height: 100vh;
-
+  position: relative;
 }
 .featured-nav {
   display: block;
   padding: 40px 0 0;
-  position: relative;
   margin: 0 auto;
   margin-left: 14.2%;
 
@@ -27,7 +26,7 @@
     padding: .8em .8em 0;
 
   }
-  // 
+  //
   // .feature-link-item::before {
   //   content: "";
   //   height: 2px;

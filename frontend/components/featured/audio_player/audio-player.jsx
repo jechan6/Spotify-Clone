@@ -12,6 +12,8 @@ class AudioPlayer extends React.Component {
       repeat: false,
       currentTime: 0,
       duration: "0:00",
+      title: "",
+      artist: "",
       playedSongs: []};
     this.handlePlay = this.handlePlay.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
@@ -25,6 +27,7 @@ class AudioPlayer extends React.Component {
     this.handleRepeat = this.handleRepeat.bind(this);
   }
   componentDidMount() {
+
     this.setState({currentTime: "0:00"})
     this.audio.addEventListener("timeupdate", () => {
       if(this.audio.currentTime === this.audio.duration) {
@@ -56,6 +59,11 @@ class AudioPlayer extends React.Component {
     if(!newProps.audio && !newProps.nextSong) {
       return;
     }
+    if(this.state.title !== newProps.audio.title) {
+      this.props.setTitle(newProps.audio.title);
+      this.props.setArtist(newProps.audio.artist);
+    }
+    this.setState({title: newProps.audio.title, artist: newProps.audio.artist  });
 
     this.addPlayedSongs(newProps.audio);
     let audio = newProps.audio.trackUrl;
@@ -67,6 +75,7 @@ class AudioPlayer extends React.Component {
   handlePlay(e) {
     e.preventDefault();
 
+    if(!this.audio.duration ) return;
     if(this.state.play) {
       this.audio.pause();
       this.setState({play: false});
@@ -153,6 +162,7 @@ class AudioPlayer extends React.Component {
   }
 
   handlePosition(position) {
+    if(!this.audio.duration ) return;
     let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
     let handleLeft = position - this.timeline.offsetLeft;
     if(handleLeft >= 0 && handleLeft <= this.timeline.offsetWidth) {

@@ -1,0 +1,33 @@
+.audio-controls-container{
+  .right-audio-container {
+    min-width: 180px;
+    width: 30%;
+    height: 90px;
+
+    .volume-controls {
+      width: 136px;
+      display: flex;
+      align-items: center;
+      margin-right: 25px;
+    }
+    .progress-bar {
+
+      background-color: #404040;
+      border-radius: 2px;
+      height: 4px;
+      width: 85px;
+      .handle {
+        height: 4px;
+      }
+    }
+    .volume-image {
+      width: 12px;
+      height: 12px;
+      background-color: transparent;
+      transition: 1s all ease;
+      color: rgba(255,255,255,0.6);
+      padding: 15px 15px 17px 15px;
+    }
+  }
+
+}

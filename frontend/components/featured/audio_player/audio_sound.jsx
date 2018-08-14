@@ -60,20 +60,30 @@ class AudioSound extends React.Component {
   }
 
   render() {
+    let volumeClass;
+    if(this.state.volume >= .6){
+      volumeClass="fas fa-volume-up";
+    } else if(this.state.volume > 0) {
+      volumeClass="fas fa-volume-down";
+    } else if(this.state.volume <= 0) {
+      volumeClass="fas fa-volume-off";
+    }
     return(
       <div className="right-audio-container">
-        <div className="volume-image"><i className="fas fa-volume-up"></i></div>
-        <div className="progress-bar"
-          onClick={this.mouseMove}
-          ref={(timeline) => { this.timeline = timeline }}>
-          <div className="progress-timeline">
-            <div className="handle"
-              onMouseDown={this.mouseDown}
-              ref={(handle) => { this.handle = handle }}>
-            </div>
-            <div className="handle-circle"
-              onMouseDown={this.mouseDown}
-              ref={(handleCircle) => {this.handleCircle = handleCircle}}>
+        <div className="volume-controls">
+          <div className="volume-image"><i className={volumeClass}></i></div>
+          <div className="progress-bar"
+            onClick={this.mouseMove}
+            ref={(timeline) => { this.timeline = timeline }}>
+            <div className="progress-timeline">
+              <div className="handle"
+                onMouseDown={this.mouseDown}
+                ref={(handle) => { this.handle = handle }}>
+              </div>
+              <div className="handle-circle"
+                onMouseDown={this.mouseDown}
+                ref={(handleCircle) => {this.handleCircle = handleCircle}}>
+              </div>
             </div>
           </div>
         </div>
