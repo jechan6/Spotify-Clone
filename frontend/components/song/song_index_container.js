@@ -12,6 +12,7 @@ const mapStateToProps = ({entities}, ownProps) => {
   if(ownProps.songs.length > 0) {
     songs = ownProps.songs
   }
+
   return {songs: songs, addButton: ownProps.addButton,
   playlistId: ownProps.playlistId};
 };

@@ -12,12 +12,19 @@ class AudioSound extends React.Component {
     this.handlePosition = this.handlePosition.bind(this);
   }
   componentDidMount() {
+
     this.setState({volume: this.props.volume});
+    this.handle.style.width = this.timeline.offsetWidth + "px";
+    this.handleCircle.style.marginLeft = this.timeline.offsetWidth+ "px";
 
   }
   handlePosition(position) {
     let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
     let handleLeft = position - this.timeline.offsetLeft;
+    if(handleLeft > this.timeline.offsetWidth || this.state.volume === 1) {
+      this.handleCircle.style.marginLeft = this.timeline.offsetWidth+ "px";
+      this.handle.style.width = this.timeline.offsetWidth + "px";
+    }
     if(handleLeft >= 0 && handleLeft <= this.timeline.offsetWidth) {
       this.handle.style.width = handleLeft + "px";
       this.handleCircle.style.marginLeft = handleLeft + "px";
@@ -25,10 +32,6 @@ class AudioSound extends React.Component {
     if(handleLeft < 0) {
       this.handle.style.width = "0px";
       this.handleCircle.style.marginLeft = "0px";
-    }
-    if(handleLeft > this.timeline.offsetWidth || this.state.volume === 1) {
-      this.handleCircle.style.marginLeft = this.timeline.offsetWidth+ "px";
-      this.handle.style.width = this.timeline.offsetWidth + "px";
     }
   }
   mouseMove(e) {
@@ -59,6 +62,7 @@ class AudioSound extends React.Component {
   render() {
     return(
       <div className="right-audio-container">
+        <div className="volume-image"><i className="fas fa-volume-up"></i></div>
         <div className="progress-bar"
           onClick={this.mouseMove}
           ref={(timeline) => { this.timeline = timeline }}>

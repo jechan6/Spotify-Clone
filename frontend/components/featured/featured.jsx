@@ -6,6 +6,8 @@ import FeaturedNav from './featured_nav';
 import NewReleaseContainer from '../new_releases/new_release_container';
 import AudioPlayerContainer from './audio_player/audio_player_container';
 import AlbumItemDetailContainer from '../albums/album_item_detail_container';
+import AudioSoundContainer from '../featured/audio_player/audio_sound_container';
+import AudioInfoContainer from '../featured/audio_player/audio_info_container';
 class Featured extends React.Component {
   constructor(props) {
     super(props);
@@ -41,7 +43,9 @@ class Featured extends React.Component {
         {newrelease}
         {detail}
         <div className="audio-controls-container">
+          <AudioInfoContainer />
           <AudioPlayerContainer />
+          <AudioSoundContainer />
         </div>
       </div>
     );

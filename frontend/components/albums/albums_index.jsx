@@ -15,7 +15,9 @@ class AlbumsIndex extends React.Component {
   }
   componentDidMount() {
     this.props.fetchAlbums();
+
   }
+
   handleClick(album) {
     this.setState({detail: !this.state.detail, album})
   }

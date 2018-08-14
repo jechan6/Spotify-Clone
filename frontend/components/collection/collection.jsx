@@ -5,6 +5,7 @@ import CollectionNavContainer from './collection_nav_container';
 import NavSidebar from '../featured/nav_sidebar';
 import AudioPlayerContainer from '../featured/audio_player/audio_player_container';
 import AudioSoundContainer from '../featured/audio_player/audio_sound_container';
+import AudioInfoContainer from '../featured/audio_player/audio_info_container';
 
 class Collection extends React.Component {
   constructor(props) {

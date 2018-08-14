@@ -1,0 +1,14 @@
+#close-modal {
+  width: 99vw;
+  height: 99vh;
+  background: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.modal-container button {
+  z-index: 11;
+  position: relative;
+}

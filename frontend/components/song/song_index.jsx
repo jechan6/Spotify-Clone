@@ -24,7 +24,7 @@ class SongIndex extends React.Component {
   render() {
     const {songs} = this.props;
     if(songs[0] === undefined) return null;
-
+  
     return(
       <div className="song-content">
           {songs.map( (song) => (
@@ -37,6 +37,7 @@ class SongIndex extends React.Component {
                     playlistId={this.props.playlistId}
                     deleteSong={this.props.deleteSong}
                     history={this.props.history}
+                    hideOptions={this.props.hideOptions}
                     song={song} />
                 </div>
               </div>

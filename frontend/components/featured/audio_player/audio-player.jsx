@@ -10,6 +10,8 @@ class AudioPlayer extends React.Component {
       audio: "",
       random: false,
       repeat: false,
+      currentTime: 0,
+      duration: "0:00",
       playedSongs: []};
     this.handlePlay = this.handlePlay.bind(this);
     this.mouseMove = this.mouseMove.bind(this);
@@ -23,18 +25,28 @@ class AudioPlayer extends React.Component {
     this.handleRepeat = this.handleRepeat.bind(this);
   }
   componentDidMount() {
-
+    this.setState({currentTime: "0:00"})
     this.audio.addEventListener("timeupdate", () => {
       if(this.audio.currentTime === this.audio.duration) {
         this.nextSong();
       }
-
+      let currentTime = this.formatTime(this.audio.currentTime);
+      if(this.audio.duration) {
+        this.setState({duration: this.formatTime(this.audio.duration)})
+      }
+      this.setState({currentTime});
       let ratio =
         this.audio.currentTime / this.audio.duration;
       let position =
         this.timeline.offsetWidth * ratio + this.timeline.offsetLeft;
       this.handlePosition(position);
     });
+  }
+  formatTime(seconds) {
+    let min = Math.floor(seconds/60);
+    seconds = Math.floor(seconds % 60);
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    return min + ":" + seconds;
   }
   componentWillReceiveProps(newProps) {
     if(this.audio) {
@@ -44,6 +56,7 @@ class AudioPlayer extends React.Component {
     if(!newProps.audio && !newProps.nextSong) {
       return;
     }
+
     this.addPlayedSongs(newProps.audio);
     let audio = newProps.audio.trackUrl;
     let nextSong = newProps.nextSong.trackUrl;
@@ -53,11 +66,13 @@ class AudioPlayer extends React.Component {
 
   handlePlay(e) {
     e.preventDefault();
+
     if(this.state.play) {
       this.audio.pause();
       this.setState({play: false});
     } else {
       this.audio.play();
+
       this.setState({play: true});
     }
   }
@@ -189,15 +204,17 @@ class AudioPlayer extends React.Component {
   }
 
   render() {
+
     return(
       <div className="song-playing-bar">
         <div className="middle-container">
           <audio src={this.state.audio} ref={audio => {this.audio = audio} } autoPlay/>
           <div className="audio-controls">
-            <button onClick={this.handleRandom} className="song-option-buttons">
-              <i className="fa fa-random fa-light" aria-hidden="true"
-                ref={randButton => {this.randButton = randButton}}>
-                <div className="rand-dot"></div></i>
+              <button onClick={this.handleRandom} className="song-option-buttons">
+
+                <i className="fa fa-random fa-light" aria-hidden="true"
+                  ref={randButton => {this.randButton = randButton}}>
+                  <div className="rand-dot"></div></i>
               </button>
               <button onClick={this.prevSong} className="song-option-buttons"
                 ref={backButton => {this.backButton = backButton} } >
@@ -218,20 +235,25 @@ class AudioPlayer extends React.Component {
                 </button>
 
               </div>
+              <div className="sound-timline">
+                <div className="song-time">{this.state.currentTime}</div>
+                <div className="progress-bar"
+                  onClick={this.mouseMove}
+                  ref={(timeline) => { this.timeline = timeline }}>
 
-              <div className="progress-bar"
-                onClick={this.mouseMove}
-                ref={(timeline) => { this.timeline = timeline }}>
-                <div className="progress-timeline">
-                  <div className="handle"
-                    onMouseDown={this.mouseDown}
-                    ref={(handle) => { this.handle = handle }}>
-                  </div>
-                  <div className="handle-circle"
-                    onMouseDown={this.mouseDown}
-                    ref={(handleCircle) => {this.handleCircle = handleCircle}}>
+                  <div className="progress-timeline">
+
+                    <div className="handle"
+                      onMouseDown={this.mouseDown}
+                      ref={(handle) => { this.handle = handle }}>
+                    </div>
+                    <div className="handle-circle"
+                      onMouseDown={this.mouseDown}
+                      ref={(handleCircle) => {this.handleCircle = handleCircle}}>
+                    </div>
                   </div>
                 </div>
+                <div className="song-time">{this.state.duration}</div>
               </div>
         </div>
       </div>

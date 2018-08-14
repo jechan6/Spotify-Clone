@@ -17,6 +17,16 @@ class PlaylistDetail extends React.Component{
   toggleOptions(e) {
     this.setState({showOptions: !this.state.showOptions});
   }
+  hideOptions(e) {
+    if(e.target.className !== "ellipsis-option") {
+      this.setState({hideSongOptions: true});
+    } else {
+      this.setState({hideSongOptions: false});
+    }
+    if(e.target.className !== "playlist-options") {
+      this.setState({showOptions: false});
+    }
+  }
   render() {
     const{playlist, songs, deletePlaylist} = this.props;
     let songsList;
@@ -24,15 +34,19 @@ class PlaylistDetail extends React.Component{
     if(this.state.showOptions){
       options =
         <div onClick={this.toggleOptions} className="modal-container">
+
         {this.props.otherForm}
         </div>
     }
     if(songs && songs.length >= 1) {
-      songsList = <SongIndexContainer  songs={songs} playlistId={playlist.id} addButton={true}/>;
+      songsList = <SongIndexContainer
+    
+        songs={songs}
+        playlistId={playlist.id} addButton={true}/>;
     }
     if(!playlist && !songs) return null;
     return(
-      <div className="show-details">
+      <div className="show-details" onClick={this.hideOptions.bind(this)}>
         <div className="header-content">
           <div className="cover-picture">
             <div className="playlist-cover">

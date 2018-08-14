@@ -3,11 +3,14 @@ import SongIndexContainer from '../song/song_index_container';
 class AlbumItemDetail extends React.Component {
   constructor(props) {
     super(props);
+
   }
   componentDidMount() {
     this.props.fetchAlbum(this.props.albumId);
     this.props.fetchSongs();
+
   }
+
   render() {
 
     const {album} = this.props;

@@ -3,14 +3,16 @@ class SongIndexItem extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      showOptions: false
+      showOptions: false,
+      children: null
     };
     this.toggleOptions = this.toggleOptions.bind(this);
     this.handleDeleteSong = this.handleDeleteSong.bind(this);
   }
-  toggleOptions(e) {
-    e.preventDefault();
+  toggleOptions() {
+
     this.setState({showOptions: !this.state.showOptions});
+
   }
 
   handleDeleteSong(e) {
@@ -20,27 +22,42 @@ class SongIndexItem extends React.Component {
     this.props.deleteSong(playlistSong);
   }
 
+  componentWillReceiveProps(newProps) {
+
+  }
+  closeOptions() {
+    this.toggleOptions();
+  }
   render() {
     const {song, handleClick} = this.props;
     let audio = <audio src={song.trackUrl}/>;
     let options;
     let removeFromPlaylist;
+
     if(this.props.addButton) {
       removeFromPlaylist = <button
         onClick={this.handleDeleteSong}
         className="menu-item">Remove From Playlist</button>
     }
 
-    if(this.state.showOptions){
-      options = <div onClick={this.toggleOptions}
-        className="modal-container" value={song.id}>
-        {this.props.otherForm}
-        {removeFromPlaylist}
-      </div>
+    if(this.state.showOptions) {
+      options =
+      <div className="modal">
+        <div onClick={this.toggleOptions}
+          className="modal-container" value={song.id}>
+          {this.props.otherForm}
+          {removeFromPlaylist}
+        </div>
+        <div onClick={this.closeOptions.bind(this)} id="close-modal">
+        </div>
+      </div>;
+
     }
 
+
+
     return(
-      <div onClick={this.toggleOptions}>
+      <div >
         {audio}
         <div className="song-info">
           <div className="song-title-button">
@@ -57,8 +74,8 @@ class SongIndexItem extends React.Component {
           </div>
           <div className="song-options">
             <div onClick={this.toggleOptions} className="ellipsis-option">•••
+              {options}
             </div>
-            {options}
           </div>
         </div>
 
