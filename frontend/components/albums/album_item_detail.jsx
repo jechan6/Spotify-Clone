@@ -18,7 +18,9 @@ class AlbumItemDetail extends React.Component {
       <div className="show-details">
         <div className="header-content">
           <div className="cover-picture">
-            <img src={album.photoUrl}></img>
+            <div className="image-wrapper">
+              <img src={album.photoUrl}></img>
+            </div>
             <h1 className="content-title">{album.title}</h1>
             <h1 className="content-author">{album.artist}</h1>
             <h1 className="content-info">{album.year} • {album.songIds.length} SONGS </h1>

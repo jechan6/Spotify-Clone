@@ -4,6 +4,8 @@ import PlaylistDetailContainer from './playlist/playlist_detail_container';
 import CollectionNavContainer from './collection_nav_container';
 import NavSidebar from '../featured/nav_sidebar';
 import AudioPlayerContainer from '../featured/audio_player/audio_player_container';
+import AudioSoundContainer from '../featured/audio_player/audio_sound_container';
+
 class Collection extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,7 @@ class Collection extends React.Component {
         detail = <PlaylistDetailContainer
           playlistId={this.props.match.params.playlistId} />;
         playlists = "";
-    
+
       } else {
         collectionNav = <CollectionNavContainer/>;
       }
@@ -38,6 +40,7 @@ class Collection extends React.Component {
         {detail}
         <div className="audio-controls-container">
           <AudioPlayerContainer />
+          <AudioSoundContainer />
         </div>
       </div>
     );

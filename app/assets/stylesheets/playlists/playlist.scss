@@ -30,7 +30,18 @@
         height: 100%;
         background-color: #282828;
         padding: 30px;
+        display: inline-block;
+        box-shadow: 0 0 10px rgba(0,0,0,.3);
+
       }
+      .playlist-pic-wrapper:hover {
+        background-color: rgba(0,0,0,.5);
+        img {
+          transition: all 50ms linear;
+          opacity: 0.8;
+        }
+      }
+
       img {
         height: 150px;
         width: 150px;

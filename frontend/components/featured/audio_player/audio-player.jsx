@@ -1,4 +1,5 @@
 import React from 'react';
+import AudioSound from './audio-player';
 //code written by following guide at http://nael.io/2017-03-11-building-a-react-audio-player/
 class AudioPlayer extends React.Component {
   constructor(props) {
@@ -22,8 +23,8 @@ class AudioPlayer extends React.Component {
     this.handleRepeat = this.handleRepeat.bind(this);
   }
   componentDidMount() {
-    this.audio.addEventListener("timeupdate", () => {
 
+    this.audio.addEventListener("timeupdate", () => {
       if(this.audio.currentTime === this.audio.duration) {
         this.nextSong();
       }
@@ -36,6 +37,10 @@ class AudioPlayer extends React.Component {
     });
   }
   componentWillReceiveProps(newProps) {
+    if(this.audio) {
+
+      this.audio.volume = this.props.volume;
+    }
     if(!newProps.audio && !newProps.nextSong) {
       return;
     }
@@ -72,7 +77,6 @@ class AudioPlayer extends React.Component {
   }
   nextSong() {
     //find currentsong playing
-
     let curSong =  this.props.songs.filter(
       (el, idx) => el.trackUrl === this.state.audio
     );
@@ -134,20 +138,16 @@ class AudioPlayer extends React.Component {
   }
 
   handlePosition(position) {
-
     let timelineWidth = this.timeline.offsetWidth - this.handle.offsetWidth;
     let handleLeft = position - this.timeline.offsetLeft;
-
     if(handleLeft >= 0 && handleLeft <= this.timeline.offsetWidth) {
       this.handle.style.width = handleLeft + "px";
       this.handleCircle.style.marginLeft = handleLeft + "px";
     }
-
     if(handleLeft < 0) {
       this.handle.style.width = "0px";
       this.handleCircle.style.marginLeft = "0px";
     }
-
     if(handleLeft > this.timeline.offsetWidth) {
       this.handleCircle.style.marginLeft = this.timeline.offsetWidth+ "px";
       this.handle.style.width = this.timeline.offsetWidth + "px";
@@ -234,7 +234,6 @@ class AudioPlayer extends React.Component {
                 </div>
               </div>
         </div>
-
       </div>
     );
   }

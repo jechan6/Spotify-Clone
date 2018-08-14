@@ -3,8 +3,13 @@
   height: 90px;
   position: fixed;
   bottom: 0;
-
+  display: flex;
   width: 100%;
+
+  .middle-container{
+    max-width: 722px;
+    margin: 0 auto;
+  }
   .song-timer {
     font-size: 12px;
     color: white;

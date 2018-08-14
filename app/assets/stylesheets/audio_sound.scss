@@ -1,0 +1,14 @@
+.audio-controls-container{
+  .right-audio-container {
+    min-width: 180px;
+    width: 30%;
+    height: 90px;
+    .progress-bar {
+      width: 136px;
+      background-color: #404040;
+      border-radius: 15px;
+      height: 5px;
+      margin: 0 auto;
+    }
+  }
+}
