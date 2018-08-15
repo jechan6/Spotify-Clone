@@ -25,7 +25,7 @@ class AudioPlayer extends React.Component {
     this.prevSong = this.prevSong.bind(this);
     this.handleRandom = this.handleRandom.bind(this);
     this.handleRepeat = this.handleRepeat.bind(this);
-    this.handleSinglePlay = this.handleSinglePlay.bind(this);
+
   }
   componentDidMount() {
 
@@ -53,32 +53,20 @@ class AudioPlayer extends React.Component {
     return min + ":" + seconds;
   }
   componentWillReceiveProps(newProps) {
-
-    if(newProps.songs && newProps.songs.length !== 0) {
-      this.setState({play: true, audio: newProps.songs[0].trackUrl})
-    } else if(newProps.audio) {
-      this.handleSinglePlay(newProps)
+    if(newProps.audio) {
+      let audio = newProps.audio.trackUrl;
+      let nextSong = newProps.nextSong.trackUrl;
+      this.props.setTitle(newProps.audio.title);
+      this.props.setArtist(newProps.audio.artist);
+      this.setState({play: true, audio, nextSong});
+    } else if(newProps.songs && newProps.songs.length !== 0) {
+      this.setState({play: true, audio: newProps.songs[0].trackUrl});
+      this.props.setTitle(newProps.songs[0].title);
+      this.props.setArtist(newProps.songs[0].artist);
     }
 
   }
-  handleSinglePlay(newProps) {
-    if(this.audio) {
-      this.audio.volume = this.props.volume;
-    }
-    if(!newProps.audio && !newProps.nextSong) {
-      return;
-    }
 
-    this.props.setTitle(newProps.audio.title);
-    this.props.setArtist(newProps.audio.artist);
-
-    this.setState({title: newProps.audio.title, artist: newProps.audio.artist  });
-
-    this.addPlayedSongs(newProps.audio);
-    let audio = newProps.audio.trackUrl;
-    let nextSong = newProps.nextSong.trackUrl;
-    this.setState({play: true, audio, nextSong});
-  }
 
   handlePlay(e) {
     e.preventDefault();
