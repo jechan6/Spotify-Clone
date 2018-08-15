@@ -11,15 +11,23 @@ class PlaylistIndexItem extends React.Component {
       this.props.closeModal();
     }
   }
+  handleSong(playlist) {
+
+    this.props.receiveCurrentSong(Object.values(playlist.payload.songs)[0]);
+  }
   playMusic(){
-    this.props.fetchPlaylist(this.props.playlist.id);
+    this.props.fetchPlaylist(this.props.playlist.id).then(playlist => this.handleSong(playlist));
     this.props.setPhotoUrl(this.props.playlist.photoUrl);
     this.props.setPlaylistId(this.props.playlist.id);
+
+    // this.props.receiveCurrentSong();
   }
+
   render() {
     const {playlist} = this.props;
+
     return (
-      <div onClick={this.props.addSong} className="playlist-item" >
+      <div className="playlist-item" >
             <div onClick={this.handleClick} className="playlist-pic-wrapper">
               <a onClick={this.playMusic.bind(this)} className="play-button">
                 <i className= "fa fa-play"></i>

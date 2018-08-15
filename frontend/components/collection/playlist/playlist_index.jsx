@@ -10,9 +10,7 @@ class PlaylistIndex extends React.Component {
     this.props.fetchSongs();
 
   }
-  componentWillReceiveProps(newProps) {
 
-  }
   render() {
 
     return(
@@ -25,6 +23,7 @@ class PlaylistIndex extends React.Component {
               fetchPlaylist={this.props.fetchPlaylist}
               setPlaylistId={this.props.setPlaylistId}
               setPhotoUrl={this.props.setPhotoUrl}
+              receiveCurrentSong={this.props.receiveCurrentSong}
               />
           ))}
         </div>
