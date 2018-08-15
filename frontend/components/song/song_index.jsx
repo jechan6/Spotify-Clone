@@ -16,6 +16,7 @@ class SongIndex extends React.Component {
     let nextSong = this.props.songs[index];
     this.props.receiveCurrentSong(song);
     this.props.receiveNextSong(nextSong);
+    this.props.setPlaylistId(this.props.playlistId);
     this.props.setPhotoUrl(this.props.photoUrl);
   }
   render() {

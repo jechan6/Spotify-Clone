@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
 import AudioInfo from './audio_info';
-const mapStateToProps = state => ({
-  title: state.audio.title,
-  artist: state.audio.artist,
+const mapStateToProps = (state, ownProps) => ({
+  title: ownProps.title,
+  artist: ownProps.artist,
   photoUrl: state.audio.photoUrl
 });
 

@@ -11,6 +11,19 @@ import AudioInfoContainer from '../featured/audio_player/audio_info_container';
 class Collection extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      title: "",
+      artist: ""
+    };
+    this.handleTitle = this.handleTitle.bind(this);
+    this.handleArtist = this.handleArtist.bind(this);
+  }
+  handleTitle(title) {
+
+    this.setState({title});
+  }
+  handleArtist(artist) {
+    this.setState({artist});
   }
   render() {
     const {logout, currentUser} = this.props;
@@ -42,8 +55,11 @@ class Collection extends React.Component {
         {detail}
         <div className="playingbar-wrapper">
           <div className="audio-controls-container">
-            <AudioInfoContainer />
-            <AudioPlayerContainer playlistId={this.props.playlistId} />
+            <AudioInfoContainer title={this.state.title} artist={this.state.artist} />
+            <AudioPlayerContainer
+              setArtist={this.handleArtist}
+              setTitle={this.handleTitle}
+              playlistId={this.props.playlistId} />
             <AudioSoundContainer />
           </div>
         </div>

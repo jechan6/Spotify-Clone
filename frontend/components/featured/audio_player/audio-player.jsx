@@ -53,8 +53,8 @@ class AudioPlayer extends React.Component {
     return min + ":" + seconds;
   }
   componentWillReceiveProps(newProps) {
-    
-    if(newProps.songs.length !== 0) {
+
+    if(newProps.songs && newProps.songs.length !== 0) {
       this.setState({play: true, audio: newProps.songs[0].trackUrl})
     } else if(newProps.audio) {
       this.handleSinglePlay(newProps)
@@ -68,10 +68,10 @@ class AudioPlayer extends React.Component {
     if(!newProps.audio && !newProps.nextSong) {
       return;
     }
-    if(this.state.title !== newProps.audio.title) {
-      this.props.setTitle(newProps.audio.title);
-      this.props.setArtist(newProps.audio.artist);
-    }
+
+    this.props.setTitle(newProps.audio.title);
+    this.props.setArtist(newProps.audio.artist);
+
     this.setState({title: newProps.audio.title, artist: newProps.audio.artist  });
 
     this.addPlayedSongs(newProps.audio);
@@ -89,7 +89,6 @@ class AudioPlayer extends React.Component {
       this.setState({play: false});
     } else {
       this.audio.play();
-
       this.setState({play: true});
     }
   }
@@ -97,7 +96,6 @@ class AudioPlayer extends React.Component {
     let newArr = this.state.playedSongs;
     newArr.push(song);
     this.setState({playedSongs: newArr});
-
   }
   emptyHistory() {
     if(this.state.playedSongs.length >= this.props.songs.length) {
@@ -108,11 +106,10 @@ class AudioPlayer extends React.Component {
     return Math.floor(Math.random() * n);
   }
   nextSong() {
-    //find currentsong playing
+
     let curSong =  this.props.songs.filter(
       (el, idx) => el.trackUrl === this.state.audio
     );
-
     if(this.state.repeat && this.audio.currentTime >= this.audio.duration){
       this.audio.currentTime = 0;
       this.setState({play: true, audio: curSong.trackUrl});
@@ -128,15 +125,22 @@ class AudioPlayer extends React.Component {
     let nextSong;
     this.addPlayedSongs(curSong[0]);
     this.emptyHistory();
+
     //find nextSong, if next song is already played, find another one
     if(this.state.random) {
       let difference = songList.filter(
         el => !playedSongs.includes(el));
-      nextSong = difference[this.getRandomNumber(difference.length)].trackUrl;
+      nextSong = difference[this.getRandomNumber(difference.length)];
+      this.props.setTitle(nextSong.title);
+      this.props.setArtist(nextSong.artist);
+      nextSong = nextSong.trackUrl;
     } else {
       nextIndex =
         (songList.indexOf(curSong[0]) + 1) % songList.length;
-      nextSong = songList[nextIndex].trackUrl;
+      nextSong = songList[nextIndex];
+      this.props.setTitle(nextSong.title);
+      this.props.setArtist(nextSong.artist);
+      nextSong = nextSong.trackUrl;
     }
 
     this.setState({play: true, audio: nextSong});
@@ -165,7 +169,8 @@ class AudioPlayer extends React.Component {
     let newArr = playedSongs;
     newArr.splice(length);
     let nextSong = this.state.audio;
-
+    this.props.setTitle(song.title);
+    this.props.setArtist(song.artist);
     this.setState({play:true, audio: song.trackUrl, nextSong, playedSongs: newArr });
   }
 
