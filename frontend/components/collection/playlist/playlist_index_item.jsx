@@ -5,17 +5,25 @@ class PlaylistIndexItem extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
-  handleClick(){
 
-    this.props.closeModal();
+  handleClick(){
+    if(this.props.closeModal) {
+      this.props.closeModal();
+    }
+  }
+  playMusic(){
+    this.props.fetchPlaylist(this.props.playlist.id);
+    this.props.setPhotoUrl(this.props.playlist.photoUrl);
+    this.props.setPlaylistId(this.props.playlist.id);
   }
   render() {
     const {playlist} = this.props;
-
     return (
       <div onClick={this.props.addSong} className="playlist-item" >
-
             <div onClick={this.handleClick} className="playlist-pic-wrapper">
+              <a onClick={this.playMusic.bind(this)} className="play-button">
+                <i className= "fa fa-play"></i>
+              </a>
               <img onClick={this.handleClick} src={playlist.photoUrl}></img>
             </div>
 

@@ -3,6 +3,13 @@
   font-size: 2.3em;
   position: relative;
 }
+.playlist-options:hover {
+  cursor: default;
+  transform: scale(1.03);
+}
+.playlist-options:focus, .playlist-options:active {
+  transform: scale(.97);
+}
 .options {
   display: flex;
   justify-content: center;

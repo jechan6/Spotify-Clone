@@ -40,11 +40,12 @@ class PlaylistDetail extends React.Component{
     }
     if(songs && songs.length >= 1) {
       songsList = <SongIndexContainer
-    
+        photoUrl={playlist.photoUrl}
         songs={songs}
         playlistId={playlist.id} addButton={true}/>;
     }
     if(!playlist && !songs) return null;
+
     return(
       <div className="show-details" onClick={this.hideOptions.bind(this)}>
         <div className="header-content">

@@ -7,6 +7,7 @@ import AudioPlayerContainer from '../featured/audio_player/audio_player_containe
 import AudioSoundContainer from '../featured/audio_player/audio_sound_container';
 import AudioInfoContainer from '../featured/audio_player/audio_info_container';
 
+
 class Collection extends React.Component {
   constructor(props) {
     super(props);
@@ -41,7 +42,8 @@ class Collection extends React.Component {
         {detail}
         <div className="playingbar-wrapper">
           <div className="audio-controls-container">
-            <AudioPlayerContainer />
+            <AudioInfoContainer />
+            <AudioPlayerContainer playlistId={this.props.playlistId} />
             <AudioSoundContainer />
           </div>
         </div>

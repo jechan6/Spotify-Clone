@@ -30,7 +30,7 @@ class SongIndexItem extends React.Component {
   }
   render() {
     const {song, handleClick} = this.props;
-    let audio = <audio src={song.trackUrl}/>;
+
     let options;
     let removeFromPlaylist;
 
@@ -56,7 +56,7 @@ class SongIndexItem extends React.Component {
 
     return(
       <div >
-        {audio}
+
         <div className="song-info">
           <div className="song-title-button">
             <button

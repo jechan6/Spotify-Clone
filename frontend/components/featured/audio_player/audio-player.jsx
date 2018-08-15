@@ -25,6 +25,7 @@ class AudioPlayer extends React.Component {
     this.prevSong = this.prevSong.bind(this);
     this.handleRandom = this.handleRandom.bind(this);
     this.handleRepeat = this.handleRepeat.bind(this);
+    this.handleSinglePlay = this.handleSinglePlay.bind(this);
   }
   componentDidMount() {
 
@@ -52,8 +53,16 @@ class AudioPlayer extends React.Component {
     return min + ":" + seconds;
   }
   componentWillReceiveProps(newProps) {
-    if(this.audio) {
+    
+    if(newProps.songs.length !== 0) {
+      this.setState({play: true, audio: newProps.songs[0].trackUrl})
+    } else if(newProps.audio) {
+      this.handleSinglePlay(newProps)
+    }
 
+  }
+  handleSinglePlay(newProps) {
+    if(this.audio) {
       this.audio.volume = this.props.volume;
     }
     if(!newProps.audio && !newProps.nextSong) {
@@ -69,7 +78,6 @@ class AudioPlayer extends React.Component {
     let audio = newProps.audio.trackUrl;
     let nextSong = newProps.nextSong.trackUrl;
     this.setState({play: true, audio, nextSong});
-
   }
 
   handlePlay(e) {

@@ -24,21 +24,24 @@
         width: 210px;
         text-align: center;
       }
-      .playlist-pic-wrapper{
-        box-shadow: 0 0 10px rgba(0,0,0,.3);
-        width: 100%;
-        height: 100%;
-        background-color: #282828;
-        padding: 30px;
-        display: inline-block;
-        box-shadow: 0 0 10px rgba(0,0,0,.3);
 
+      .play-button:hover{
+        transform: scale(1.06);
+        transition: 50ms all linear;
       }
       .playlist-pic-wrapper:hover {
-        background-color: rgba(0,0,0,.5);
+        background-color: rgba(0,0,0,.8);
         img {
           transition: all 50ms linear;
           opacity: 0.8;
+        }
+        .play-button {
+          color: white;
+          font-weight: 700;
+          border: 2px solid white;
+          .fa-play {
+            display: block;
+          }
         }
       }
 
@@ -60,4 +63,33 @@
       }
     }
   }
+}
+.playlist-pic-wrapper{
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-color: #282828;
+  padding: 30px;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  .play-button {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 0;
+    text-align: center;
+    border-radius: 50px;
+    margin: 45px 50px;
+    background: transparent;
+    border: 1px solid transparent;
+    z-index: 15;
+    .fa-play {
+      font-size: 18px;
+      margin: 20px 20px;
+      display: none;
+      color: white;
+    }
+  }
+
 }

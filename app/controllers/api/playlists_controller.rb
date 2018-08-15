@@ -1,3 +1,4 @@
+require "open-uri"
 class Api::PlaylistsController < ApplicationController
 
   def index
@@ -30,8 +31,10 @@ class Api::PlaylistsController < ApplicationController
   def update
     @playlist = Playlist.find(params[:id])
     song = Song.find(params[:songId])
-    debugger
+    file = song.album.photo.download
+
     @playlist.songs << song
+    @playlist.attach(io: file)
     @playlist.save
     render :show
   end
