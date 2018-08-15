@@ -3,11 +3,20 @@ import AudioPlayer from './audio-player';
 
 import {selectSongsFromPayload} from "../../../reducers/selectors";
 const mapStateToProps = (state,ownProps) => {
-  const playlist = state.entities.playlist[ownProps.playlistId];
 
+  let playlist;
+  let album;
+  if(ownProps.playlisId) {
+    playlist = state.entities.playlist[ownProps.playlistId];
+  } else if(state.audio.albumId) {
+    album = state.entities.albums[state.audio.albumId];
+  }
   let songs = null;
   if(playlist) {
     songs = selectSongsFromPayload(state, playlist);
+  } else if(album) {
+    songs = selectSongsFromPayload(state, album);
+
   }
 
   return {

@@ -5,7 +5,15 @@ class AlbumsIndexItem extends React.Component {
     super(props);
 
   }
+  handleSong(album) {
 
+    this.props.receiveCurrentSong(Object.values(album.payload.songs)[0]);
+  }
+  playMusic() {
+    this.props.fetchAlbum(this.props.album.id).then(album => this.handleSong(album));
+    this.props.setPhotoUrl(this.props.album.photoUrl);
+    this.props.setAlbumId(this.props.album.id);
+  }
   render() {
     const {album} = this.props;
 

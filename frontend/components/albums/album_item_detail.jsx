@@ -29,7 +29,7 @@ class AlbumItemDetail extends React.Component {
             <h1 className="content-info">{album.year} • {album.songIds.length} SONGS </h1>
           </div>
           <div className="song-list">
-            <SongIndexContainer photoUrl={album.photoUrl} songs={songs}/>
+            <SongIndexContainer photoUrl={album.photoUrl} albumId={album.id} songs={songs}/>
           </div>
         </div>
       </div>

@@ -14,6 +14,15 @@ class Featured extends React.Component {
     this.state = {
       showNav: true
     };
+    this.handleTitle = this.handleTitle.bind(this);
+    this.handleArtist = this.handleArtist.bind(this);
+  }
+  handleTitle(title) {
+
+    this.setState({title});
+  }
+  handleArtist(artist) {
+    this.setState({artist});
   }
   componentWillReceiveProps(newProps) {
     this.setState({showNav: newProps.match.showNav});
@@ -44,8 +53,10 @@ class Featured extends React.Component {
         {detail}
 
         <div className="audio-controls-container">
-          <AudioInfoContainer />
-          <AudioPlayerContainer />
+          <AudioInfoContainer title={this.state.title} artist={this.state.artist}/>
+          <AudioPlayerContainer
+            setArtist={this.handleArtist}
+            setTitle={this.handleTitle}/>
           <AudioSoundContainer />
         </div>
 

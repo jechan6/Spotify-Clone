@@ -31,7 +31,7 @@ class AudioPlayer extends React.Component {
 
     this.setState({currentTime: "0:00"})
     this.audio.addEventListener("timeupdate", () => {
-      if(this.audio.currentTime === this.audio.duration) {
+      if(this.audio && this.audio.currentTime === this.audio.duration) {
         this.nextSong();
       }
       let currentTime = this.formatTime(this.audio.currentTime);
@@ -53,7 +53,7 @@ class AudioPlayer extends React.Component {
     return min + ":" + seconds;
   }
   componentWillReceiveProps(newProps) {
-
+    debugger;
     if(newProps.audio && newProps.audio.trackUrl) {
       let audio = newProps.audio.trackUrl;
       this.props.setTitle(newProps.audio.title);
