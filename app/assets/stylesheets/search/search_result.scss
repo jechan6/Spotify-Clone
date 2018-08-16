@@ -26,6 +26,17 @@
       }
     }
   }
+  .searched-playlist {
+    text-align: left;
+    display: flex;
+    justify-content: flex-start;
+    .playlist-container {
+      margin: 0 auto;
+      .playlist-index-container {
+        margin: 0;
+      }
+    }
+  }
   .results-list-container {
     display: flex;
     margin: 0 auto;

@@ -75,7 +75,10 @@ class SearchResultItem extends React.Component {
               <SongIndexContainer songs={songs} photoUrl={result.photoUrl}/>
             </div>
           </div>
-        : <PlaylistContainer playlist={this.props.playlist}/>}
+        :
+        <div className="searched-playlist">
+          <PlaylistContainer playlist={this.props.playlist}/>
+        </div>}
       </div>
     );
   }

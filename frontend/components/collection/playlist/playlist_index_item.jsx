@@ -25,7 +25,20 @@ class PlaylistIndexItem extends React.Component {
 
   render() {
     const {playlist} = this.props;
+    let photos;
 
+    if(playlist.photos.length > 3) {
+      // photos = playlist.photos;
+      // <div className="playlist-image-wrapper">
+      //   <div className="first-row">
+      //     // <div className="playlist-image"
+      //     //   style="background-image: url(" + photos[0] + ");\""">
+      //     // </div>
+      //   </div>
+      //   <div className="second-row">
+      //   </div>
+      // </div>
+    }
     return (
       <div className="playlist-item" >
             <div onClick={this.handleClick} className="playlist-pic-wrapper">
