@@ -1,7 +1,7 @@
 .featured-container {
   background-image: linear-gradient(rgb(51, 62, 53), rgb(7, 8, 7) 85%);
   width: 100%;
-  height: 100vh;
+  min-height: 100%;
   position: relative;
 }
 .featured-nav {
@@ -10,6 +10,7 @@
   margin: 0 auto;
   margin-left: 14.2%;
   max-width: 1480px;
+  padding-bottom: 60px;
 }
 .featured-links {
   display: flex;
@@ -53,7 +54,7 @@
     border-radius: 50px;
     position: absolute;
     right: 0;
-    margin-right: 98px;
+    margin-right: 139px;
     border: 0;
     color: white;
     letter-spacing: .16em;

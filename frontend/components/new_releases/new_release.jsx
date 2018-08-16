@@ -14,6 +14,8 @@ class NewReleases extends React.Component {
     return(
       <div className="show-container">
         <div className="albums-container">
+          <div className="newrelease-header"><h1>New albums</h1></div>
+
           <AlbumsContainer/>
         </div>
       </div>

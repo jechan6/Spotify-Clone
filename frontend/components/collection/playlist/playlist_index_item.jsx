@@ -12,7 +12,7 @@ class PlaylistIndexItem extends React.Component {
     }
   }
   handleSong(playlist) {
-
+    if(!playlist.payload.songs) return;
     this.props.receiveCurrentSong(Object.values(playlist.payload.songs)[0]);
   }
   playMusic(){

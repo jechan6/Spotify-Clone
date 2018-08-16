@@ -19,9 +19,14 @@ class AlbumsIndexItem extends React.Component {
 
     const renderItems = () => (
       <div className="album-item" onClick={() => this.props.onClick(album)} >
-          <div className="image-wrapper">
-            <img src={album.photoUrl}></img>
-          </div>
+        <div className="album-pic-wrapper">
+          <a onClick={this.playMusic.bind(this)} className="play-button">
+            <i className= "fa fa-play"></i>
+          </a>
+
+            <img className="album-photo" src={album.photoUrl}></img>
+
+        </div>
           <Link to={`/album/${album.id}`} className="album-title">{album.title}</Link>
           <a className="album-artist">{album.artist}</a>
       </div>

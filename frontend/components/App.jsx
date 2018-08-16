@@ -5,12 +5,14 @@ import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import NewReleaseContainer from './new_releases/new_release_container';
 import FeaturedComponent from './featured/featured_container';
+import SearchContainer from './search/search_container';
+import SearchResult from './search/search_result';
 import CollectionContainer from './collection/collection_container';
 import NavSidebar from './featured/nav_sidebar';
 import Modal from './modal/modal';
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
 const App = () => (
-  <div>
+  <div className="app-container">
     <Modal />
     <Switch>
       // <Route path="/collection" component={NavSidebar}/>
@@ -25,6 +27,8 @@ const App = () => (
     <ProtectedRoute path="/playlist/:playlistId" component={CollectionContainer}/>
     <ProtectedRoute path="/collection/playlists"
       component={CollectionContainer}/>
+    <ProtectedRoute path="/search" component={SearchContainer}/>
+    <ProtectedRoute path="/search/result" component={SearchResult}/>
   </div>
 );
 

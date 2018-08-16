@@ -33,7 +33,6 @@ class AlbumsIndex extends React.Component {
     );
     const renderItems = () => (
       <div>
-        <div className="newrelease-header"><h1>New albums</h1></div>
         <div className="albums-index-container">
           {this.props.albums.map((album) => (
             <AlbumsIndexItem

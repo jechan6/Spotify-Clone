@@ -2,23 +2,23 @@
 .collection-container {
   background-image: linear-gradient(rgb(74, 83, 70), rgb(7, 8, 7) 85%);
   background-image: cover;
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 120px;
 }
 .playlist-container {
   text-align: center;
-  margin-top: 50px;
-  display: flex;
-  align-items: baseline;
+
   height: 100%;
   .playlist-index-container {
     max-width: 1480px;
     display: grid;
-    position: relative;
-    margin-left: 18%;
+    margin-left: 20%;
     margin-right: 82%;
     grid-template-columns: repeat(6, 150px);
-    grid-template-rows: repeat(6, 150px);
-    grid-gap: 10%;
-    grid-row-gap: 150px;;
+
+    grid-gap: 75px;
+    grid-row-gap: 40px;;
     .playlist-item {
       .playlist-name {
         width: 210px;
@@ -91,5 +91,7 @@
       color: white;
     }
   }
-
+}
+.playlist-pic-wrapper:active{
+  transform: scale(.96);
 }

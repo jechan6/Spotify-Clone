@@ -9,6 +9,7 @@
 
   .newrelease-header {
     font-size: 36px;
+    font-weight: 600;
     line-height: 44px;
     color: white;
     letter-spacing: -.005em;
@@ -23,15 +24,14 @@
     position: relative;
     left: 10%;
     margin-bottom: 30%;
-    grid-template-columns: repeat(6, 250px);
+    grid-template-columns: repeat(6, 220px);
     grid-column-gap: 2%;
     .album-item {
       height: auto;
       width: auto;
-    
       img {
-        height: 230px;
-        width: 250px;
+        height: 220px;
+        width: 220px;
       }
       .album-title {
         display: block;

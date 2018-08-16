@@ -53,7 +53,7 @@ class AudioPlayer extends React.Component {
     return min + ":" + seconds;
   }
   componentWillReceiveProps(newProps) {
-    debugger;
+
     if(newProps.audio && newProps.audio.trackUrl) {
       let audio = newProps.audio.trackUrl;
       this.props.setTitle(newProps.audio.title);
@@ -94,7 +94,7 @@ class AudioPlayer extends React.Component {
     return Math.floor(Math.random() * n);
   }
   nextSong() {
-
+  
     let curSong =  this.props.songs.filter(
       (el, idx) => el.trackUrl === this.state.audio
     );

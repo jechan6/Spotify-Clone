@@ -3,6 +3,7 @@ import {fetchAlbum} from '../../actions/album_actions';
 import {fetchSongs} from '../../actions/song_action';
 import AlbumItemDetail from './album_item_detail';
 import {selectSongsFromPayload} from '../../reducers/selectors';
+
 const mapStateToProps = (state, ownProps) => {
   const album = state.entities.albums[ownProps.albumId];
   let songs = null;

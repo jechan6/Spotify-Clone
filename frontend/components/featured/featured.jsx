@@ -6,6 +6,7 @@ import FeaturedNav from './featured_nav';
 import NewReleaseContainer from '../new_releases/new_release_container';
 import AudioPlayerContainer from './audio_player/audio_player_container';
 import AlbumItemDetailContainer from '../albums/album_item_detail_container';
+import AlbumsContainer from '../albums/albums_container';
 import AudioSoundContainer from '../featured/audio_player/audio_sound_container';
 import AudioInfoContainer from '../featured/audio_player/audio_info_container';
 class Featured extends React.Component {
@@ -32,9 +33,17 @@ class Featured extends React.Component {
     let newrelease;
     let detail;
     let featuredNav;
+    let featured;
     if(this.props.match) {
       if (this.props.match.path === "/browse/newreleases") {
-        newrelease = <NewReleaseContainer />
+        newrelease = <NewReleaseContainer />;
+      } else if(this.props.match.path === "/browse/featured") {
+        featured =  <div className="show-container">
+                      <div className="albums-container">
+                        <div className="newrelease-header"><h1>Soundtrack for your day</h1></div>
+                          <AlbumsContainer/>
+                      </div>
+                    </div>
       }
       if (this.props.match.path === "/album/:albumId") {
         detail = <AlbumItemDetailContainer
@@ -50,6 +59,7 @@ class Featured extends React.Component {
         <NavSidebar logout={logout} currentUser={currentUser}/>
         {featuredNav}
         {newrelease}
+        {featured}
         {detail}
 
         <div className="audio-controls-container">

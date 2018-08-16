@@ -1,0 +1,62 @@
+.search-results {
+  width: 100%;
+}
+.results-container {
+
+  .result-nav {
+    .nav-items {
+      color: rgba(255,255,255,0.6);
+      display: flex;
+      margin: 0 auto;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      li{
+        font-size: 14px;
+        line-height: 16px;
+        font-weight: 400;
+        letter-spacing: .16em;
+        padding: .8em .8em 0;
+        margin: .8em;
+      }
+      li:hover {
+        color: white;
+        cursor: pointer;
+        transition: 200ms all linear;
+      }
+    }
+  }
+  .results-list-container {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1480px;
+    padding: 0 2em;
+    .result-songs {
+      width: 100%;
+      margin-left: 15px;
+    }
+  }
+  .result-info {
+    max-width: 450px;
+    text-align: center;
+
+    img{
+      width: 250px;
+      height: 250px;
+    }
+    .result-title {
+      color: white;
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: .015em;
+      font-weight: 400;
+    }
+    .result-creator {
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+      line-height: 20px;
+      letter-spacing: .015em;
+      font-weight: 400;
+    }
+  }
+}

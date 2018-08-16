@@ -3,11 +3,11 @@
 .song-wrapper:hover {
   background: rgba(0,0,0,.3);
   transition: .2s all linear;
-  height: 4.56em;
+
 }
 .song-wrapper{
   padding: 20px;
-  height: 4.56em;
+  height: 2em;
   .song-play-button {
 
     background: transparent;
@@ -31,8 +31,8 @@
     .song-title {
       display: inline;
       color: white;
-      font-size: 20px;
-      letter-spacing: .1em;
+      font-size: 16px;
+      letter-spacing: .015em;
       line-height: 22px;
     }
   }

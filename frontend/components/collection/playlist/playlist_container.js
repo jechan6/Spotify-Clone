@@ -7,10 +7,11 @@ import {selectSongsFromPayload} from "../../../reducers/selectors";
 import {setPhotoUrl} from "../../../actions/audio_action";
 
 import PlaylistIndex from './playlist_index';
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
 
   return {
-    playlists: Object.values(state.entities.playlist),
+    playlists: ownProps.playlist ? ownProps.playlist :
+     Object.values(state.entities.playlist),
     songs: state.entities.songs
   };
 };
@@ -21,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
   fetchPlaylist: (id) => dispatch(fetchPlaylist(id)),
   setPlaylistId: id => dispatch(setPlaylistId(id)),
   fetchSongs: () => dispatch(fetchSongs()),
-  setPhotoUrl: () => dispatch(setPhotoUrl()),
+  setPhotoUrl: (url) => dispatch(setPhotoUrl(url)),
   receiveCurrentSong: song => dispatch(receiveCurrentSong(song))
 });
 
