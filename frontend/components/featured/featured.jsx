@@ -61,15 +61,6 @@ class Featured extends React.Component {
         {newrelease}
         {featured}
         {detail}
-
-        <div className="audio-controls-container">
-          <AudioInfoContainer title={this.state.title} artist={this.state.artist}/>
-          <AudioPlayerContainer
-            setArtist={this.handleArtist}
-            setTitle={this.handleTitle}/>
-          <AudioSoundContainer />
-        </div>
-
       </div>
     );
   }

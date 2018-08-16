@@ -4,6 +4,9 @@ import {Route, Switch} from 'react-router';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import NewReleaseContainer from './new_releases/new_release_container';
+import AudioPlayerContainer from './featured/audio_player/audio_player_container';
+import AudioInfoContainer from './featured/audio_player/audio_info_container';
+import AudioSoundContainer from './featured/audio_player/audio_sound_container';
 import FeaturedComponent from './featured/featured_container';
 import SearchContainer from './search/search_container';
 import SearchResult from './search/search_result';
@@ -21,6 +24,9 @@ const App = () => (
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
     </Switch>
+    <ProtectedRoute path="/" component={AudioPlayerContainer}/>
+
+
     <ProtectedRoute path="/browse/featured" component={FeaturedComponent}/>
     <ProtectedRoute path="/browse/newreleases" component={FeaturedComponent}/>
     <ProtectedRoute path="/album/:albumId" component={FeaturedComponent}/>

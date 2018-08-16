@@ -4,6 +4,7 @@ import {fetchSongs} from '../../../actions/song_action';
 import {selectSongsFromPayload} from "../../../reducers/selectors";
 import {openModal} from "../../../actions/modal_actions";
 import PlaylistDetail from "./playlist_detail";
+import {setPlaylistId} from "../../../actions/audio_action";
 import React from 'react';
 const mapStateToProps = (state,ownProps) => {
   const playlist = state.entities.playlist[ownProps.playlistId];
@@ -12,9 +13,11 @@ const mapStateToProps = (state,ownProps) => {
   if(playlist) {
     songs = selectSongsFromPayload(state, playlist);
   }
+
   return {
     playlist,
-    songs
+    songs,
+    setPlaylistId: ownProps.setPlaylistId
   };
 };
 
@@ -22,6 +25,7 @@ const mapDispatchToProps = dispatch => ({
   fetchPlaylist: id => dispatch(fetchPlaylist(id)),
   fetchSongs: () => dispatch(fetchSongs()),
   deletePlaylist: id => dispatch(deletePlaylist(id)),
+  setPlaylistId: id => dispatch(setPlaylistId(id)),
   otherForm: (
     <button
     className="menu-item"

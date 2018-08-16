@@ -8,12 +8,15 @@ class PlaylistDetail extends React.Component{
       showOptions: false
     };
     this.toggleOptions = this.toggleOptions.bind(this);
+    this.handlePlay = this.handlePlay.bind(this);
   }
   componentDidMount() {
     this.props.fetchPlaylist(this.props.playlistId);
     this.props.fetchSongs();
   }
-
+  handlePlay() {
+    this.props.setPlaylistId(this.props.playlistId);
+  }
   toggleOptions(e) {
     this.setState({showOptions: !this.state.showOptions});
   }
@@ -34,7 +37,6 @@ class PlaylistDetail extends React.Component{
     if(this.state.showOptions){
       options =
         <div onClick={this.toggleOptions} className="modal-container">
-
         {this.props.otherForm}
         </div>
     }
@@ -42,7 +44,8 @@ class PlaylistDetail extends React.Component{
       songsList = <SongIndexContainer
         photoUrl={playlist.photoUrl}
         songs={songs}
-        playlistId={playlist.id} addButton={true}/>;
+        handlePlay={this.handlePlay}
+        addButton={true}/>;
     }
     if(!playlist && !songs) return null;
 

@@ -1,6 +1,7 @@
 import {connect} from "react-redux";
 import {logout} from '../../actions/session_action';
 import Collection from './collection';
+
 const mapStateToProps = (state, ownProps) => {
 
   return {

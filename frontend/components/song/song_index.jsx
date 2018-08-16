@@ -15,11 +15,11 @@ class SongIndex extends React.Component {
     let index = (this.props.songs.indexOf(song)+1) % this.props.songs.length;
     let nextSong = this.props.songs[index];
     this.props.receiveCurrentSong(song);
-    this.props.receiveNextSong(nextSong);
-    this.props.setAlbumId(this.props.albumId);
-    this.props.setPlaylistId(this.props.playlistId);
-
     this.props.setPhotoUrl(this.props.photoUrl);
+    this.props.setPlaylistId(this.props.playlistId);
+    this.props.setAlbumId(this.props.albumId);
+    this.props.handlePlay();
+
   }
   render() {
     const {songs} = this.props;
@@ -34,7 +34,6 @@ class SongIndex extends React.Component {
                     handleClick={this.handleClick}
                     otherForm={this.props.otherForm}
                     addButton={this.props.addButton}
-                    playlistId={this.props.playlistId}
                     deleteSong={this.props.deleteSong}
                     history={this.props.history}
                     hideOptions={this.props.hideOptions}

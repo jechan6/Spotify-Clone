@@ -31,7 +31,6 @@ class Api::PlaylistsController < ApplicationController
   def update
     @playlist = Playlist.find(params[:id])
     song = Song.find(params[:songId])
-    file = song.album.photo.download
 
     @playlist.songs << song
     @playlist.attach(io: file)

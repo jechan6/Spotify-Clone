@@ -3,6 +3,7 @@ import SongIndexContainer from '../song/song_index_container';
 class AlbumItemDetail extends React.Component {
   constructor(props) {
     super(props);
+    this.handlePlay = this.handlePlay.bind(this);
 
   }
   componentDidMount() {
@@ -10,7 +11,10 @@ class AlbumItemDetail extends React.Component {
     this.props.fetchSongs();
 
   }
+  handlePlay() {
 
+    this.props.setAlbumId(this.props.albumId);
+  }
   render() {
 
     const {album} = this.props;
@@ -29,7 +33,7 @@ class AlbumItemDetail extends React.Component {
             <h1 className="content-info">{album.year} • {album.songIds.length} SONGS </h1>
           </div>
           <div className="song-list">
-            <SongIndexContainer photoUrl={album.photoUrl} albumId={album.id} songs={songs}/>
+            <SongIndexContainer handlePlay={this.handlePlay} photoUrl={album.photoUrl} albumId={album.id} songs={songs}/>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import PlaylistContainer from './playlist/playlist_container';
 import PlaylistDetailContainer from './playlist/playlist_detail_container';
 import CollectionNavContainer from './collection_nav_container';
+
 import NavSidebar from '../featured/nav_sidebar';
 import AudioPlayerContainer from '../featured/audio_player/audio_player_container';
 import AudioSoundContainer from '../featured/audio_player/audio_sound_container';
@@ -25,6 +26,7 @@ class Collection extends React.Component {
   handleArtist(artist) {
     this.setState({artist});
   }
+
   render() {
     const {logout, currentUser} = this.props;
     let playlists;
@@ -54,14 +56,7 @@ class Collection extends React.Component {
         {playlists}
         {detail}
         <div className="playingbar-wrapper">
-          <div className="audio-controls-container">
-            <AudioInfoContainer title={this.state.title} artist={this.state.artist} />
-            <AudioPlayerContainer
-              setArtist={this.handleArtist}
-              setTitle={this.handleTitle}
-              playlistId={this.props.playlistId} />
-            <AudioSoundContainer />
-          </div>
+
         </div>
       </div>
     );

@@ -1,5 +1,7 @@
 import React from 'react';
 import AudioSound from './audio-player';
+import AudioInfoContainer from './audio_info_container';
+import AudioSoundContainer from './audio_sound_container';
 //code written by following guide at http://nael.io/2017-03-11-building-a-react-audio-player/
 class AudioPlayer extends React.Component {
   constructor(props) {
@@ -12,6 +14,7 @@ class AudioPlayer extends React.Component {
       repeat: false,
       currentTime: 0,
       duration: "0:00",
+      songs: [],
       title: "",
       artist: "",
       playedSongs: []};
@@ -30,39 +33,21 @@ class AudioPlayer extends React.Component {
   componentDidMount() {
     this.currentTimeInterval = null;
     this.setState({currentTime: "0:00"})
-    let that = this;
     this.audio.onplay = () => {
 			this.currentTimeInterval = setInterval( () => {
-				that.props.setCurrentTime(this.audio.currentTime);
+				this.audio.volume = this.props.volume
 			}, 500);
 		};
     this.audio.onpause = () => {
-      this.audio.currentTime = this.props.songTime;
-      this.audio.play();
 			clearInterval(this.currentTimeInterval);
 		};
-    this.audio.onloadedmetadata = function() {
-      this.audio.currentTime = this.props.songTime;
-    }.bind(this);
-
     this.audio.addEventListener("timeupdate", () => {
-      if(that.props.songInPlay) {
-        if(that.props.songtime) {
-          this.audio.currentTime = that.props.songtime;
-        }
-      }
       if(this.audio && this.audio.currentTime === this.audio.duration) {
         this.nextSong();
       }
-      if(this.audio && this.audio !== this.props.songInPlay) {
-
-      }
-      let currentTime = this.formatTime(this.audio.currentTime);
       if(this.audio.duration) {
         this.setState({duration: this.formatTime(this.audio.duration)})
       }
-
-      this.setState({currentTime});
       let ratio =
         this.audio.currentTime / this.audio.duration;
       let position =
@@ -81,13 +66,18 @@ class AudioPlayer extends React.Component {
 
     if(newProps.audio && newProps.audio.trackUrl) {
       let audio = newProps.audio.trackUrl;
-      this.props.setTitle(newProps.audio.title);
-      this.props.setArtist(newProps.audio.artist);
+      // if(this.props.setTitle && this.props.setArtist) {
+      //
+      //   this.props.setTitle(newProps.audio.title);
+      //   this.props.setArtist(newProps.audio.artist);
+      // }
       this.setState({play: true, audio});
     } else if(newProps.songs && newProps.songs.length !== 0) {
-      this.setState({play: true, audio: newProps.songs[0].trackUrl});
-      this.props.setTitle(newProps.songs[0].title);
-      this.props.setArtist(newProps.songs[0].artist);
+      this.setState({play: true, audio: newProps.songs[0].trackUrl, songs: newProps.songs});
+      // if(this.props.setTitle && this.props.setArtist) {
+      //   this.props.setTitle(newProps.songs[0].title);
+      //   this.props.setArtist(newProps.songs[0].artist);
+      // }
     }
 
   }
@@ -96,11 +86,11 @@ class AudioPlayer extends React.Component {
   handlePlay(e) {
     e.preventDefault();
 
-    if(!this.audio.duration ) return;
     if(this.state.play) {
       this.audio.pause();
       this.setState({play: false});
     } else {
+
       this.audio.play();
       this.setState({play: true});
     }
@@ -111,7 +101,7 @@ class AudioPlayer extends React.Component {
     this.setState({playedSongs: newArr});
   }
   emptyHistory() {
-    if(this.state.playedSongs.length >= this.props.songs.length) {
+    if(this.state.playedSongs.length >= this.state.songs.length) {
       this.setState({playedSongs: []});
     }
   }
@@ -120,7 +110,7 @@ class AudioPlayer extends React.Component {
   }
   nextSong() {
 
-    let curSong =  this.props.songs.filter(
+    let curSong =  this.state.songs.filter(
       (el, idx) => el.trackUrl === this.state.audio
     );
     if(this.state.repeat && this.audio.currentTime >= this.audio.duration){
@@ -132,7 +122,7 @@ class AudioPlayer extends React.Component {
       this.setState({repeat: !this.state.repeat});
       this.repeatButton.classList.remove('rand-selected');
     }
-    let songList = this.props.songs;
+    let songList = this.state.songs;
     let playedSongs = this.state.playedSongs;
     let nextIndex;
     let nextSong;
@@ -144,19 +134,18 @@ class AudioPlayer extends React.Component {
       let difference = songList.filter(
         el => !playedSongs.includes(el));
       nextSong = difference[this.getRandomNumber(difference.length)];
-      this.props.setTitle(nextSong.title);
-      this.props.setArtist(nextSong.artist);
-      nextSong = nextSong.trackUrl;
+
     } else {
       nextIndex =
         (songList.indexOf(curSong[0]) + 1) % songList.length;
       nextSong = songList[nextIndex];
-      this.props.setTitle(nextSong.title);
-      this.props.setArtist(nextSong.artist);
-      nextSong = nextSong.trackUrl;
+
     }
 
-    this.setState({play: true, audio: nextSong});
+    this.props.receiveCurrentSong(nextSong);
+    if(nextSong) {
+      this.setState({play: true, audio: nextSong.trackUrl});
+    }
   }
   prevSong() {
     let playedSongs = this.state.playedSongs;
@@ -165,7 +154,7 @@ class AudioPlayer extends React.Component {
       this.backButton.setAttribute("disabled", "");
       return;
     }
-    let songList = this.props.songs;
+    let songList = this.state.songs;
     let curSong =  songList.filter(
       (el, idx) => el.trackUrl === this.state.audio
     );
@@ -182,8 +171,7 @@ class AudioPlayer extends React.Component {
     let newArr = playedSongs;
     newArr.splice(length);
     let nextSong = this.state.audio;
-    this.props.setTitle(song.title);
-    this.props.setArtist(song.artist);
+    this.props.receiveCurrentSong(song);
     this.setState({play:true, audio: song.trackUrl, nextSong, playedSongs: newArr });
   }
 
@@ -223,6 +211,7 @@ class AudioPlayer extends React.Component {
     this.setState({repeat: !this.state.repeat});
   }
   mouseMove(e) {
+
     this.handlePosition(e.pageX);
     this.audio.currentTime =
       ((e.pageX - this.timeline.offsetLeft)
@@ -242,56 +231,60 @@ class AudioPlayer extends React.Component {
   render() {
 
     return(
-      <div className="song-playing-bar">
-        <div className="middle-container">
-          <audio src={this.state.audio} ref={audio => {this.audio = audio} } autoPlay/>
-          <div className="audio-controls">
-              <button onClick={this.handleRandom} className="song-option-buttons">
+      <div className="audio-controls-container">
+        <AudioInfoContainer />
+        <div className="song-playing-bar">
+          <div className="middle-container">
+            <audio src={this.state.audio} ref={audio => {this.audio = audio} } autoPlay/>
+            <div className="audio-controls">
+                <button onClick={this.handleRandom} className="song-option-buttons">
 
-                <i className="fa fa-random fa-light" aria-hidden="true"
-                  ref={randButton => {this.randButton = randButton}}>
-                  <div className="rand-dot"></div></i>
-              </button>
-              <button onClick={this.prevSong} className="song-option-buttons"
-                ref={backButton => {this.backButton = backButton} } >
-                <i className="fa fa-step-backward" aria-hidden="true"></i>
-              </button>
-              <a onClick={this.handlePlay} className="play-button">
-                <i  className={!this.state.play ?
-                    "fa fa-play" :
-                    "fa fa-pause"}></i>
-                </a>
-                <button onClick={this.nextSong} className="song-option-buttons">
-                  <i className="fa fa-step-forward" aria-hidden="true"></i>
-                </button>
-                <button onClick={this.handleRepeat} className="song-option-buttons">
-                  <i className="fa fas fa-redo"
-                    ref={repeatButton => {this.repeatButton = repeatButton}}>
+                  <i className="fa fa-random fa-light" aria-hidden="true"
+                    ref={randButton => {this.randButton = randButton}}>
                     <div className="rand-dot"></div></i>
                 </button>
+                <button onClick={this.prevSong} className="song-option-buttons"
+                  ref={backButton => {this.backButton = backButton} } >
+                  <i className="fa fa-step-backward" aria-hidden="true"></i>
+                </button>
+                <a onClick={this.handlePlay} className="play-button">
+                  <i  className={!this.state.play ?
+                      "fa fa-play" :
+                      "fa fa-pause"}></i>
+                  </a>
+                  <button onClick={this.nextSong} className="song-option-buttons">
+                    <i className="fa fa-step-forward" aria-hidden="true"></i>
+                  </button>
+                  <button onClick={this.handleRepeat} className="song-option-buttons">
+                    <i className="fa fas fa-redo"
+                      ref={repeatButton => {this.repeatButton = repeatButton}}>
+                      <div className="rand-dot"></div></i>
+                  </button>
 
-              </div>
-              <div className="sound-timline">
-                <div className="song-time">{this.state.currentTime}</div>
-                <div className="progress-bar"
-                  onClick={this.mouseMove}
-                  ref={(timeline) => { this.timeline = timeline }}>
+                </div>
+                <div className="sound-timline">
+                  <div className="song-time">{this.state.currentTime}</div>
+                  <div className="progress-bar"
+                    onClick={this.mouseMove}
+                    ref={(timeline) => { this.timeline = timeline }}>
 
-                  <div className="progress-timeline">
+                    <div className="progress-timeline">
 
-                    <div className="handle"
-                      onMouseDown={this.mouseDown}
-                      ref={(handle) => { this.handle = handle }}>
-                    </div>
-                    <div className="handle-circle"
-                      onMouseDown={this.mouseDown}
-                      ref={(handleCircle) => {this.handleCircle = handleCircle}}>
+                      <div className="handle"
+                        onMouseDown={this.mouseDown}
+                        ref={(handle) => { this.handle = handle }}>
+                      </div>
+                      <div className="handle-circle"
+                        onMouseDown={this.mouseDown}
+                        ref={(handleCircle) => {this.handleCircle = handleCircle}}>
+                      </div>
                     </div>
                   </div>
+                  <div className="song-time">{this.state.duration}</div>
                 </div>
-                <div className="song-time">{this.state.duration}</div>
-              </div>
+          </div>
         </div>
+        <AudioSoundContainer />
       </div>
     );
   }
