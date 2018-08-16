@@ -14,12 +14,14 @@ class SongIndex extends React.Component {
   handleClick(song) {
     let index = (this.props.songs.indexOf(song)+1) % this.props.songs.length;
     let nextSong = this.props.songs[index];
-    this.props.receiveCurrentSong(song);
-    this.props.setPhotoUrl(this.props.photoUrl);
-    this.props.setPlaylistId(this.props.playlistId);
-    this.props.setAlbumId(this.props.albumId);
-    this.props.handlePlay();
 
+    this.props.receiveCurrentSong(song);
+    this.props.receiveNextSong(nextSong);
+    this.props.setAlbumId(this.props.albumId);
+    this.props.setPlaylistId(this.props.playlistId);
+    this.props.setTitle(song.title);
+    this.props.setArtist(song.artist);
+    this.props.setPhotoUrl(this.props.photoUrl);
   }
   render() {
     const {songs} = this.props;

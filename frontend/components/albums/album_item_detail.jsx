@@ -12,8 +12,9 @@ class AlbumItemDetail extends React.Component {
 
   }
   handlePlay() {
-
-    this.props.setAlbumId(this.props.albumId);
+    return() => {
+      this.props.setAlbumId(this.props.albumId);
+    }
   }
   render() {
 

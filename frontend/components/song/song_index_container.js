@@ -4,6 +4,7 @@ import SongIndex from './song_index';
 import {receiveCurrentSong, receiveNextSong} from "../../actions/song_action";
 import {updatePlaylist, deleteSong} from "../../actions/playlist_actions";
 import {setPhotoUrl, setPlaylistId, setAlbumId} from "../../actions/audio_action";
+import {setTitle, setArtist} from "../../actions/audio_action";
 import {openModal} from "../../actions/modal_actions";
 import {withRouter} from "react-router-dom";
 import React from 'react';
@@ -28,6 +29,8 @@ const mapDispatchToProps = dispatch => ({
   setPhotoUrl: (photo) => dispatch(setPhotoUrl(photo)),
   setPlaylistId: id => dispatch(setPlaylistId(id)),
   setAlbumId: id => dispatch(setAlbumId(id)),
+  setTitle: title => dispatch(setTitle(title)),
+  setArtist: artist => dispatch(setArtist(artist)),
   otherForm: (
     <button
     className="menu-item"

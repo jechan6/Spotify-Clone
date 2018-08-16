@@ -12,7 +12,7 @@ class PlaylistIndex extends React.Component {
   }
 
   render() {
-    debugger;
+
     return(
       <div className="playlist-container">
         <div className="playlist-index-container">

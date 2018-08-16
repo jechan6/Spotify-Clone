@@ -10,7 +10,6 @@ const mapStateToProps = (state,ownProps) => {
   let album;
 
   if(state.audio.playlistId) {
-
     playlist = state.entities.playlist[state.audio.playlistId];
   } else if(state.audio.albumId) {
     album = state.entities.albums[state.audio.albumId];
@@ -35,6 +34,7 @@ const mapStateToProps = (state,ownProps) => {
 const mapDispatchToProps = dispatch => ({
   setSongPlaying: song => dispatch(setSongPlaying(song)),
   setCurrentTime: time => dispatch(setCurrentTime(time)),
-  receiveCurrentSong: song => dispatch(receiveCurrentSong(song))
+  receiveCurrentSong: song => dispatch(receiveCurrentSong(song)),
+  setTitle: title => dispatch(setTitle(title))
 });
 export default connect(mapStateToProps,mapDispatchToProps)(AudioPlayer);

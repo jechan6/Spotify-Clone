@@ -37,10 +37,12 @@ class AudioPlayer extends React.Component {
 			this.currentTimeInterval = setInterval( () => {
 				this.audio.volume = this.props.volume
 			}, 500);
+
 		};
     this.audio.onpause = () => {
 			clearInterval(this.currentTimeInterval);
 		};
+
     this.audio.addEventListener("timeupdate", () => {
       if(this.audio && this.audio.currentTime === this.audio.duration) {
         this.nextSong();
@@ -48,6 +50,8 @@ class AudioPlayer extends React.Component {
       if(this.audio.duration) {
         this.setState({duration: this.formatTime(this.audio.duration)})
       }
+      let currentTime = this.formatTime(this.audio.currentTime);
+       this.setState({currentTime});
       let ratio =
         this.audio.currentTime / this.audio.duration;
       let position =
@@ -64,20 +68,11 @@ class AudioPlayer extends React.Component {
 
   componentWillReceiveProps(newProps) {
 
-    if(newProps.audio && newProps.audio.trackUrl) {
+    if(newProps.audio && newProps.audio.trackUrl !== this.state.audio) {
       let audio = newProps.audio.trackUrl;
-      // if(this.props.setTitle && this.props.setArtist) {
-      //
-      //   this.props.setTitle(newProps.audio.title);
-      //   this.props.setArtist(newProps.audio.artist);
-      // }
       this.setState({play: true, audio});
     } else if(newProps.songs && newProps.songs.length !== 0) {
       this.setState({play: true, audio: newProps.songs[0].trackUrl, songs: newProps.songs});
-      // if(this.props.setTitle && this.props.setArtist) {
-      //   this.props.setTitle(newProps.songs[0].title);
-      //   this.props.setArtist(newProps.songs[0].artist);
-      // }
     }
 
   }
@@ -143,9 +138,14 @@ class AudioPlayer extends React.Component {
     }
 
     this.props.receiveCurrentSong(nextSong);
-    if(nextSong) {
-      this.setState({play: true, audio: nextSong.trackUrl});
+    if(!nextSong) {
+      nextSong = this.props.nextSong;
     }
+
+    this.props.setTitle(nextSong.title);
+    this.props.setArtist(nextSong.artist);
+
+    this.setState({play: true, audio: nextSong.trackUrl});
   }
   prevSong() {
     let playedSongs = this.state.playedSongs;
@@ -171,6 +171,10 @@ class AudioPlayer extends React.Component {
     let newArr = playedSongs;
     newArr.splice(length);
     let nextSong = this.state.audio;
+    if(song){
+      this.props.setTitle(song.title);
+      this.props.setArtist(song.artist);
+    }
     this.props.receiveCurrentSong(song);
     this.setState({play:true, audio: song.trackUrl, nextSong, playedSongs: newArr });
   }
@@ -232,7 +236,7 @@ class AudioPlayer extends React.Component {
 
     return(
       <div className="audio-controls-container">
-        <AudioInfoContainer />
+        <AudioInfoContainer/>
         <div className="song-playing-bar">
           <div className="middle-container">
             <audio src={this.state.audio} ref={audio => {this.audio = audio} } autoPlay/>

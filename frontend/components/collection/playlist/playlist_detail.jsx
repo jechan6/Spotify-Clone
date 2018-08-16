@@ -15,7 +15,10 @@ class PlaylistDetail extends React.Component{
     this.props.fetchSongs();
   }
   handlePlay() {
-    this.props.setPlaylistId(this.props.playlistId);
+
+    return() => {
+      that.props.setPlaylistId(this.props.playlistId);
+    }
   }
   toggleOptions(e) {
     this.setState({showOptions: !this.state.showOptions});
