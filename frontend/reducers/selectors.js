@@ -2,6 +2,9 @@ export const selectSongsFromPayload = (state, payload) => {
   return payload.songIds.map(id => state.entities.songs[id]);
 };
 
+export const selectAlbumsFromArtist = (state, artistId) => {
+  return Object.values(state.entities.albums).filter(album => album.artist_id === artistId);
+}
 export const selectPlaylistFromUser = (state, playlist) => {
   let currentUser = state.entities.users[state.session.id]
 

@@ -26,6 +26,7 @@ class artistItem extends React.Component {
     return(
       <div className="artist-container">
         <NavSidebar logout={this.props.logout} currentUser={this.props.currentUser}/>
+        <div className="artist-wrapper">
         <div className="artist-show-container">
           <div className="artist-top-header">
             <img className="artist-photo" src={artist.photoUrl}></img>
@@ -44,10 +45,13 @@ class artistItem extends React.Component {
           </div>
         </div>
         <div className="artist-albums-container">
-          <h1 className="artist-album-header">Albums</h1>
+          <div className="artist-album-title">
+            <h1 className="artist-album-header">Albums</h1>
+          </div>
           <div className="artist-albums">
             <AlbumsContainer artistId={artist.id} />
           </div>
+        </div>
         </div>
       </div>
     )

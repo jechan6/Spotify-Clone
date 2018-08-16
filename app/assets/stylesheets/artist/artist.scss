@@ -1,9 +1,15 @@
 .artist-container {
   background-image: linear-gradient(rgb(18, 18, 18), rgb(8, 8, 8) 85%);
   min-height: 100%;
+  .artist-wrapper {
+    height: 100%;
+    padding-bottom: 150px;
+  }
   .artist-show-container {
     display: flex;
     flex-direction: column;
+    background: #181818;
+
     justify-content: center;
     align-items: center;
   }
@@ -67,15 +73,48 @@
 
   }
   .artist-albums-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
+
+    padding-bottom: 20px;
+    margin-left: 230px;
+    .artist-album-title {
+      display: block;
+      color: white;
+      font-size: 36px;
+      font-weight: 600;
+      text-align: center;
+      padding: 40px;
+    }
     .artist-albums{
       display: flex;
       flex-direction: row;
+      justify-content: flex-start;
       img {
-        width: 200px;
-        height: 200px;
+        width: 230px;
+        height: 230px;
+      }
+      .albums-index-container {
+        display: flex;
+        padding: 0 2em;
+        .album-pic-wrapper {
+
+          display: block;
+          margin: 0 auto;
+          height: 100%;
+        }
+        .album-item{
+          height: 100%;
+          text-align: center;
+          padding: 0 10px;
+        }
+        .album-title {
+          padding: 10px;
+          color: white;
+          display: block;
+        }
+        .album-artist {
+          color: rgba(255,255,255,0.6);
+        }
       }
     }
   }
