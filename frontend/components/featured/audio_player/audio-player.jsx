@@ -28,16 +28,40 @@ class AudioPlayer extends React.Component {
 
   }
   componentDidMount() {
-
+    this.currentTimeInterval = null;
     this.setState({currentTime: "0:00"})
+    let that = this;
+    this.audio.onplay = () => {
+			this.currentTimeInterval = setInterval( () => {
+				that.props.setCurrentTime(this.audio.currentTime);
+			}, 500);
+		};
+    this.audio.onpause = () => {
+      this.audio.currentTime = this.props.songTime;
+      this.audio.play();
+			clearInterval(this.currentTimeInterval);
+		};
+    this.audio.onloadedmetadata = function() {
+      this.audio.currentTime = this.props.songTime;
+    }.bind(this);
+
     this.audio.addEventListener("timeupdate", () => {
+      if(that.props.songInPlay) {
+        if(that.props.songtime) {
+          this.audio.currentTime = that.props.songtime;
+        }
+      }
       if(this.audio && this.audio.currentTime === this.audio.duration) {
         this.nextSong();
+      }
+      if(this.audio && this.audio !== this.props.songInPlay) {
+
       }
       let currentTime = this.formatTime(this.audio.currentTime);
       if(this.audio.duration) {
         this.setState({duration: this.formatTime(this.audio.duration)})
       }
+
       this.setState({currentTime});
       let ratio =
         this.audio.currentTime / this.audio.duration;
@@ -52,6 +76,7 @@ class AudioPlayer extends React.Component {
     seconds = seconds < 10 ? "0" + seconds : seconds;
     return min + ":" + seconds;
   }
+
   componentWillReceiveProps(newProps) {
 
     if(newProps.audio && newProps.audio.trackUrl) {
@@ -94,7 +119,7 @@ class AudioPlayer extends React.Component {
     return Math.floor(Math.random() * n);
   }
   nextSong() {
-  
+
     let curSong =  this.props.songs.filter(
       (el, idx) => el.trackUrl === this.state.audio
     );

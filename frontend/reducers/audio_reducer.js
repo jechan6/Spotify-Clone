@@ -1,5 +1,6 @@
 import {RECEIVE_VOLUME, RECEIVE_TITLE, RECEIVE_ARTIST, RECEIVE_PHOTO
-, RECEIVE_PLAYLISTID, RECEIVE_ALBUMID} from '../actions/audio_action';
+, RECEIVE_PLAYLISTID, RECEIVE_ALBUMID, RECEIVE_CURRENT_TIME, RECEIVE_SONG_PLAYING}
+from '../actions/audio_action';
 import merge from "lodash/merge";
 
 const audioReducer = (state={volume: 1}, action) => {
@@ -16,6 +17,10 @@ const audioReducer = (state={volume: 1}, action) => {
       return merge({}, state, {albumId: action.albumId});
     case RECEIVE_PLAYLISTID:
       return merge({}, state, {playlistId: action.playlistId});
+    case RECEIVE_CURRENT_TIME:
+      return merge({}, state, {songTime: action.time});
+    case RECEIVE_SONG_PLAYING:
+      return merge({}, state, {songInPlay: action.song});
     default:
       return state;
   }

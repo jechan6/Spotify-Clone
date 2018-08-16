@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import AudioPlayer from './audio-player';
-
+import {setSongPlaying, setCurrentTime} from '../../../actions/audio_action';
 import {selectSongsFromPayload} from "../../../reducers/selectors";
 const mapStateToProps = (state,ownProps) => {
 
@@ -18,11 +18,12 @@ const mapStateToProps = (state,ownProps) => {
     songs = selectSongsFromPayload(state, album);
 
   }
-
   return {
     audio: state.ui.currentSong,
     volume: state.audio.volume,
     nextSong: state.ui.nextSong,
+    songInPlay: state.audio.songInPlay,
+    songTime: state.audio.songTime,
     songs,
     setTitle: ownProps.setTitle,
     setArtist: ownProps.setArtist
@@ -30,6 +31,7 @@ const mapStateToProps = (state,ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-
+  setSongPlaying: song => dispatch(setSongPlaying(song)),
+  setCurrentTime: time => dispatch(setCurrentTime(time))
 });
-export default connect(mapStateToProps,null)(AudioPlayer);
+export default connect(mapStateToProps,mapDispatchToProps)(AudioPlayer);

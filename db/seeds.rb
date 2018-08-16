@@ -16,8 +16,12 @@ photo = File.open('app/assets/images/golden.jpg')
 u.photo.attach(io: photo, filename: 'golden.jpg')
 
 a = Artist.create({name: 'Chance The Rapper'})
-photo = File.open('https://s3-us-west-1.amazonaws.com/musicon-dev/Chance.jpg')
+photo = open('https://s3-us-west-1.amazonaws.com/musicon-dev/Chance.jpg')
 a.photo.attach(io: photo, filename: 'Chance.jpg')
+
+a2 = Artist.create({name: 'Logic'})
+photo = open('https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/logic.jpg')
+a2.photo.attach(io: photo, filename: 'logic.jpg')
 
 album = Album.create({title: "Coloring Book", artist_id: a.id, year: 2016})
 photo = open('https://s3-us-west-1.amazonaws.com/musicon-dev/chance-coloring+book/+Chance_The_Rapper.jpg')
@@ -26,6 +30,11 @@ album.photo.attach(io: photo, filename: 'Chance_The_Rapper.jpg')
 album2 = Album.create({title: "Acid rap", artist_id: a.id, year: 2013})
 photo = open('https://s3-us-west-1.amazonaws.com/musicon-dev/chance-acid+rap/chance-acidrap.jpg')
 album2.photo.attach(io: photo, filename: 'chance-acidrap.jpg ')
+
+album3 = Album.create({title: "Young Sinatra", artist_id: a2.id, year: 2013})
+photo = open('https://s3.console.aws.amazon.com/s3/object/musicon-dev/logic-young%2520sinatra/%2520Logic_Welcome_To_Forever.jpg?region=us-east-1&tab=overview')
+album3.photo.attach(io: photo, filename: 'Logic_Welcome_To_Forever.jpg')
+
 
 song = Song.create!({title: 'Angels (feat. Saba)', artist_id: a.id, album_id: album.id})
 file = open('https://s3-us-west-1.amazonaws.com/musicon-dev/chance-coloring+book/Angels+(feat.+Saba).mp3')
@@ -81,3 +90,54 @@ song.track.attach(io: file, filename: "Lost.mp3")
 song = Song.create!({title: "Pusha Man", artist_id: a.id, album_id: album2.id})
 file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/chance-acid+rap/Pusha+Man.mp3")
 song.track.attach(io: file, filename: "Pusha Man.mp3")
+
+
+#Young Sinatra Album
+
+song = Song.create!({title: "Feel Good", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/Feel+Good.mp3")
+song.track.attach(io: file, filename: "Feel Good.mp3")
+
+song = Song.create!({title: "Ballin (feat. Castro)", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/Ballin+(feat.+Castro).mp3")
+song.track.attach(io: file, filename: "Ballin (feat. Castro).mp3")
+
+song = Song.create!({title: "5AM", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/5AM.mp3")
+song.track.attach(io: file, filename: "5AM.mp3")
+
+song = Song.create!({title: "925", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/925.mp3")
+song.track.attach(io: file, filename: "925.mp3")
+
+song = Song.create!({title: "Nasty", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/Nasty.mp3")
+song.track.attach(io: file, filename: "Nasty.mp3")
+
+song = Song.create!({title: "Break It Down (feat. Jhene Aiko)", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/Break+It+Down+(feat.+Jhene+Aiko).mp3")
+song.track.attach(io: file, filename: "Break It Down (feat. Jhene Aiko).mp3 ")
+
+song = Song.create!({title: "Life Is Good", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/Life+Is+Good.mp3")
+song.track.attach(io: file, filename: "Life Is Good.mp3 ")
+
+song = Song.create!({title: "On The Low(feat. Kid Ink Trinidad Jame)", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/On+The+Low(feat.+Kid+Ink+Trinidad+Jame).mp3")
+song.track.attach(io: file, filename: "On The Low(feat. Kid Ink Trinidad Jame).mp3")
+
+song = Song.create!({title: "Roll Call", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/Roll+Call.mp3")
+song.track.attach(io: file, filename: "Roll Call.mp3")
+
+song = Song.create!({title: "The Come Up", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/The+Come+Up.mp3")
+song.track.attach(io: file, filename: "The Come Up.mp3")
+
+song = Song.create!({title: "Walk On By", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/Walk+On+By.mp3")
+song.track.attach(io: file, filename: "Walk On By.mp3")
+
+song = Song.create!({title: "Welcome To Forever (feat. Jon Bellion)", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/Welcome+To+Forever+(feat.+Jon+Bellion).mp3")
+song.track.attach(io: file, filename: "Welcome To Forever (feat. Jon Bellion)")
