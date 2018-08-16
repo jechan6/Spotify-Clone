@@ -55,9 +55,7 @@ class Collection extends React.Component {
         {collectionNav}
         {playlists}
         {detail}
-        <div className="playingbar-wrapper">
 
-        </div>
       </div>
     );
   }

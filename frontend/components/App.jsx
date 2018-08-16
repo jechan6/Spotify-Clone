@@ -8,8 +8,8 @@ import AudioPlayerContainer from './featured/audio_player/audio_player_container
 import AudioInfoContainer from './featured/audio_player/audio_info_container';
 import AudioSoundContainer from './featured/audio_player/audio_sound_container';
 import FeaturedComponent from './featured/featured_container';
+import ArtistItemContainer from './artist/artist_item_container';
 import SearchContainer from './search/search_container';
-import SearchResult from './search/search_result';
 import CollectionContainer from './collection/collection_container';
 import NavSidebar from './featured/nav_sidebar';
 import Modal from './modal/modal';
@@ -26,15 +26,15 @@ const App = () => (
     </Switch>
     <ProtectedRoute path="/" component={AudioPlayerContainer}/>
 
-
     <ProtectedRoute path="/browse/featured" component={FeaturedComponent}/>
     <ProtectedRoute path="/browse/newreleases" component={FeaturedComponent}/>
     <ProtectedRoute path="/album/:albumId" component={FeaturedComponent}/>
     <ProtectedRoute path="/playlist/:playlistId" component={CollectionContainer}/>
+    <ProtectedRoute path="/artist/:artistId" component={ArtistItemContainer}/>
     <ProtectedRoute path="/collection/playlists"
       component={CollectionContainer}/>
     <ProtectedRoute path="/search" component={SearchContainer}/>
-    <ProtectedRoute path="/search/result" component={SearchResult}/>
+
   </div>
 );
 

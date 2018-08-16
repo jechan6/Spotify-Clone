@@ -5,6 +5,7 @@ import {login, logout,signup} from './actions/session_action';
 import configureStore from './store/store';
 import Root from './components/root';
 import {fetchSongs} from './actions/song_action';
+import {fetchArtist} from './actions/artist_action';
 import {fetchAlbums, fetchAlbum} from './actions/album_actions';
 import {setVolume} from './actions/audio_action';
 import {updatePlaylist, fetchPlaylists, fetchPlaylist, deletePlaylist, deleteSong} from './actions/playlist_actions';
@@ -26,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () =>{
   } else {
     store = configureStore();
   }
+
   window.setVolume = setVolume;
   window.deleteSong = deleteSong;
   window.fetchAlbums = fetchAlbums;

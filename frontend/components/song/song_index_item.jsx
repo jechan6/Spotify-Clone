@@ -18,14 +18,11 @@ class SongIndexItem extends React.Component {
 
   handleDeleteSong(e) {
     e.preventDefault();
-    const playlistSong =
-      {playlist_id: this.props.playlistId, song_id: this.props.song.id};
+
+    const playlistSong = {playlist_id: this.props.playlistId, song_id: this.props.song.id};
     this.props.deleteSong(playlistSong);
   }
 
-  componentWillReceiveProps(newProps) {
-
-  }
   closeOptions() {
     this.toggleOptions();
   }

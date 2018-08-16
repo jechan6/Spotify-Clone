@@ -16,7 +16,7 @@ const mapStateToProps = ({entities}, ownProps) => {
   }
 
   return {songs: songs, addButton: ownProps.addButton,
-    playlistId: ownProps.playlistId,
+    playlistId: ownProps.match.params.playlistId,
     photoUrl: ownProps.photoUrl};
 };
 

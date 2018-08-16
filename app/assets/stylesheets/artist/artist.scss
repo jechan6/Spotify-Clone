@@ -1,0 +1,82 @@
+.artist-container {
+  background-image: linear-gradient(rgb(18, 18, 18), rgb(8, 8, 8) 85%);
+  min-height: 100%;
+  .artist-show-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .artist-top-header {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    img {
+      width: 250px;
+      height: 250px;
+      border-radius: 500px;
+      margin-top: 20px;
+    }
+  }
+  .artist-songs-container {
+    max-width: 1480px;
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 230px;
+    .song-content {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      width: 70%;
+      .song-info {
+        margin: 0;
+      }
+    }
+    .song-wrapper {
+      width: 100%;
+    }
+  }
+  .artist-header {
+    color: white;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -.005em;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  .artist-nav {
+    color: rgba(255,255,255,0.6);
+    padding: 20px;
+    .artist-nav-items {
+      font-size: 14px;
+    }
+    .artist-nav-items:hover {
+      color: white;
+      transition: .2s all linear;
+      cursor: pointer;
+    }
+  }
+  .artist-song-header {
+    color: white;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -.005em;
+
+  }
+  .artist-albums-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .artist-albums{
+      display: flex;
+      flex-direction: row;
+      img {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  }
+}

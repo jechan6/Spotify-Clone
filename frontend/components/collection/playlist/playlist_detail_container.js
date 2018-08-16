@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
-import {fetchPlaylist, deletePlaylist} from '../../../actions/playlist_actions';
+import {fetchPlaylist, deletePlaylist, updatePlaylist,
+removeFromLibrary} from '../../../actions/playlist_actions';
 import {fetchSongs} from '../../../actions/song_action';
 import {selectSongsFromPayload} from "../../../reducers/selectors";
 import {openModal} from "../../../actions/modal_actions";
@@ -16,6 +17,7 @@ const mapStateToProps = (state,ownProps) => {
 
   return {
     playlist,
+    currentUser: state.entities.users[state.session.id],
     songs,
     setPlaylistId: ownProps.setPlaylistId
   };
@@ -26,6 +28,8 @@ const mapDispatchToProps = dispatch => ({
   fetchSongs: () => dispatch(fetchSongs()),
   deletePlaylist: id => dispatch(deletePlaylist(id)),
   setPlaylistId: id => dispatch(setPlaylistId(id)),
+  updatePlaylist: (id, songId,userId) => dispatch(updatePlaylist(id, songId, userId)),
+  removeFromLibrary: follower => dispatch(removeFromLibrary(follower)),
   otherForm: (
     <button
     className="menu-item"

@@ -7,6 +7,15 @@ class User < ApplicationRecord
   has_many :playlists,
     foreign_key: :author_id,
     class_name: :Playlist
+
+  has_many :follow,
+    foreign_key: :user_id,
+    class_name: :Follower
+
+  has_many :followed_playlist,
+    through: :follow,
+    source: :playlist
+    
   has_one_attached :photo
 
   def self.find_by_credentials(username, password)

@@ -45,12 +45,16 @@ export const deleteSong = (playlistSong) => dispatch => (
   PlaylistApi.deleteSong(playlistSong)
     .then((playlistsong) => dispatch(removeSong(playlistsong)))
 );
+export const removeFromLibrary = follower => dispatch => (
+  PlaylistApi.removeFromLibrary(follower)
+    .then((follower) => dispatch(removePlaylist(follower.playlist_id)))
+)
 export const deletePlaylist = (id) => dispatch => (
   PlaylistApi.deletePlaylist(id)
     .then( (playlist) => dispatch(removePlaylist(playlist.id)))
 );
 
-export const updatePlaylist = (id, songId) => dispatch => (
-  PlaylistApi.updatePlaylist(id, songId)
+export const updatePlaylist = (id, songId, userId) => dispatch => (
+  PlaylistApi.updatePlaylist(id, songId, userId)
     .then((playlist) => dispatch(receivePlaylist(playlist)))
 );

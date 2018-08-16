@@ -34,10 +34,19 @@ export const deleteSong = (playlistSong) => (
     data: {playlist_song: playlistSong}
   })
 );
-export const updatePlaylist = (id,songId) => (
+
+export const removeFromLibrary = follower => (
+  $.ajax({
+    method: 'delete',
+    url: `/api/followers/deleteplaylist`,
+    data: {follower}
+  })
+)
+export const updatePlaylist = (id,songId="nil", userId="nil") => (
   $.ajax({
     method: 'PATCH',
     url: `/api/playlists/${id}`,
-    data: {songId}
+    data: {songId,
+            userId}
   })
 );

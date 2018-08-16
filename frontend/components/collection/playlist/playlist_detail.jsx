@@ -33,15 +33,43 @@ class PlaylistDetail extends React.Component{
       this.setState({showOptions: false});
     }
   }
+  handleRemove(e) {
+    e.preventDefault();
+    const follower = {playlist_id: this.props.playlist.id, user_id: this.props.currentUser.id};
+    this.props.removeFromLibrary(follower);
+  }
+  handleSave(e) {
+    e.preventDefault();
+    this.props.updatePlaylist(this.props.playlist.id,"nil",this.props.currentUser.id)
+  }
   render() {
     const{playlist, songs, deletePlaylist} = this.props;
     let songsList;
     let options;
     if(this.state.showOptions){
-      options =
-        <div onClick={this.toggleOptions} className="modal-container">
-        {this.props.otherForm}
-        </div>
+      if(playlist.author_id === this.props.currentUser.id) {
+        options = <div onClick={this.toggleOptions} className="modal-container">
+          {this.props.otherForm}
+        </div>;
+
+      } else if(playlist.followers && Object.values(playlist.followers).includes(this.props.currentUser.id)) {
+        options = <div onClick={this.toggleOptions} className="modal-container">
+          <button
+          onClick={this.handleRemove.bind(this)}
+        className="menu-item">
+          Remove From Your Library
+        </button>
+      </div>;
+      } else {
+        options = <div onClick={this.toggleOptions} className="modal-container">
+          <button
+            onClick={this.handleSave.bind(this)}
+          className="menu-item">
+            Save to Your Library
+          </button>
+
+        </div>;
+      }
     }
     if(songs && songs.length >= 1) {
       songsList = <SongIndexContainer

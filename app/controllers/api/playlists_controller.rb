@@ -17,6 +17,7 @@ class Api::PlaylistsController < ApplicationController
     end
   end
 
+
   def show
     @playlist = Playlist.find(params[:id])
   end
@@ -28,13 +29,20 @@ class Api::PlaylistsController < ApplicationController
 
   end
 
-  def update
-    @playlist = Playlist.find(params[:id])
-    song = Song.find(params[:songId])
 
-    @playlist.songs << song
-    @playlist.attach(io: file)
-    @playlist.save
+  def update
+
+    @playlist = Playlist.find(params[:id])
+    if params[:songId] != "nil"
+      song = Song.find(params[:songId])
+      @playlist.songs << song
+      @playlist.save
+    end
+    if params[:userId] != "nil"
+      user = User.find(params[:userId])
+      @playlist.users_followed << user
+      @playlist.save
+    end
     render :show
   end
 

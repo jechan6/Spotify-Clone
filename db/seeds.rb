@@ -32,7 +32,7 @@ photo = open('https://s3-us-west-1.amazonaws.com/musicon-dev/chance-acid+rap/cha
 album2.photo.attach(io: photo, filename: 'chance-acidrap.jpg ')
 
 album3 = Album.create({title: "Young Sinatra", artist_id: a2.id, year: 2013})
-photo = open('https://s3.console.aws.amazon.com/s3/object/musicon-dev/logic-young%2520sinatra/%2520Logic_Welcome_To_Forever.jpg?region=us-east-1&tab=overview')
+photo = open('https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/young_sinatra.jpg')
 album3.photo.attach(io: photo, filename: 'Logic_Welcome_To_Forever.jpg')
 
 

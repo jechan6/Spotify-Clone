@@ -86,7 +86,7 @@ class SessionForm extends React.Component {
       dateInput = <input className="input-date"
         onChange={this.handleInput('birthday')}
         type="date"></input>;
-      photoInput = <input type="file" />
+
     }
     return(
       <section>
@@ -121,7 +121,7 @@ class SessionForm extends React.Component {
 
             {nameInput}
             {dateInput}
-            {photoInput}
+
             <div className="session-submit-container">
 
               <input onClick={this.showErrors} className="session-submit form-btn"

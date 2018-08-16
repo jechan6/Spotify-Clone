@@ -89,14 +89,6 @@ class SearchIndex extends React.Component {
                 result={result}
               />}
           </section>
-
-          </div>
-          <div className="audio-controls-container">
-            <AudioInfoContainer title={this.state.title} artist={this.state.artist}/>
-            <AudioPlayerContainer
-              setArtist={this.handleArtist}
-              setTitle={this.handleTitle}/>
-            <AudioSoundContainer />
           </div>
 
       </div>

@@ -39,6 +39,7 @@ class SongIndex extends React.Component {
                     deleteSong={this.props.deleteSong}
                     history={this.props.history}
                     hideOptions={this.props.hideOptions}
+                    playlistId={this.props.playlistId}
                     song={song} />
                 </div>
               </div>
