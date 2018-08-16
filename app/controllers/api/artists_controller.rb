@@ -12,9 +12,9 @@ class Api::ArtistsController < ApplicationController
     @artist = Artist.find(params[:id])
     render :show
   end
-  
+
   private
   def artist_param
-    params.require(:artist).permit(:name)
+    params.require(:artist).permit(:name, :photo)
   end
 end

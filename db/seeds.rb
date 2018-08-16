@@ -16,6 +16,8 @@ photo = File.open('app/assets/images/golden.jpg')
 u.photo.attach(io: photo, filename: 'golden.jpg')
 
 a = Artist.create({name: 'Chance The Rapper'})
+photo = File.open('https://s3-us-west-1.amazonaws.com/musicon-dev/Chance.jpg')
+a.photo.attach(io: photo, filename: 'Chance.jpg')
 
 album = Album.create({title: "Coloring Book", artist_id: a.id, year: 2016})
 photo = open('https://s3-us-west-1.amazonaws.com/musicon-dev/chance-coloring+book/+Chance_The_Rapper.jpg')

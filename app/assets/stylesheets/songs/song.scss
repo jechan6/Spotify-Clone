@@ -1,15 +1,12 @@
-.song-content{
-}
+
 .song-wrapper:hover {
   background: rgba(0,0,0,.3);
-  transition: .2s all linear;
-
+  transition: .2s all ease-in-out;
 }
 .song-wrapper{
-  padding: 20px;
-  height: 2em;
-  .song-play-button {
 
+  height: 4em;
+  .song-play-button {
     background: transparent;
     outline: 0;
     border: 0;
@@ -17,23 +14,40 @@
     padding-right: 15px;
     color: white;
   }
+  .fa-music {
+    font-size: 14px;
+    padding-right: 15px;
+    color: rgba(255,255,255,0.6);
+  }
   .song-list {
     .song-info {
       display: flex;
       justify-content: space-between;
+
+      margin-top: .6em;
+
       .ellipsis-option {
         color: white;
         font-size: 25px;
         letter-spacing: 1px;
         text-align: right;
+        margin-top: .5em;
+        margin-right: 40px;
       }
-    }
-    .song-title {
-      display: inline;
-      color: white;
-      font-size: 16px;
-      letter-spacing: .015em;
-      line-height: 22px;
+
+      .song-title {
+        display: inline;
+        color: white;
+        font-size: 16px;
+        letter-spacing: .015em;
+        line-height: 22px;
+
+      }
+      .song-title-button{
+        margin-top: .5em;
+        margin-left: 10px;
+        padding: 5px;
+      }
     }
   }
 }
