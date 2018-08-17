@@ -7,9 +7,9 @@ The application is built on a Rails/PostgreSQL backend with React.js and Redux o
 
 The project was designed and build within a 10-day timeframe with the intention of adding improvements overtime after the timeframe.
 
-#Features
+# Features
 
-##Playlist Creation and Display
+## Playlist Creation and Display
 
 Users can create playlists and add songs to a playlist from the album. Playlist cover photo updates depending on the song inside the playlist.
 ![Add to Playlist](https://github.com/jechan6/Spotify-Clone/blob/master/docs/images/AddToPlaylist.png?raw=true)
@@ -18,6 +18,14 @@ Each song will handle adding itself to a chosen playlist and upon add, it will m
 
 ![Playlist List](https://github.com/jechan6/Spotify-Clone/blob/master/docs/images/PlaylistIndex.png?raw=true)
 
-##Search
+## Search
 
-Users can search for albums, playlist and songs. If either one exists, it be rendered by making a request to the backend and displaying the info found. 
+Users can search for albums, playlist and songs. If either one exists, it be rendered by making a request to the backend and displaying the info found.
+
+![Search Image](https://github.com/jechan6/Spotify-Clone/blob/master/docs/images/Screenshot%20from%202018-08-17%2015-53-12.png?raw=true)
+
+# Possible future features
+
+In the future I would like to add:
+  - Being able to favorite albums and songs
+  - Show a history of recently played songs
