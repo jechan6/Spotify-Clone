@@ -11,6 +11,8 @@ User.destroy_all;
 Song.destroy_all;
 Artist.destroy_all;
 Album.destroy_all;
+Playlist.destroy_all;
+
 u = User.create!({name: 'Jeffrey Chan', username: 'jeff', password:'123456', birthday: Date.new(2018)})
 photo = File.open('app/assets/images/golden.jpg')
 u.photo.attach(io: photo, filename: 'golden.jpg')
