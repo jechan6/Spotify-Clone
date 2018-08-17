@@ -35,6 +35,7 @@ const mapDispatchToProps = dispatch => ({
   setSongPlaying: song => dispatch(setSongPlaying(song)),
   setCurrentTime: time => dispatch(setCurrentTime(time)),
   receiveCurrentSong: song => dispatch(receiveCurrentSong(song)),
-  setTitle: title => dispatch(setTitle(title))
+  setTitle: title => dispatch(setTitle(title)),
+  setArtist: artist => dispatch(setArtist(artist))
 });
 export default connect(mapStateToProps,mapDispatchToProps)(AudioPlayer);

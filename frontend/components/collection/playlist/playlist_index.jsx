@@ -24,6 +24,8 @@ class PlaylistIndex extends React.Component {
               setPlaylistId={this.props.setPlaylistId}
               setPhotoUrl={this.props.setPhotoUrl}
               receiveCurrentSong={this.props.receiveCurrentSong}
+              setTitle={this.props.setTitle}
+              setArtist={this.props.setArtist}
               />
           ))}
         </div>

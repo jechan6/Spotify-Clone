@@ -43,6 +43,8 @@ class AlbumsIndex extends React.Component {
               receiveCurrentSong={this.props.receiveCurrentSong}
               onClick={this.handleClick}
               setPhotoUrl={this.props.setPhotoUrl}
+              setTitle={this.props.setTitle}
+              setArtist={this.props.setArtist}
               />
           ))}
         </div>

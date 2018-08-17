@@ -4,7 +4,7 @@ import {fetchPlaylist} from '../../../actions/playlist_actions';
 import {setPlaylistId} from '../../../actions/audio_action';
 import {fetchSongs, receiveCurrentSong} from '../../../actions/song_action';
 import {selectSongsFromPayload} from "../../../reducers/selectors";
-import {setPhotoUrl} from "../../../actions/audio_action";
+import {setPhotoUrl,setTitle,setArtist} from "../../../actions/audio_action";
 import {selectPlaylistFromUser} from "../../../reducers/selectors";
 import PlaylistIndex from './playlist_index';
 const mapStateToProps = (state, ownProps) => {
@@ -23,7 +23,9 @@ const mapDispatchToProps = dispatch => ({
   setPlaylistId: id => dispatch(setPlaylistId(id)),
   fetchSongs: () => dispatch(fetchSongs()),
   setPhotoUrl: (url) => dispatch(setPhotoUrl(url)),
-  receiveCurrentSong: song => dispatch(receiveCurrentSong(song))
+  receiveCurrentSong: song => dispatch(receiveCurrentSong(song)),
+  setTitle: title => dispatch(setTitle(title)),
+  setArtist: artist => dispatch(setArtist(artist))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaylistIndex);

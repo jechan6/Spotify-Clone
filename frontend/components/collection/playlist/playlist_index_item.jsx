@@ -13,12 +13,14 @@ class PlaylistIndexItem extends React.Component {
   }
   handleSong(playlist) {
     if(!playlist.payload.songs) return;
-    this.props.receiveCurrentSong(Object.values(playlist.payload.songs)[0]);
+    let song = Object.values(playlist.payload.songs)[0];
+    this.props.receiveCurrentSong(song);
+    this.props.setTitle(song.title);
+    this.props.setArtist(song.artist);
   }
   playMusic(){
     this.props.fetchPlaylist(this.props.playlist.id).then(playlist => this.handleSong(playlist));
     if(this.props.playlist && this.props.playlist.photos.length >= 1) {
-
       this.props.setPhotoUrl(this.props.playlist.photos[0].photoUrl);
     } else {
       this.props.setPhotoUrl(this.props.playlist.photoUrl);

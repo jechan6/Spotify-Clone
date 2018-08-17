@@ -4,7 +4,7 @@ class AlbumItemDetail extends React.Component {
   constructor(props) {
     super(props);
     this.handlePlay = this.handlePlay.bind(this);
-
+    
   }
   componentDidMount() {
     this.props.fetchAlbum(this.props.albumId);
