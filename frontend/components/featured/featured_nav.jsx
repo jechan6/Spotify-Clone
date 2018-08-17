@@ -8,9 +8,6 @@ const FeaturedNav = () => (
         to="/browse/featured">FEATURED</Link></li>
 
       <li><Link className="feature-link-item"
-        to="/browse/featured">GENRES & MOODS</Link></li>
-
-      <li><Link className="feature-link-item"
         to="/browse/newreleases">NEW RELEASES</Link></li>
     </ul>
   </div>

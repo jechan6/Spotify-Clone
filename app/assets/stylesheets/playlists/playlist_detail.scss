@@ -27,17 +27,10 @@
     height: 320px;
     margin: 0 auto;
     background-color: #282828;
-    .image-cover {
-      position: relative;
-      top: 25%;
-      bottom: 25%;
-      left: auto;
-      right: auto;
-    }
     img {
       margin:auto;
-      width:160px;
-      height: 160px;
+      width:320px;
+      height:320px;
     }
   }
 }

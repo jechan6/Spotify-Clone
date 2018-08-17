@@ -17,7 +17,12 @@ class PlaylistIndexItem extends React.Component {
   }
   playMusic(){
     this.props.fetchPlaylist(this.props.playlist.id).then(playlist => this.handleSong(playlist));
-    this.props.setPhotoUrl(this.props.playlist.photoUrl);
+    if(this.props.playlist && this.props.playlist.photos.length >= 1) {
+
+      this.props.setPhotoUrl(this.props.playlist.photos[0].photoUrl);
+    } else {
+      this.props.setPhotoUrl(this.props.playlist.photoUrl);
+    }
     this.props.setPlaylistId(this.props.playlist.id);
 
     // this.props.receiveCurrentSong();
@@ -25,19 +30,14 @@ class PlaylistIndexItem extends React.Component {
 
   render() {
     const {playlist} = this.props;
-    let photos;
+    let src;
+    let photo;
+    if(playlist.photos.length >= 1) {
 
-    if(playlist.photos.length > 3) {
-      // photos = playlist.photos;
-      // <div className="playlist-image-wrapper">
-      //   <div className="first-row">
-      //     // <div className="playlist-image"
-      //     //   style="background-image: url(" + photos[0] + ");\""">
-      //     // </div>
-      //   </div>
-      //   <div className="second-row">
-      //   </div>
-      // </div>
+      photo = playlist.photos[0];
+      src=photo.photoUrl;
+    } else {
+      src=playlist.photoUrl;
     }
     return (
       <div className="playlist-item" >
@@ -45,7 +45,7 @@ class PlaylistIndexItem extends React.Component {
               <a onClick={this.playMusic.bind(this)} className="play-button">
                 <i className= "fa fa-play"></i>
               </a>
-              <img onClick={this.handleClick} src={playlist.photoUrl}></img>
+             <img onClick={this.handleClick} src={src}></img>
             </div>
 
           <div className="playlist-name">

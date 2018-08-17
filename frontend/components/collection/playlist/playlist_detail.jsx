@@ -73,20 +73,26 @@ class PlaylistDetail extends React.Component{
     }
     if(songs && songs.length >= 1) {
       songsList = <SongIndexContainer
-        photoUrl={playlist.photoUrl}
+        photoUrl={playlist.photos.length > 0 ? playlist.photos[0].photoUrl : playlist.photoUrl}
         songs={songs}
         handlePlay={this.handlePlay}
         addButton={true}/>;
     }
     if(!playlist && !songs) return null;
+    let src;
+    if(playlist.photos.length >= 1) {
+      src = playlist.photos[0].photoUrl;
 
+    } else {
+      src=playlist.photoUrl;
+    }
     return(
       <div className="show-details" onClick={this.hideOptions.bind(this)}>
         <div className="header-content">
           <div className="cover-picture">
             <div className="playlist-cover">
               <div className="image-cover">
-                <img src={playlist.photoUrl}></img>
+                <img src={src}></img>
               </div>
             </div>
             <div className="content-info">
