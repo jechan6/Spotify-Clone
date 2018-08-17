@@ -18,6 +18,7 @@ class PlaylistIndexItem extends React.Component {
     this.props.setTitle(song.title);
     this.props.setArtist(song.artist);
   }
+  
   playMusic(){
     this.props.fetchPlaylist(this.props.playlist.id).then(playlist => this.handleSong(playlist));
     if(this.props.playlist && this.props.playlist.photos.length >= 1) {
@@ -26,8 +27,6 @@ class PlaylistIndexItem extends React.Component {
       this.props.setPhotoUrl(this.props.playlist.photoUrl);
     }
     this.props.setPlaylistId(this.props.playlist.id);
-
-    // this.props.receiveCurrentSong();
   }
 
   render() {

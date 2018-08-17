@@ -5,9 +5,14 @@ import {fetchSongs, receiveCurrentSong} from '../../actions/song_action';
 import {selectAlbumsFromArtist} from '../../reducers/selectors';
 import AlbumsIndex from './albums_index';
 const mapStateToProps = (state,ownProps) => {
-  let albums = Object.values(state.entities.albums);
-  if(ownProps.artistId) {
-    albums = selectAlbumsFromArtist(state, ownProps.artistId);
+  let albums;
+  if(ownProps.albums && ownProps.albums.length > 0) {
+    albums = ownProps.albums;
+  } else {
+    albums = Object.values(state.entities.albums);
+    if(ownProps.artistId) {
+      albums = selectAlbumsFromArtist(state, ownProps.artistId);
+    }
   }
   return {
     albums

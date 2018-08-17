@@ -9,7 +9,7 @@ const songsReducer = (state = {}, action) => {
       return merge({}, state, {[action.song.id]: action.song});
     case RECEIVE_ARTIST_INFO:
       if(!action.payload.songs) return state;
-      return action.payload.songs;
+      return merge({},state,action.payload.songs);
     default:
       return state;
   }

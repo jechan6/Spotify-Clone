@@ -1,5 +1,6 @@
 json.extract! playlist, :id, :title, :author_id
 json.author playlist.author.name
+json.songIds playlist.songs.pluck(:id)
 json.followers do
   playlist.users_followed.each do |follower|
     json.follower_id follower.id

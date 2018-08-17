@@ -11,7 +11,7 @@ import React from 'react';
 const mapStateToProps = ({entities}, ownProps) => {
   let songs =Object.values(entities.songs);
 
-  if(ownProps.songs.length > 0) {
+  if(ownProps.songs && ownProps.songs.length > 0) {
     songs = ownProps.songs
   }
 

@@ -27,32 +27,44 @@ class SearchIndex extends React.Component {
     this.setState({artist});
   }
   componentDidMount() {
-    this.props.fetchSongs();
-    this.props.fetchAlbums();
-    this.props.fetchPlaylists();
+
+      this.props.fetchSongs();
+      this.props.fetchAlbums();
+      this.props.fetchPlaylists();
+      this.props.fetchArtists();
+
   }
-  matches() {
+  matches(value) {
     const matches = [];
     if (this.state.inputVal.length === 0) {
        return matches;
     }
+
     let result = "No results found for " + this.state.inputVal;
     this.props.values.forEach(value => {
-      const sub = value.title.slice(0, this.state.inputVal.length);
-      if (sub.toLowerCase() === this.state.inputVal.toLowerCase()) {
+      let sub;
+      if(value.title && this.state.inputVal.length >= 2) {
+        sub = value.title.slice(0, this.state.inputVal.length);
+      } else if(value.name && this.state.inputVal.length >= 2) {
+        sub = value.name.slice(0, this.state.inputVal.length);
+      }
+
+      if (this.state.inputVal.length >= 2 && sub.toLowerCase() === this.state.inputVal.toLowerCase()) {
         matches.push(value);
       }
     });
     if (matches.length === 0) {
-      matches.push('No results found for ' + `\"${this.state.inputVal}\"`);
+      matches.push('No results found for ' + `\"${value}\"`);
     }
     return matches;
   }
 
   handleInput(e){
     e.preventDefault();
-    let results = this.matches();
+    let results = this.matches(e.target.value);
     this.setState({inputVal: e.target.value, results});
+
+
   }
 
   render() {
@@ -65,6 +77,7 @@ class SearchIndex extends React.Component {
       notFound = <div className="search-error"><h1 className="error-text">{this.state.results}</h1></div>;
     } else {
       result = this.state.results;
+
       notFound = "";
     }
     return(
@@ -75,7 +88,7 @@ class SearchIndex extends React.Component {
           <section className="search-container">
             <div className="search-bar">
               <label className="search-bar-label">
-                Search for a Song, Album, Playlist</label>
+                Search for a Artist, Album, Playlist</label>
               <input className="search-input"
                 onChange={this.handleInput}
                 placeholder="Start typing..." type="text">
@@ -86,6 +99,7 @@ class SearchIndex extends React.Component {
           <section className="search-results">
             {notFound ? notFound :
               <SearchResultContainer
+                inputVal={this.state.inputVal}
                 result={result}
               />}
           </section>
