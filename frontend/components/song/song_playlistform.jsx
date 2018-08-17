@@ -7,14 +7,11 @@ class SongPlaylistform extends React.Component {
   }
   componentDidMount() {
     this.props.fetchPlaylists();
-
   }
   handleSubmit(playlist) {
     this.props.updatePlaylist(playlist.id, this.props.songId);
   }
-
   render() {
-
     return(
       <div className="playlist-form">
         <div className="playlist-content">

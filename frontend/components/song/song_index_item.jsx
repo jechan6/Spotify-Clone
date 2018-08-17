@@ -11,9 +11,7 @@ class SongIndexItem extends React.Component {
     this.handleDeleteSong = this.handleDeleteSong.bind(this);
   }
   toggleOptions() {
-
     this.setState({showOptions: !this.state.showOptions});
-
   }
 
   handleDeleteSong(e) {

@@ -22,7 +22,6 @@ class AlbumsIndex extends React.Component {
     this.setState({detail: !this.state.detail, album})
   }
   render() {
-    // (this.state.detail || this.props.albumShow) ? renderDetail() :
     if(!this.props.albums) {
       return null;
     }

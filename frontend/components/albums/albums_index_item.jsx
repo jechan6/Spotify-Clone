@@ -6,8 +6,6 @@ class AlbumsIndexItem extends React.Component {
 
   }
   handleSong(album) {
-
-
     let song = Object.values(album.payload.songs)[0];
     this.props.receiveCurrentSong(song);
     this.props.setTitle(song.title);
