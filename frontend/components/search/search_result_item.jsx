@@ -112,7 +112,7 @@ class SearchResultItem extends React.Component {
             <div className="result-songs">
               <SongIndexContainer
                 photoUrl={photoUrl}
-                songs={songs} photoUrl={result.photoUrl}/>
+                songs={songs} photoUrl={photoUrl}/>
             </div>
           </div>
         :
