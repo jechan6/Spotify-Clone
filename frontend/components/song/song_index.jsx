@@ -28,7 +28,8 @@ class SongIndex extends React.Component {
       this.props.setPlaylistId(this.props.playlistId);
     }
     this.props.setTitle(song.title);
-    this.props.setArtist(this.props.songs[0].artist);
+    // debugger;
+    this.props.setArtist(song.artist);
     if(this.props.photoUrl) { 
 
       this.props.setPhotoUrl(this.props.photoUrl);
