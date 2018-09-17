@@ -30,7 +30,7 @@ class SearchResultItem extends React.Component {
           this.props.fetchArtist(newProps.artists[0].id);
           this.setState({name: newProps.artists[0].name});
           this.props.setAlbumId(-1);
-          // this.props.setPhotoUrl(newProps.artists[0].photoUrl);
+          this.props.setPhotoUrl(newProps.artists[0].photoUrl);
         }
     } else if(!newProps.albums && newProps.playlist.length > 0) {
       if(this.state.name !== newProps.playlist[0].title) {

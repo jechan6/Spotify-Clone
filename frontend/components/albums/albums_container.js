@@ -11,6 +11,7 @@ const mapStateToProps = (state,ownProps) => {
   } else {
     albums = Object.values(state.entities.albums);
     if(ownProps.artistId) {
+      debugger;
       albums = selectAlbumsFromArtist(state, ownProps.artistId);
     }
   }

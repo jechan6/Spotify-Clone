@@ -1,5 +1,7 @@
 export const selectSongsFromPayload = (state, payload) => {
-  return payload.songIds.map(id => state.entities.songs[id]);
+
+    return payload.songIds.map(id => state.entities.songs[id]);
+
 };
 
 export const selectAlbumsFromArtist = (state, artistId) => {
