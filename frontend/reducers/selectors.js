@@ -12,6 +12,19 @@ export const selectAlbumIdFromName = (state, name) => {
     }
   })
 }
+export const selectArtistFromName = (state, name) => {
+  let artists = Object.values(state.entities.artist);
+  let i = 0;
+  while(i < artists.length) {
+    if (artists[i].name === name) {
+    
+      return artists[i];
+    }
+    i++;
+  }
+  
+ 
+}
 export const selectPlaylistFromUser = (state, playlist) => {
   let currentUser = state.entities.users[state.session.id]
 

@@ -10,7 +10,12 @@ class SongIndex extends React.Component {
     this.handleClick = this.handleClick.bind(this);
 
   }
+  componentDidMount() {
+    if(this.props.songs[0]) {
 
+      this.props.setArtist(this.props.songs[0].artist);
+    }
+  }
   handleClick(song) {
     let index = (this.props.songs.indexOf(song)+1) % this.props.songs.length;
     let nextSong = this.props.songs[index];
@@ -18,9 +23,12 @@ class SongIndex extends React.Component {
     this.props.receiveCurrentSong(song);
     this.props.receiveNextSong(nextSong);
     this.props.setAlbumId(this.props.albumId);
-    this.props.setPlaylistId(this.props.playlistId);
+    if(this.props.playlistId) {
+
+      this.props.setPlaylistId(this.props.playlistId);
+    }
     this.props.setTitle(song.title);
-    this.props.setArtist(song.artist);
+    
     this.props.setPhotoUrl(this.props.photoUrl);
   }
   render() {

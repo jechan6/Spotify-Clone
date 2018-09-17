@@ -9,10 +9,11 @@ import {openModal} from "../../actions/modal_actions";
 import {withRouter} from "react-router-dom";
 import React from 'react';
 const mapStateToProps = ({entities}, ownProps) => {
-  let songs =Object.values(entities.songs);
-
-  if(ownProps.songs && ownProps.songs.length > 0) {
-    songs = ownProps.songs
+  let songs = Object.values(entities.songs);
+  if(ownProps.songs == -1) {
+    songs = [];
+  } else if(ownProps.songs && ownProps.songs.length > 0) {
+    songs = ownProps.songs;
   }
 
   return {songs: songs, addButton: ownProps.addButton,

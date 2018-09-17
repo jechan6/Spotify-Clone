@@ -6,11 +6,6 @@ const CollectionNav = (props) => (
       <li><Link className="feature-link-item"
         to="/collection/playlists">PLAYLISTS</Link></li>
 
-      <li><Link className="feature-link-item"
-        to="/collection/playlists">FAVORITE SONGS</Link></li>
-
-      <li><Link className="feature-link-item"
-        to="/collection/playlists">ALBUMS</Link></li>
       <li>
           <button
           className="modal-button"

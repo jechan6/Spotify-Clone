@@ -67,7 +67,7 @@ class AudioPlayer extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-
+    console.log(newProps.songs);
     if(newProps.audio && newProps.audio.trackUrl !== this.state.audio) {
       let audio = newProps.audio.trackUrl;
       this.setState({play: true, audio});
@@ -99,6 +99,8 @@ class AudioPlayer extends React.Component {
     this.setState({playedSongs: newArr});
   }
   emptyHistory() {
+    console.log(this.state.playedSongs.length);
+    console.log("state songs, " + this.state.songs.length);
     if(this.state.playedSongs.length >= this.state.songs.length) {
       this.setState({playedSongs: []});
     }
@@ -107,7 +109,6 @@ class AudioPlayer extends React.Component {
     return Math.floor(Math.random() * n);
   }
   nextSong() {
-
     let curSong =  this.state.songs.filter(
       (el, idx) => el.trackUrl === this.state.audio
     );

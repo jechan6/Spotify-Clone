@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {fetchAlbum} from "../../actions/album_actions";
 import {fetchPlaylist} from "../../actions/playlist_actions";
 import {selectSongsFromPayload} from '../../reducers/selectors';
-import {setPlaylistId, setAlbumId} from '../../actions/audio_action';
+import {setPlaylistId, setAlbumId, setPhotoUrl} from '../../actions/audio_action';
 import {fetchArtist} from "../../actions/artist_action";
 import SearchResultItem from './search_result_item';
 const mapStateToProps = (state, ownProps) => {
@@ -45,7 +45,8 @@ const mapDispatchToProps = dispatch => ({
   fetchAlbum: id => dispatch(fetchAlbum(id)),
   fetchPlaylist: id => dispatch(fetchPlaylist(id)),
   setAlbumId: id => dispatch(setAlbumId(id)),
-  setPlaylistId: id => dispatch(setPlaylistId),
+  setPlaylistId: id => dispatch(setPlaylistId(id)),
+  setPhotoUrl: url => dispatch(setPhotoUrl(url)),
   fetchArtist: id => dispatch(fetchArtist(id))
 });
 

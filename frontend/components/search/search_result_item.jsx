@@ -22,18 +22,24 @@ class SearchResultItem extends React.Component {
         this.props.fetchAlbum(newProps.album[0].id);
         this.setState({name: newProps.album[0].title});
         this.props.setAlbumId(newProps.album[0].id);
+        
       }
     } else if(newProps.artists&& newProps.artists.length > 0) {
 
         if(this.state.name !== newProps.artists[0].name) {
           this.props.fetchArtist(newProps.artists[0].id);
           this.setState({name: newProps.artists[0].name});
+          this.props.setAlbumId(-1);
+          this.props.setPhotoUrl(newProps.artists[0].photoUrl);
         }
     } else if(!newProps.albums && newProps.playlist.length > 0) {
       if(this.state.name !== newProps.playlist[0].title) {
         this.props.fetchPlaylist(newProps.playlist[0].id);
+        this.props.setPlaylistId(newProps.playlist[0].id);
         this.setState({name: newProps.playlist[0].title});
-        this.props.setAlbumId(newProps.playlist[0].id);
+        this.props.setAlbumId(-1);
+        
+        
       }
     }
   }
@@ -55,6 +61,7 @@ class SearchResultItem extends React.Component {
     let creator;
     let playlistPhoto;
     let photoUrl;
+    let {songs} = this.props;
     if(this.props.artists.length > 0) {
       result = this.props.artists[0];
       author = result.name;
@@ -67,10 +74,14 @@ class SearchResultItem extends React.Component {
     } else if(this.props.playlist.length >= 1){
       result = this.props.playlist[0];
       creator = result.author;
-      playlistPhoto = result.photos[0].photoUrl;
+      playlistPhoto = result.photos[0] ? result.photos[0].photoUrl : result.photoUrl;
       photoUrl = playlistPhoto;
+      if(songs.length == 0) {
+      
+        songs = -1;
+      }
     }
-    let {songs} = this.props;
+   
     if(!result) return null;
     if(songs && songs.length >=5) {
       songs = songs.slice(0,5);

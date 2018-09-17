@@ -2,23 +2,29 @@ import {connect} from 'react-redux';
 import AudioPlayer from './audio-player';
 import {setSongPlaying, setCurrentTime} from '../../../actions/audio_action';
 import {setTitle, setArtist} from "../../../actions/audio_action";
-import {selectSongsFromPayload} from "../../../reducers/selectors";
+import {selectSongsFromPayload, selectArtistFromName} from "../../../reducers/selectors";
 import {receiveCurrentSong} from "../../../actions/song_action";
 const mapStateToProps = (state,ownProps) => {
 
   let playlist;
   let album;
-
+  let artist;
   if(state.audio.playlistId) {
     playlist = state.entities.playlist[state.audio.playlistId];
   } else if(state.audio.albumId) {
     album = state.entities.albums[state.audio.albumId];
+  } else if(state.audio.artist) {
+ 
+    artist = state.audio.artist;
   }
   let songs = null;
   if(playlist) {
     songs = selectSongsFromPayload(state, playlist);
   } else if(album) {
     songs = selectSongsFromPayload(state, album);
+  } else if(artist) {
+    artist = selectArtistFromName(state, artist);
+    songs = selectSongsFromPayload(state, artist);
   }
 
   return {

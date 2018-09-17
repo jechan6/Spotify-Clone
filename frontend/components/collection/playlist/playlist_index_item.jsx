@@ -41,7 +41,7 @@ class PlaylistIndexItem extends React.Component {
       src=playlist.photoUrl;
     }
     return (
-      <div className="col-2 col-3-medium col-6-small">
+      <div className="col-2 col-6-medium col-12-small col-12-xsmall">
         <div className="playlist-item" >
               <div onClick={this.handleClick} className="playlist-pic-wrapper">
                 <a onClick={this.playMusic.bind(this)} className="play-button">

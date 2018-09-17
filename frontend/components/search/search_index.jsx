@@ -34,34 +34,36 @@ class SearchIndex extends React.Component {
       this.props.fetchArtists();
 
   }
-  matches(value) {
+  matches(input) {
     const matches = [];
     if (this.state.inputVal.length === 0) {
-       return matches;
+      return matches;
     }
 
-    let result = "No results found for " + this.state.inputVal;
+
     this.props.values.forEach(value => {
       let sub;
-      if(value.title && this.state.inputVal.length >= 2) {
-        sub = value.title.slice(0, this.state.inputVal.length);
-      } else if(value.name && this.state.inputVal.length >= 2) {
-        sub = value.name.slice(0, this.state.inputVal.length);
+      if (value.title && input.length >= 2) {
+        sub = value.title.slice(0, input.length);
+      } else if (value.name && input.length >= 2) {
+        sub = value.name.slice(0, input.length);
       }
 
-      if (this.state.inputVal.length >= 2 && sub.toLowerCase() === this.state.inputVal.toLowerCase()) {
+      if (input.length >= 2 && sub.toLowerCase() === input.toLowerCase()) {
         matches.push(value);
       }
     });
     if (matches.length === 0) {
-      matches.push('No results found for ' + `\"${value}\"`);
+      matches.push('No results found for ' + `\"${input}\"`);
     }
     return matches;
   }
 
+
   handleInput(e){
     e.preventDefault();
     let results = this.matches(e.target.value);
+    // console.log(results);
     this.setState({inputVal: e.target.value, results});
 
 
