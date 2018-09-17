@@ -67,8 +67,13 @@ class AudioPlayer extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps.songs);
+    
     if(newProps.audio && newProps.audio.trackUrl !== this.state.audio) {
+      console.log(newProps.songs);
+      if (newProps.songs && newProps.songs.length !== 0) {
+        this.setState({ songs: newProps.songs });
+      }
+
       let audio = newProps.audio.trackUrl;
       this.setState({play: true, audio});
     } else if(newProps.songs && newProps.songs.length !== 0) {

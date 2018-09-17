@@ -14,9 +14,9 @@ const audioReducer = (state={volume: 1}, action) => {
     case RECEIVE_PHOTO:
       return merge({}, state, {photoUrl: action.photoUrl});
     case RECEIVE_ALBUMID:
-      return merge({}, state, {albumId: action.albumId});
+      return merge({}, state, {albumId: action.albumId, playlistId: -1});
     case RECEIVE_PLAYLISTID:
-      return merge({}, state, {playlistId: action.playlistId});
+      return merge({}, state, {playlistId: action.playlistId, albumId: -1});
     case RECEIVE_CURRENT_TIME:
       return merge({}, state, {songTime: action.time});
     case RECEIVE_SONG_PLAYING:

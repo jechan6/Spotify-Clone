@@ -9,7 +9,7 @@ const mapStateToProps = (state,ownProps) => {
   let playlist;
   let album;
   let artist;
-  if(state.audio.playlistId) {
+  if(state.audio.playlistId && state.audio.playlistId !== -1) {
     playlist = state.entities.playlist[state.audio.playlistId];
   } else if(state.audio.albumId && state.audio.albumId !== -1) {
     album = state.entities.albums[state.audio.albumId];
