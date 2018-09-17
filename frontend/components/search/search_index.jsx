@@ -63,7 +63,6 @@ class SearchIndex extends React.Component {
   handleInput(e){
     e.preventDefault();
     let results = this.matches(e.target.value);
-    // console.log(results);
     this.setState({inputVal: e.target.value, results});
 
 

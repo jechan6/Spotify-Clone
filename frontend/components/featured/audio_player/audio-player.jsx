@@ -69,7 +69,6 @@ class AudioPlayer extends React.Component {
   componentWillReceiveProps(newProps) {
     
     if(newProps.audio && newProps.audio.trackUrl !== this.state.audio) {
-      console.log(newProps.songs);
       if (newProps.songs && newProps.songs.length !== 0) {
         this.setState({ songs: newProps.songs });
       }
@@ -104,8 +103,6 @@ class AudioPlayer extends React.Component {
     this.setState({playedSongs: newArr});
   }
   emptyHistory() {
-    console.log(this.state.playedSongs.length);
-    console.log("state songs, " + this.state.songs.length);
     if(this.state.playedSongs.length >= this.state.songs.length) {
       this.setState({playedSongs: []});
     }
