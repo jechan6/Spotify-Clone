@@ -64,11 +64,16 @@
       height: 250px;
     }
     .result-title {
-      color: white;
-      font-size: 14px;
-      line-height: 20px;
-      letter-spacing: .015em;
-      font-weight: 400;
+      h1{
+        color: white;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: .015em;
+        font-weight: 400;
+      }
+      h1:hover {
+        text-decoration: underline;
+      }
     }
     .result-creator {
       h1{
