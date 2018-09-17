@@ -12,14 +12,16 @@
   height: 100%;
   .playlist-index-container {
     max-width: 1480px;
-    display: grid;
-    margin-left: 20%;
-    margin-right: 82%;
-    grid-template-columns: repeat(6, 220px);
+    // display: grid;
+    margin-left: 340px;
+    // margin-right: 82%;
+    // grid-template-columns: repeat(6, 220px);
 
-    grid-gap: 40px;
-    grid-row-gap: 40px;;
+    // grid-gap: 40px;
+    // grid-row-gap: 40px;;
     .playlist-item {
+      margin-right: 15px;
+      margin-bottom: 40px;
       .playlist-name {
         width: 210px;
         text-align: center;

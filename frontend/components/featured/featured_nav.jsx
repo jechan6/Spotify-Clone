@@ -7,11 +7,12 @@ const FeaturedNav = () => (
       <li><Link className="feature-link-item"
         to="/browse/featured">FEATURED</Link></li>
 
-      <li><Link className="feature-link-item"
-        to="/browse/newreleases">NEW RELEASES</Link></li>
     </ul>
   </div>
 
 );
 
 export default FeaturedNav;
+
+{/* <li><Link className="feature-link-item"
+  to="/browse/newreleases">NEW RELEASES</Link></li> */}

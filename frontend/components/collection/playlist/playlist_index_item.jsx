@@ -41,21 +41,23 @@ class PlaylistIndexItem extends React.Component {
       src=playlist.photoUrl;
     }
     return (
-      <div className="playlist-item" >
-            <div onClick={this.handleClick} className="playlist-pic-wrapper">
-              <a onClick={this.playMusic.bind(this)} className="play-button">
-                <i className= "fa fa-play"></i>
-              </a>
-             <img onClick={this.handleClick} src={src}></img>
-            </div>
+      <div className="col-2 col-3-medium col-6-small">
+        <div className="playlist-item" >
+              <div onClick={this.handleClick} className="playlist-pic-wrapper">
+                <a onClick={this.playMusic.bind(this)} className="play-button">
+                  <i className= "fa fa-play"></i>
+                </a>
+              <img onClick={this.handleClick} src={src}></img>
+              </div>
 
-          <div className="playlist-name">
-            <Link className="playlist-title"
-              to={`/playlist/${playlist.id}`}>
-              {playlist.title}
-            </Link>
-          <a className="playlist-author">{playlist.author}</a>
-          </div>
+            <div className="playlist-name">
+              <Link className="playlist-title"
+                to={`/playlist/${playlist.id}`}>
+                {playlist.title}
+              </Link>
+            <a className="playlist-author">{playlist.author}</a>
+            </div>
+        </div>
       </div>
     );
   }

@@ -27,7 +27,6 @@ const App = () => (
     <ProtectedRoute path="/" component={AudioPlayerContainer}/>
 
     <ProtectedRoute path="/browse/featured" component={FeaturedComponent}/>
-    <ProtectedRoute path="/browse/newreleases" component={FeaturedComponent}/>
     <ProtectedRoute path="/album/:albumId" component={FeaturedComponent}/>
     <ProtectedRoute path="/playlist/:playlistId" component={CollectionContainer}/>
     <ProtectedRoute path="/artist/:artistId" component={ArtistItemContainer}/>

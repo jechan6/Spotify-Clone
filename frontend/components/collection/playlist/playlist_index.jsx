@@ -13,24 +13,24 @@ class PlaylistIndex extends React.Component {
 
   render() {
 
-    return(
-      <div className="playlist-container">
+    return <div className="playlist-container">
         <div className="playlist-index-container">
-          {this.props.playlists.map((playlist) => (
-            <PlaylistIndexItem
-              playlist={playlist}
-              key={playlist.id}
-              fetchPlaylist={this.props.fetchPlaylist}
-              setPlaylistId={this.props.setPlaylistId}
-              setPhotoUrl={this.props.setPhotoUrl}
-              receiveCurrentSong={this.props.receiveCurrentSong}
-              setTitle={this.props.setTitle}
-              setArtist={this.props.setArtist}
+          <div className="row">
+            {this.props.playlists.map(playlist => (
+              <PlaylistIndexItem
+                playlist={playlist}
+                key={playlist.id}
+                fetchPlaylist={this.props.fetchPlaylist}
+                setPlaylistId={this.props.setPlaylistId}
+                setPhotoUrl={this.props.setPhotoUrl}
+                receiveCurrentSong={this.props.receiveCurrentSong}
+                setTitle={this.props.setTitle}
+                setArtist={this.props.setArtist}
               />
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    )
+      </div>;
   }
 }
 

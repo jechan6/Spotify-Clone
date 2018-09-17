@@ -33,6 +33,8 @@ class AlbumsIndex extends React.Component {
     const renderItems = () => (
       <div>
         <div className="albums-index-container">
+          <div className="row">
+    
           {this.props.albums.map((album) => (
             <AlbumsIndexItem
               album={album}
@@ -46,6 +48,7 @@ class AlbumsIndex extends React.Component {
               setArtist={this.props.setArtist}
               />
           ))}
+          </div>
         </div>
       </div>
     )

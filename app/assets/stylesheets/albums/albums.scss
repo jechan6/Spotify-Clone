@@ -13,7 +13,7 @@
     line-height: 44px;
     color: white;
     letter-spacing: -.005em;
-    text-align: center;
+
     margin-bottom: 30px;
     margin-left: 50px;
     h1{
@@ -21,22 +21,24 @@
       white-space: nowrap;
       text-align: center;
       width: 100%;
-
+      margin-left: 150px;
     }
   }
 
   .albums-index-container {
     max-width: 1480px;
     width: 100%;
-    display: grid;
+    // display: grid;
     position: relative;
     left: 10%;
     margin-bottom: 30%;
-    grid-template-columns: repeat(6, 220px);
-    grid-column-gap: 2%;
+    // grid-template-columns: repeat(6, 220px);
+    // grid-column-gap: 2%;
     .album-item {
       height: auto;
       width: auto;
+      margin-right: 15px;
+
       img {
         height: 220px;
         width: 220px;
