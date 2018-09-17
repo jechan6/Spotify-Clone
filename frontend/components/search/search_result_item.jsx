@@ -27,10 +27,10 @@ class SearchResultItem extends React.Component {
     } else if(newProps.artists&& newProps.artists.length > 0) {
 
         if(this.state.name !== newProps.artists[0].name) {
-          this.props.fetchArtist(newProps.artists[0].id);
+          // this.props.fetchArtist(newProps.artists[0].id);
           this.setState({name: newProps.artists[0].name});
           this.props.setAlbumId(-1);
-          this.props.setPhotoUrl(newProps.artists[0].photoUrl);
+          // this.props.setPhotoUrl(newProps.artists[0].photoUrl);
         }
     } else if(!newProps.albums && newProps.playlist.length > 0) {
       if(this.state.name !== newProps.playlist[0].title) {
@@ -66,6 +66,7 @@ class SearchResultItem extends React.Component {
     if(this.props.artists.length > 0) {
       result = this.props.artists[0];
       author = result.name;
+      photoUrl = result.photoUrl;
       link_to_url = `artist/${result.id}`;
     } else if(this.props.album.length > 0) {
       result = this.props.album[0];
@@ -110,7 +111,7 @@ class SearchResultItem extends React.Component {
               </div>
             </div>
             <div className="result-songs">
-              <SongIndexContainer photoUrl={photoUrl} songs={songs} photoUrl={photoUrl} />
+              <SongIndexContainer photoUrl={photoUrl} songs={songs}/>
             </div>
           </div> : <div className="searched-playlist">
             {this.props.playlist && this.props.playlist.length > 0 ? (

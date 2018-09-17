@@ -11,7 +11,7 @@ const mapStateToProps = (state,ownProps) => {
   let artist;
   if(state.audio.playlistId) {
     playlist = state.entities.playlist[state.audio.playlistId];
-  } else if(state.audio.albumId) {
+  } else if(state.audio.albumId && state.audio.albumId !== -1) {
     album = state.entities.albums[state.audio.albumId];
   } else if(state.audio.artist) {
  
@@ -25,6 +25,7 @@ const mapStateToProps = (state,ownProps) => {
   } else if(artist) {
     artist = selectArtistFromName(state, artist);
     songs = selectSongsFromPayload(state, artist);
+    
   }
 
   return {

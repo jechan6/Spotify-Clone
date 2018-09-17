@@ -19,7 +19,6 @@ export const selectArtistFromName = (state, name) => {
   let i = 0;
   while(i < artists.length) {
     if (artists[i].name === name) {
-    
       return artists[i];
     }
     i++;

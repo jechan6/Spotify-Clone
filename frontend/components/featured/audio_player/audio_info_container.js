@@ -1,12 +1,13 @@
 import {connect} from 'react-redux';
 import AudioInfo from './audio_info';
-import {selectAlbumIdFromName} from "../../../reducers/selectors";
+import {fetchArtists} from "../../../actions/artist_action";
+import {selectArtistFromName} from "../../../reducers/selectors";
 const mapStateToProps = (state, ownProps) => {
   let artist_id;
-  if(Object.values(state.entities.albums)[0]) {
-    artist_id = Object.values(state.entities.albums)[0].artist_id;
-
+  if(state.audio.artist) { 
+    artist_id = selectArtistFromName(state, state.audio.artist).id;
   }
+
 
   return {
     title: state.audio.title,
@@ -16,4 +17,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 };
 
-export default connect(mapStateToProps, null)(AudioInfo);
+const mapDispatchToProps = dispatch => ({
+  fetchArtists: () => dispatch(fetchArtists())
+});
+export default connect(mapStateToProps, mapDispatchToProps)(AudioInfo);

@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
+
 class AudioInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -8,6 +9,9 @@ class AudioInfo extends React.Component {
       artist: "",
       photoUrl: ""
     }
+  }
+  componentDidMount() {
+    this.props.fetchArtists();
   }
   componentWillReceiveProps(newProps) {
 

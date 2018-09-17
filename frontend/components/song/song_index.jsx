@@ -13,7 +13,7 @@ class SongIndex extends React.Component {
   componentDidMount() {
     if(this.props.songs[0]) {
 
-      this.props.setArtist(this.props.songs[0].artist);
+      
     }
   }
   handleClick(song) {
@@ -28,8 +28,11 @@ class SongIndex extends React.Component {
       this.props.setPlaylistId(this.props.playlistId);
     }
     this.props.setTitle(song.title);
-    
-    this.props.setPhotoUrl(this.props.photoUrl);
+    this.props.setArtist(this.props.songs[0].artist);
+    if(this.props.photoUrl) { 
+
+      this.props.setPhotoUrl(this.props.photoUrl);
+    } 
   }
   render() {
     const {songs} = this.props;
