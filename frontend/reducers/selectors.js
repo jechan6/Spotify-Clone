@@ -26,6 +26,12 @@ export const selectArtistFromName = (state, name) => {
   
  
 }
+export const selectUserPlaylist = (state, playlist) => {
+   let currentUser = state.entities.users[state.session.id]
+
+   return Object.values(playlist).filter(playlist => currentUser.id === playlist.author_id);
+
+}
 export const selectPlaylistFromUser = (state, playlist) => {
   let currentUser = state.entities.users[state.session.id]
 

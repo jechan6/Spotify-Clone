@@ -14,6 +14,14 @@
   grid-column-gap: .6%;
   padding-top: 5em;
   margin: 0 auto;
+  .song-content {
+    height: 750px;
+    overflow: scroll;
+    position: absolute;
+    overflow-x: hidden;
+    width: 60%;
+    right: -17px;
+  }
   .cover-picture {
     text-align: center;
     margin-left: 80px;

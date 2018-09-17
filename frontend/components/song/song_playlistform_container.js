@@ -5,10 +5,12 @@ import SongPlaylistform from './song_playlistform';
 import {withRouter} from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
 import {openModal} from "../../actions/modal_actions";
+import {selectUserPlaylist} from "../../reducers/selectors";
+
 const mapStateToProps = state => {
 
   return {
-    playlists: Object.values(state.entities.playlist)
+    playlists: selectUserPlaylist(state, state.entities.playlist)
   };
 };
 
