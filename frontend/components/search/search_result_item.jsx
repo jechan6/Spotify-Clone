@@ -27,7 +27,7 @@ class SearchResultItem extends React.Component {
     } else if(newProps.artists&& newProps.artists.length > 0) {
 
         if(this.state.name !== newProps.artists[0].name) {
-          // this.props.fetchArtist(newProps.artists[0].id);
+          this.props.fetchArtist(newProps.artists[0].id);
           this.setState({name: newProps.artists[0].name});
           this.props.setAlbumId(-1);
           // this.props.setPhotoUrl(newProps.artists[0].photoUrl);
@@ -66,9 +66,8 @@ class SearchResultItem extends React.Component {
     if(this.props.artists.length > 0) {
       result = this.props.artists[0];
       author = result.name;
-
-    } else
-    if(this.props.album.length > 0) {
+      link_to_url = `artist/${result.id}`;
+    } else if(this.props.album.length > 0) {
       result = this.props.album[0];
       creator = result.artist;
       photoUrl = result.photoUrl;
