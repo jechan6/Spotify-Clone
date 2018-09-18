@@ -5,14 +5,16 @@
     flex-direction: column;
     height: 100vh;
     background-color: rgba(0,0,0,.5);
-    padding: 20px;
+    // padding: 20px;
+    // margin-bottom: 90px;
     font-family: 'Montserrat', 'sans-serif';
     font-weight: 700;
     .nav-topsection{
       display: flex;
       flex-flow: column nowrap;
       height: 100%;
-      padding-bottom: 95px;
+      padding-bottom: 90px;
+      box-sizing: border-box;
     }
     .navbar-logo {
       background-image: image_url('logo.png');
@@ -79,8 +81,8 @@
     .navbar-bottom-container {
       display: flex;
       flex-direction: column;
-      flex: 1;
-      margin-bottom: 10px;
+      // flex: 1;
+
       .profile-info {
         border: 0;
         color: rgba(255,255,255,0.6);
@@ -112,4 +114,5 @@
         }
       }
     }
+   
   }

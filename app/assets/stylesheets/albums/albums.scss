@@ -27,10 +27,13 @@
 
   .albums-index-container {
     max-width: 1480px;
-    width: 100%;
+    // width: 100%;
     // display: grid;
-    position: relative;
-    left: 7%;
+    // position: relative;
+    // left: 7%;
+    // right: 10%;
+    margin-left: 80px;
+    margin-right: 80px;
     margin-bottom: 30%;
     // grid-template-columns: repeat(6, 220px);
     // grid-column-gap: 2%;
