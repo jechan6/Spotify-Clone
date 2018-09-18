@@ -40,6 +40,9 @@
     .right-browse {
       width: 600px;
       padding: 45px;
+      ul {
+        text-shadow: 1px 1px 1px black;
+      }
       .fa-check{
         color: #07d159;
         padding-right: 10px;
@@ -51,6 +54,7 @@
 
       }
       p{
+        text-shadow: 1px 1px 1px black;
         margin-top: 30px;
         margin-bottom: 30px;
         font-size: 24px;
