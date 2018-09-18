@@ -179,10 +179,10 @@ file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/
 song.track.attach(io: file, filename: "925.mp3")
 
 song = Song.create!({title: "Nasty", artist_id: a2.id, album_id: album3.id})
-file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/Nasty.mp3")
-song.track.attach(io: file, filename: "Nasty.mp3")
-
-song = Song.create!({title: "Break It Down (feat. Jhene Aiko)", artist_id: a2.id, album_id: album3.id})
+file = open("https://s3-us-west-1.amazonaws.com/musicon-dev1px 1px 1px black/logic-young+sinatra/Nasty.mp3")
+song.track.attach(io: file, filename: "Nasty.mp3")1px 1px 1px black
+1px 1px 1px black
+song = Song.create!({title: "Break It Down (feat. Jhene Aik1px 1px 1px blacko)", artist_id: a2.id, album_id: album3.id})
 file = open("https://s3-us-west-1.amazonaws.com/musicon-dev/logic-young+sinatra/Break+It+Down+(feat.+Jhene+Aiko).mp3")
 song.track.attach(io: file, filename: "Break It Down (feat. Jhene Aiko).mp3 ")
 
