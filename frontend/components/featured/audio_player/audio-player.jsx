@@ -30,8 +30,13 @@ class AudioPlayer extends React.Component {
     this.handleRepeat = this.handleRepeat.bind(this);
 
   }
+  componentWillUnmount() {
+    this.audio.pause();
+    this.setState({songs: [], audio: "", play: false});
+  }
   componentDidMount() {
-    this.currentTimeInterval = null;
+  
+    this.currentTimeInterval = null;  
     this.setState({currentTime: "0:00"})
     this.audio.onplay = () => {
 			this.currentTimeInterval = setInterval( () => {
@@ -58,6 +63,7 @@ class AudioPlayer extends React.Component {
         this.timeline.offsetWidth * ratio + this.timeline.offsetLeft;
       this.handlePosition(position);
     });
+    
   }
   formatTime(seconds) {
     let min = Math.floor(seconds/60);
@@ -67,19 +73,21 @@ class AudioPlayer extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    
+
     if(newProps.audio && newProps.audio.trackUrl !== this.state.audio) {
       if (newProps.songs && newProps.songs.length !== 0) {
         this.setState({ songs: newProps.songs });
       }
-
+ 
       let audio = newProps.audio.trackUrl;
       this.setState({play: true, audio});
+
     } else if(newProps.songs && newProps.songs.length !== 0) {
       // if(newProps.songs[0].trackUrl !== this.state.audio) {
       //   this.setState({audio: newProps.songs[0].trackUrl})
       // }
-      this.setState({songs: newProps.songs});
+        this.setState({songs: newProps.songs});
+    
     }
 
   }
@@ -239,8 +247,8 @@ class AudioPlayer extends React.Component {
   }
 
   render() {
-
-    return(
+    
+    return( 
       <div className="audio-controls-container">
         <AudioInfoContainer/>
         <div className="song-playing-bar">

@@ -5,7 +5,7 @@ import {setTitle, setArtist} from "../../../actions/audio_action";
 import {selectSongsFromPayload, selectArtistFromName} from "../../../reducers/selectors";
 import {receiveCurrentSong} from "../../../actions/song_action";
 const mapStateToProps = (state,ownProps) => {
-
+  
   let playlist;
   let album;
   let artist;
@@ -27,9 +27,15 @@ const mapStateToProps = (state,ownProps) => {
     songs = selectSongsFromPayload(state, artist);
     
   }
-
+  let audio = state.ui.currentSong;
+  if(state.audio.newUser) {
+    songs = [];
+    audio = "";
+    
+  }
   return {
-    audio: state.ui.currentSong,
+    audio: audio,
+    newUser: state.audio.newUser,
     volume: state.audio.volume,
     nextSong: state.ui.nextSong,
     songInPlay: state.audio.songInPlay,
