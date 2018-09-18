@@ -4,11 +4,13 @@ class AudioSound extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      volume: 1
+      volume: 1,
+      mute: false
     };
     this.mouseMove = this.mouseMove.bind(this);
     this.mouseDown = this.mouseDown.bind(this);
     this.mouseUp = this.mouseUp.bind(this);
+    this.mute = this.mute.bind(this);
     this.handlePosition = this.handlePosition.bind(this);
   }
   componentDidMount() {
@@ -58,20 +60,33 @@ class AudioSound extends React.Component {
     window.removeEventListener('mousemove', this.mouseMove);
     window.removeEventListener('mouseup', this.mouseUp);
   }
-
+  mute() {
+    if(!this.state.mute) {
+      this.setState({mute: true});
+      this.props.setVolume(0);
+    } else {
+      this.setState({ mute: false });
+      this.props.setVolume(this.state.volume);
+    }
+  }
   render() {
     let volumeClass;
+   
     if(this.state.volume >= .6){
       volumeClass="fas fa-volume-up";
     } else if(this.state.volume > 0) {
       volumeClass="fas fa-volume-down";
     } else if(this.state.volume <= 0) {
+  
       volumeClass="fas fa-volume-off";
+    }
+    if (this.state.mute) {
+      volumeClass = "fas fa-volume-off";
     }
     return(
       <div className="right-audio-container">
         <div className="volume-controls">
-          <div className="volume-image"><i className={volumeClass}></i></div>
+          <div className="volume-image"><i onClick={this.mute} className={volumeClass}></i></div>
           <div className="progress-bar"
             onClick={this.mouseMove}
             ref={(timeline) => { this.timeline = timeline }}>
