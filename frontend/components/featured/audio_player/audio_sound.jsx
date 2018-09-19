@@ -38,6 +38,7 @@ class AudioSound extends React.Component {
   }
   mouseMove(e) {
     this.handlePosition(e.pageX);
+    this.setState({mute: false});
     let volume =
       ((e.pageX - this.timeline.offsetLeft)
       / this.timeline.offsetWidth) * 1;

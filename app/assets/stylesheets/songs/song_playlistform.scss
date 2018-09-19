@@ -49,10 +49,10 @@
   margin-top: 30px;
   .playlist-index-container {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(6, 150px);
-    grid-column-gap: 110px;
-    grid-row-gap: 80px;
+    // display: grid;
+    // grid-template-columns: repeat(6, 150px);
+    // grid-column-gap: 110px;
+    // grid-row-gap: 80px;
     .playlist-pic-wrapper {
 
       img {
@@ -69,6 +69,8 @@
     height: 210px;
     text-align: center;
     color: white;
+    margin-right: 36px;
+    margin-bottom: 55px;
     a {
       pointer-events: none;
     }

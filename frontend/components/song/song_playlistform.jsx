@@ -25,15 +25,17 @@ class SongPlaylistform extends React.Component {
           </div>
           <div className="song-playlist-container">
             <div className="playlist-index-container">
-              {this.props.playlists.map((playlist) => (
-                <div key={playlist.id} onClick={()=>{this.handleSubmit(playlist);this.props.closeModal();}}>
-                  <PlaylistIndexItem
-                    playlist={playlist}
-                    closeModal={this.props.closeModal}
-                    key={playlist.id}
-                    />
-                </div>
-              ))}
+              <div className="row">
+                {this.props.playlists.map((playlist) => (
+                  <div key={playlist.id} onClick={()=>{this.handleSubmit(playlist);this.props.closeModal();}}>
+                    <PlaylistIndexItem
+                      playlist={playlist}
+                      closeModal={this.props.closeModal}
+                      key={playlist.id}
+                      />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
