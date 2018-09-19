@@ -29,8 +29,13 @@ class AlbumsIndex extends React.Component {
   }
 
   render() {
-    if(!this.props.albums) {
-      return null;
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    const date = new Date();
+    const day = days[date.getDay() + 1 % days.length];
+    if(this.props.albums.length == 0) {
+      return <div class="fa-7x">
+          <i class="fas fa-circle-notch fa-spin" />
+        </div>;
     }
     const renderDetail = () => (
       <div>
@@ -39,6 +44,7 @@ class AlbumsIndex extends React.Component {
     );
     const renderItems = () => (
       <div>
+        <div className="newrelease-header"><h1>Get set for {day}</h1></div>
         <div className="albums-index-container">
           <div className="row">
     

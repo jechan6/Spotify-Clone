@@ -12,7 +12,11 @@ class PlaylistIndex extends React.Component {
   }
 
   render() {
-
+    if (this.props.playlists.length == 0) {
+      return <div class="fa-7x">
+        <i class="fas fa-circle-notch fa-spin" />
+      </div>;
+    }
     return <div className="playlist-container">
         <div className="playlist-index-container">
           <div className="row">

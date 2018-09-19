@@ -30,9 +30,7 @@ class Featured extends React.Component {
   }
   render() {
     const {logout, currentUser} = this.props;
-    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-    const date = new Date();
-    const day = days[date.getDay()+1%days.length];
+
     let newrelease;
     let detail;
     let featuredNav;
@@ -41,8 +39,7 @@ class Featured extends React.Component {
       if(this.props.match.path === "/browse/featured") {
         featured =  <div className="show-container">
                       <div className="albums-container">
-                        <div className="newrelease-header"><h1>Get set for {day}</h1></div>
-                          <AlbumsContainer/>
+                        <AlbumsContainer/>
                       </div>
                     </div>
       }
