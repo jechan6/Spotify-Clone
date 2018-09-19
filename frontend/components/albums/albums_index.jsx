@@ -1,6 +1,6 @@
 import React from 'react';
 import AlbumsIndexItem from './albums_index_item';
-import { Route } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import AlbumItemDetailContainer from './album_item_detail_container';
 
 class AlbumsIndex extends React.Component {
@@ -19,8 +19,15 @@ class AlbumsIndex extends React.Component {
   }
 
   handleClick(album) {
-    this.setState({detail: !this.state.detail, album})
+
+    return(e) => {
+      if (!e.target.classList.contains("fa-play") && !e.target.classList.contains("play-button")) {
+        this.props.history.push(`/album/${album.id}`);
+      }
+    }
+
   }
+
   render() {
     if(!this.props.albums) {
       return null;
@@ -56,4 +63,4 @@ class AlbumsIndex extends React.Component {
 
   }
 }
-export default AlbumsIndex;
+export default withRouter(AlbumsIndex);

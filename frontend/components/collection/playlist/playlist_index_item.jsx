@@ -1,14 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 class PlaylistIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(){
+  handleClick(e){
     if(this.props.closeModal) {
       this.props.closeModal();
+    }
+    if (!e.target.classList.contains("fa-play") && !e.target.classList.contains("play-button")) {
+      this.props.history.push(`/playlist/${this.props.playlist.id}`);
     }
   }
   handleSong(playlist) {
@@ -62,4 +66,4 @@ class PlaylistIndexItem extends React.Component {
     );
   }
 }
-export default PlaylistIndexItem;
+export default withRouter(PlaylistIndexItem);
