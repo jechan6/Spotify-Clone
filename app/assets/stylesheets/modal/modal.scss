@@ -1,12 +1,26 @@
 .modal-background {
+  // position: fixed;
+  // top: 0;
+  // bottom: 0;
+  // right: 0;
+  // left: 0;
+  // background: rgba(0, 0, 0,0.9);
+  // z-index: 101;
+  // overflow: scroll;
+  // padding-bottom: 50px;
+  // right: -17px;
+
+
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0,0.9);
+  background: rgba(0, 0, 0, 0.9);
   z-index: 101;
-
+  right: -17px;
+  overflow: scroll;
+  // padding-bottom: 50px;
 }
 
 .modal-child {
